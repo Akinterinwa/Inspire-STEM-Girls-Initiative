@@ -1,0 +1,6 @@
+{
+  "name": "Inspire STEM Girls Initiative",
+  "description": "Inspire STEM Girls Initiative expands access to STEM education, mentorship, and opportunities for girls from underserved communities in Nigeria, with the long-term vision of establishing a tuition-free science school.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
