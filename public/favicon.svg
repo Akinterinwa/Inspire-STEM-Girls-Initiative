@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a3328" />
+      <stop offset="50%" stop-color="#0e4b3c" />
+      <stop offset="100%" stop-color="#155e4b" />
+    </linearGradient>
+
+    <!-- Golden Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- Emerald Glow Gradient -->
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Inner Core Gradient -->
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fef3c7" />
+    </linearGradient>
+
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#042017" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Squircle with shadow -->
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#bgGrad)" filter="url(#softShadow)" />
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="none" stroke="#34d399" stroke-width="6" stroke-opacity="0.3" />
+
+  <!-- Outer Orbital Ring 1 (Tilted 35 deg) -->
+  <ellipse cx="256" cy="256" rx="180" ry="68" fill="none" stroke="url(#goldGrad)" stroke-width="14" stroke-dasharray="8 0" transform="rotate(-35 256 256)" opacity="0.95" />
+  
+  <!-- Outer Orbital Ring 2 (Tilted 35 deg inverse) -->
+  <ellipse cx="256" cy="256" rx="180" ry="68" fill="none" stroke="#34d399" stroke-width="12" stroke-opacity="0.85" transform="rotate(35 256 256)" />
+
+  <!-- Orbital Electron / Innovation Nodes -->
+  <circle cx="118" cy="160" r="14" fill="#fbbf24" stroke="#ffffff" stroke-width="3" />
+  <circle cx="394" cy="352" r="14" fill="#fbbf24" stroke="#ffffff" stroke-width="3" />
+  <circle cx="394" cy="160" r="12" fill="#34d399" stroke="#ffffff" stroke-width="3" />
+  <circle cx="118" cy="352" r="12" fill="#34d399" stroke="#ffffff" stroke-width="3" />
+
+  <!-- Center Inspiring Spark / STEM Star Flame -->
+  <g transform="translate(256 256)">
+    <!-- Glow Backdrop -->
+    <circle cx="0" cy="0" r="76" fill="#042017" opacity="0.6" />
+    <circle cx="0" cy="0" r="62" fill="url(#goldGrad)" opacity="0.25" />
+
+    <!-- 8-Point Compass / Inspiring Discovery Spark -->
+    <path d="M 0,-88 Q 8,-20 80,0 Q 8,20 0,88 Q -8,20 -80,0 Q -8,-20 0,-88 Z" fill="url(#goldGrad)" />
+    
+    <!-- Diagonal Subtle Flares -->
+    <path d="M -42,-42 Q -6,-6 0,-42 Q 6,-6 42,-42 Q 6,6 42,42 Q -6,6 -42,42 Q -6,-6 -42,-42 Z" fill="#ffffff" opacity="0.5" />
+
+    <!-- Central Scientific Flask & Graduation Sparkle Silhouette -->
+    <!-- Laboratory Erlenmeyer Flask Outline & Core -->
+    <path d="M -14,-34 L 14,-34 L 14,-18 L 32,24 C 36,32 30,42 20,42 L -20,42 C -30,42 -36,32 -32,24 L -14,-18 Z" fill="#ffffff" />
+    <path d="M -10,-10 L 10,-10 L 24,26 C 26,30 22,36 16,36 L -16,36 C -22,36 -26,30 -24,26 Z" fill="#0e4b3c" />
+    <circle cx="-6" cy="22" r="4" fill="#fbbf24" />
+    <circle cx="7" cy="16" r="3" fill="#34d399" />
+    <circle cx="2" cy="28" r="4.5" fill="#f59e0b" />
+
+    <!-- North Star Radiance at top of Flask -->
+    <polygon points="0,-48 4,-38 14,-38 6,-32 9,-22 0,-27 -9,-22 -6,-32 -14,-38 -4,-38" fill="#ffffff" />
+  </g>
+</svg>

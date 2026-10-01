@@ -1,0 +1,17 @@
+{
+  "name": "Inspire STEM Girls Initiative",
+  "short_name": "Inspire STEM",
+  "description": "Empowering girls from underserved communities in Nigeria through STEM education, mentorship, and opportunities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0e4b3c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "48x48 72x72 96x96 128x128 192x192 256x256 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
