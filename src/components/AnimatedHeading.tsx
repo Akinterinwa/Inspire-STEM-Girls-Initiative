@@ -91,7 +91,7 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
 
       {accent && (
         <div
-          className={`h-1 bg-gradient-to-r from-[#0e4b3c] via-emerald-500 to-amber-400 rounded-full mt-3 transition-all duration-1000 ease-out ${
+          className={`h-1 bg-gradient-to-r from-[#2C0E40] via-[#58247C] to-[#F0C747] rounded-full mt-3 transition-all duration-1000 ease-out ${
             isVisible ? 'w-24 opacity-100' : 'w-0 opacity-0'
           }`}
         />

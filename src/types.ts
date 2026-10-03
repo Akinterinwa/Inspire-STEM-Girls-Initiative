@@ -70,6 +70,9 @@ export interface PartnerItem {
   logoType: 'school' | 'community' | 'tech' | 'stem' | 'advisory';
   description?: string;
   badgeText?: string;
+  nature?: string;
+  role?: string;
+  location?: string;
 }
 
 export interface PartnerCategory {

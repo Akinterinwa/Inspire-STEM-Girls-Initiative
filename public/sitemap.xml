@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://inspirestemgirls.org/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://inspirestemgirls.org/hero-stem-girls.jpg</image:loc>
+      <image:title>Inspire STEM Girls Workshop Nigeria</image:title>
+      <image:caption>Nigerian secondary school girls actively engaged in hands-on science and robotics workshops</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inspirestemgirls.org/isg-logo.svg</image:loc>
+      <image:title>Inspire STEM Girls Initiative Official Emblem</image:title>
+      <image:caption>Inspire STEM Girls Initiative logo and STEM emblem</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://inspirestemgirls.org/about</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inspirestemgirls.org/programs</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://inspirestemgirls.org/impact</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://inspirestemgirls.org/vision</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inspirestemgirls.org/team</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://inspirestemgirls.org/donate</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

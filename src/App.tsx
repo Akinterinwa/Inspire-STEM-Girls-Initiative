@@ -70,7 +70,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="never">
-      <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-[#0e4b3c] selection:text-white">
+      <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-[#2C0E40] selection:text-[#F0C747]">
         {/* Navigation Bar */}
         <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
 

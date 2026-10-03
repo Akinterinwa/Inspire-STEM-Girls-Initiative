@@ -23,13 +23,10 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
 
   const handleDownload = (reportTitle: string) => {
     setDownloadModal(reportTitle);
-    setTimeout(() => {
-      // simulate auto dismissal or user can close
-    }, 4000);
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -37,7 +34,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
             as="h1"
             accent
             subtitle="Governance & Accountability"
-            subtitleClassName="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0e4b3c]"
+            subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C0E40] bg-[#EFEFF0] px-3 py-1 rounded-full border border-[#2C0E40]/15"
             className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
           >
             Reports & Publications
@@ -52,8 +49,8 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
       {/* FEATURED / 2026 ANNUAL IMPACT REPORT                           */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="border-b border-stone-200 pb-4 mb-8">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1">
+        <div className="border-b border-[#E3E3E5] pb-4 mb-8">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1">
             Current Publication
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
@@ -65,27 +62,27 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
           {reportsData.map((report) => (
             <div
               key={report.id}
-              className={`p-8 rounded-2xl border transition-all ${
+              className={`p-8 rounded-3xl border transition-all ${
                 report.featured
-                  ? 'bg-gradient-to-br from-emerald-950 to-stone-900 text-white border-emerald-800 shadow-xl'
-                  : 'bg-stone-50 border-stone-200 text-slate-900'
+                  ? 'bg-gradient-to-br from-[#2C0E40] via-[#1E082C] to-[#150520] text-white border-[#41175E] shadow-xl'
+                  : 'bg-[#EFEFF0]/40 border-[#E3E3E5] text-slate-900'
               }`}
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div className="space-y-4 max-w-3xl">
                   <div className="flex items-center gap-3">
                     <span
-                      className={`text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded ${
+                      className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-lg ${
                         report.featured
-                          ? 'bg-amber-400 text-slate-950'
-                          : 'bg-stone-200 text-slate-700'
+                          ? 'bg-[#F0C747] text-[#2C0E40]'
+                          : 'bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/20'
                       }`}
                     >
                       {report.year} Edition
                     </span>
                     <span
-                      className={`text-xs flex items-center gap-1 ${
-                        report.featured ? 'text-emerald-300' : 'text-slate-500'
+                      className={`text-xs flex items-center gap-1 font-medium ${
+                        report.featured ? 'text-[#F0C747]' : 'text-slate-500'
                       }`}
                     >
                       <Calendar className="w-3.5 h-3.5" />
@@ -93,7 +90,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                     </span>
                     <span
                       className={`text-xs ${
-                        report.featured ? 'text-stone-400' : 'text-slate-400'
+                        report.featured ? 'text-stone-300' : 'text-slate-400'
                       }`}
                     >
                       · {report.fileSize}
@@ -110,7 +107,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
 
                   <p
                     className={`text-sm sm:text-base leading-relaxed ${
-                      report.featured ? 'text-emerald-100/90' : 'text-slate-600'
+                      report.featured ? 'text-[#EFEFF0]/85' : 'text-slate-600'
                     }`}
                   >
                     {report.description}
@@ -119,8 +116,8 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                   {/* Highlights list */}
                   <div className="space-y-2 pt-2">
                     <span
-                      className={`text-xs font-semibold uppercase tracking-wider block ${
-                        report.featured ? 'text-amber-300' : 'text-slate-500'
+                      className={`text-xs font-bold uppercase tracking-wider block ${
+                        report.featured ? 'text-[#F0C747]' : 'text-[#2C0E40]'
                       }`}
                     >
                       Report Highlights & Verified Outcomes:
@@ -135,7 +132,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                         >
                           <CheckCircle2
                             className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${
-                              report.featured ? 'text-amber-400' : 'text-emerald-600'
+                              report.featured ? 'text-[#F0C747]' : 'text-[#2C0E40]'
                             }`}
                           />
                           <span>{h}</span>
@@ -149,10 +146,10 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0">
                   <button
                     onClick={() => handleDownload(report.title)}
-                    className={`px-6 py-3 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-sm ${
+                    className={`px-6 py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer ${
                       report.featured
-                        ? 'bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold'
-                        : 'bg-[#0e4b3c] hover:bg-[#155e4b] text-white'
+                        ? 'bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] hover:shadow-amber-500/25'
+                        : 'bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white hover:shadow-purple-950/20'
                     }`}
                   >
                     <Download className="w-4 h-4" />
@@ -160,10 +157,10 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                   </button>
                   <button
                     onClick={() => handleDownload(report.title)}
-                    className={`px-6 py-3 rounded-lg text-xs font-medium flex items-center justify-center gap-2 border transition-colors ${
+                    className={`px-6 py-3.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border transition-all duration-200 hover:-translate-y-0.5 cursor-pointer ${
                       report.featured
-                        ? 'border-emerald-700 hover:bg-emerald-900/50 text-emerald-200'
-                        : 'border-stone-300 hover:bg-stone-100 text-slate-700'
+                        ? 'border-[#41175E] hover:bg-[#41175E] text-[#EFEFF0]'
+                        : 'border-[#2C0E40]/30 hover:bg-[#EFEFF0] text-[#2C0E40]'
                     }`}
                   >
                     <Eye className="w-3.5 h-3.5" />
@@ -180,7 +177,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
       {/* ANNUAL ARCHIVE / EXPANSION DESIGN                              */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 rounded-2xl bg-stone-50 border border-stone-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
           <div className="space-y-1">
             <h3 className="text-lg font-bold text-slate-900">
               Annual Publication Cycle
@@ -189,8 +186,8 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
               Our comprehensive Annual Impact Reports are published at the conclusion of each academic cycle. We adhere to open non-profit financial disclosures for all institutional partners.
             </p>
           </div>
-          <div className="flex items-center gap-2 text-xs text-emerald-800 font-semibold bg-emerald-50 px-3.5 py-2 rounded-lg border border-emerald-200">
-            <ShieldCheck className="w-4 h-4 text-emerald-700" />
+          <div className="flex items-center gap-2 text-xs text-[#2C0E40] font-bold bg-[#EFEFF0] px-4 py-2.5 rounded-xl border border-[#2C0E40]/20">
+            <ShieldCheck className="w-4 h-4 text-[#2C0E40]" />
             <span>Audited Stewardship & Open Governance</span>
           </div>
         </div>
@@ -201,11 +198,11 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs"
         >
-          <div className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-stone-200 text-center space-y-4">
-            <div className="w-12 h-12 rounded-full bg-emerald-100 text-[#0e4b3c] flex items-center justify-center mx-auto">
-              <Download className="w-6 h-6 animate-bounce" />
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-[#E3E3E5] text-center space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mx-auto shadow-md">
+              <Download className="w-7 h-7 animate-bounce" />
             </div>
             <h4 className="text-lg font-bold text-slate-900">
               Accessing {downloadModal}
@@ -216,7 +213,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
             <div className="pt-2 flex flex-col sm:flex-row gap-2">
               <button
                 onClick={() => setDownloadModal(null)}
-                className="w-full py-2.5 rounded-lg bg-[#0e4b3c] text-white text-xs font-semibold hover:bg-[#155e4b]"
+                className="w-full py-3 rounded-xl bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 Done
               </button>

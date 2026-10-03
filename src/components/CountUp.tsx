@@ -85,7 +85,7 @@ export const CountUp: React.FC<CountUpProps> = ({
     <span
       ref={elementRef}
       className={`inline-flex items-center tabular-nums transition-all ${
-        isReading ? 'text-amber-500 scale-[1.02]' : ''
+        isReading ? 'text-[#F0C747] scale-[1.02]' : ''
       } ${className}`}
     >
       <span>
@@ -95,7 +95,7 @@ export const CountUp: React.FC<CountUpProps> = ({
       </span>
       {isReading && (
         <span
-          className="inline-block w-1.5 h-1.5 ml-1 rounded-full bg-amber-400 animate-ping"
+          className="inline-block w-1.5 h-1.5 ml-1 rounded-full bg-[#F0C747] animate-ping"
           aria-hidden="true"
         />
       )}

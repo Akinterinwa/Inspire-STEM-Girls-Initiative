@@ -6,6 +6,7 @@ interface AnimatedImageProps {
   className?: string;
   containerClassName?: string;
   delay?: number;
+  loading?: 'lazy' | 'eager';
   children?: React.ReactNode;
 }
 
@@ -15,6 +16,7 @@ export const AnimatedImage: React.FC<AnimatedImageProps> = ({
   className = '',
   containerClassName = '',
   delay = 100,
+  loading = 'lazy',
   children,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -64,6 +66,8 @@ export const AnimatedImage: React.FC<AnimatedImageProps> = ({
       <img
         src={src}
         alt={alt}
+        loading={loading}
+        decoding="async"
         className={`w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 ${
           isVisible ? 'scale-100 filter-none' : 'scale-105 brightness-95'
         } ${className}`}

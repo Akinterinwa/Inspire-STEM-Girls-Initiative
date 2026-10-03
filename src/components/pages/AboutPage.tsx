@@ -22,7 +22,7 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
       {/* Top Banner / Breadcrumb with Animated H1 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -30,7 +30,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             as="h1"
             accent
             subtitle="About Inspire STEM Girls Initiative"
-            subtitleClassName="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0e4b3c]"
+            subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C0E40] bg-[#EFEFF0] px-3 py-1 rounded-full border border-[#2C0E40]/15"
             className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
           >
             Expanding STEM Access & Unlocking Potential in Nigeria
@@ -62,13 +62,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               as="h2"
               accent
               subtitle="Our Identity"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-emerald-800 block mb-1"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
               className="text-2xl sm:text-3xl font-bold text-slate-900 text-left"
             >
               Who We Are
             </AnimatedHeading>
 
-            <div className="p-5 rounded-2xl bg-stone-50 border-l-4 border-[#0e4b3c] text-slate-800 font-medium text-base sm:text-lg leading-relaxed shadow-xs">
+            <div className="p-5 rounded-2xl bg-[#EFEFF0] border-l-4 border-[#2C0E40] text-slate-800 font-medium text-base sm:text-lg leading-relaxed shadow-xs">
               Inspire STEM Girls Initiative is a nonprofit organization committed to expanding access to STEM education and opportunities for girls from underserved communities in Nigeria.
             </div>
 
@@ -77,11 +77,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl border border-stone-200 bg-white">
+              <div className="p-4 rounded-xl border border-[#E3E3E5] bg-white">
                 <span className="text-xs font-bold text-slate-900 block mb-1">Hands-On & Practical</span>
                 <span className="text-xs text-slate-600">Bringing real scientific equipment and coding out of theory into concrete physical creation.</span>
               </div>
-              <div className="p-4 rounded-xl border border-stone-200 bg-white">
+              <div className="p-4 rounded-xl border border-[#E3E3E5] bg-white">
                 <span className="text-xs font-bold text-slate-900 block mb-1">Rooted in Underserved Communities</span>
                 <span className="text-xs text-slate-600">Reaching girls in public secondary schools and grassroots neighborhoods where resources are scarcest.</span>
               </div>
@@ -95,25 +95,29 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             transition={{ duration: 0.75, delay: 0.15 }}
             className="lg:col-span-5 space-y-4"
           >
-            <div className="rounded-3xl overflow-hidden shadow-xl border border-stone-200 aspect-[4/3] group relative">
+            <div className="rounded-3xl overflow-hidden shadow-xl border border-[#E3E3E5] aspect-[4/3] group relative">
               <img
                 src={siteImages.mentorship}
                 alt="Mentorship session connecting female STEM mentors with Nigerian students"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-3 right-3 text-white text-xs">
-                <span className="font-bold text-amber-300 block text-[10px] uppercase">Mentorship in Action</span>
+                <span className="font-bold text-[#F0C747] block text-[10px] uppercase">Mentorship in Action</span>
                 <span>Female software engineers & scientists mentoring Nigerian secondary students</span>
               </div>
             </div>
 
             {/* Additional photo pair */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-2xl overflow-hidden shadow-sm aspect-[4/3] relative group">
+              <div className="rounded-2xl overflow-hidden shadow-sm aspect-[4/3] relative group border border-[#E3E3E5]">
                 <img
                   src={siteImages.galleryRobotics}
                   alt="Students assembling robotics"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/40" />
@@ -121,10 +125,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                   Practical Robotics
                 </span>
               </div>
-              <div className="rounded-2xl overflow-hidden shadow-sm aspect-[4/3] relative group">
+              <div className="rounded-2xl overflow-hidden shadow-sm aspect-[4/3] relative group border border-[#E3E3E5]">
                 <img
                   src={siteImages.galleryChemistry}
                   alt="Girls conducting chemistry experiment"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/40" />
@@ -138,30 +144,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* ============================================================== */}
-      {/* 2. CORE STATEMENT (Belief banner)                              */}
-      {/* ============================================================== */}
-      <section className="bg-stone-900 text-white py-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4"
-        >
-          <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
-            Our Foundational Belief
-          </span>
-          <p className="text-2xl sm:text-3xl font-serif-display text-stone-100 leading-snug">
-            &ldquo;We believe talent is everywhere, but access and opportunity are not. A girl&rsquo;s potential should never be limited by her gender or socioeconomic background.&rdquo;
-          </p>
-          <p className="text-xs text-stone-400 max-w-xl mx-auto pt-2">
-            We reject the idea that girls need to prove their innate intelligence; our mandate is removing the structural, financial, and institutional barriers that stand between talented young women and their ambitions.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ============================================================== */}
-      {/* 3. MISSION, VISION & LONG-TERM VISION                          */}
+      {/* 2. MISSION, VISION, LONG-TERM VISION CARDS                    */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -171,24 +154,24 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="p-8 rounded-3xl bg-stone-50 border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow"
+            className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] flex flex-col justify-between hover:shadow-md transition-shadow"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-[#0e4b3c] flex items-center justify-center mb-6 shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
                 <Target className="w-6 h-6" />
               </div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1">
                 Our Purpose
               </span>
               <h3 className="text-xl font-bold text-slate-900 mb-3">
                 Our Mission
               </h3>
               <p className="text-slate-700 font-medium text-sm sm:text-base leading-relaxed">
-                To expand access to STEM education, mentorship and opportunity for girls from underserved communities in Nigeria, empowering them to pursue education and careers in science, technology, engineering and mathematics.
+                To expand access to STEM education, mentorship, and opportunities for girls from underserved communities in Nigeria, empowering them to pursue education and careers in STEM.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-stone-200 text-xs text-slate-500">
-              Guidance · Practical Skills · Academic Support
+            <div className="mt-6 pt-4 border-t border-[#E3E3E5] text-xs text-slate-500">
+              Grassroots Delivery · Real Outcomes · Direct Mentorship
             </div>
           </motion.div>
 
@@ -198,13 +181,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="p-8 rounded-3xl bg-stone-50 border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow"
+            className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] flex flex-col justify-between hover:shadow-md transition-shadow"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-teal-100 text-[#0e4b3c] flex items-center justify-center mb-6 shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-[#F0C747] text-[#2C0E40] flex items-center justify-center mb-6 shadow-sm font-bold">
                 <Compass className="w-6 h-6" />
               </div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1">
                 Our Horizon
               </span>
               <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -214,7 +197,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 A future where every girl, regardless of socioeconomic background, has access to quality STEM education and the opportunity to reach her full potential.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-stone-200 text-xs text-slate-500">
+            <div className="mt-6 pt-4 border-t border-[#E3E3E5] text-xs text-slate-500">
               Inclusivity · Equal Opportunity · Excellence
             </div>
           </motion.div>
@@ -225,30 +208,30 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="p-8 rounded-3xl bg-emerald-950 text-white border border-emerald-900 flex flex-col justify-between shadow-lg"
+            className="p-8 rounded-3xl bg-[#2C0E40] text-white border border-[#41175E] flex flex-col justify-between shadow-xl"
           >
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center mb-6 shadow-md">
+              <div className="w-12 h-12 rounded-2xl bg-[#F0C747] text-[#2C0E40] flex items-center justify-center mb-6 shadow-md font-bold">
                 <School className="w-6 h-6" />
               </div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-amber-300 block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#F0C747] block mb-1">
                 Institutional Horizon
               </span>
               <h3 className="text-xl font-bold text-white mb-3">
                 Our Long-Term Vision
               </h3>
-              <p className="text-emerald-100 font-medium text-sm sm:text-base leading-relaxed">
+              <p className="text-[#EFEFF0] font-medium text-sm sm:text-base leading-relaxed">
                 To establish a tuition-free science/STEM school for girls from underserved communities in Nigeria.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-emerald-800 text-xs text-emerald-300 flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#41175E] text-xs text-[#EFEFF0]/80 flex items-center justify-between">
               <span>Future ISG Science School</span>
               <button
                 onClick={() => {
                   onNavigate('vision');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-amber-300 hover:text-white font-bold inline-flex items-center gap-1"
+                className="text-[#F0C747] hover:text-white font-bold inline-flex items-center gap-1 transition-all hover:translate-x-1 cursor-pointer"
               >
                 <span>Explore roadmap →</span>
               </button>
@@ -261,13 +244,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* 4. OUR STORY / FOUNDER SECTION (Animated with Portrait)        */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="bg-stone-50 rounded-3xl p-8 sm:p-12 border border-stone-200/90 shadow-xs">
+        <div className="bg-[#EFEFF0]/50 rounded-3xl p-8 sm:p-12 border border-[#E3E3E5] shadow-xs">
           <div className="max-w-3xl mb-10">
             <AnimatedHeading
               as="h2"
               accent
               subtitle="Leadership & Origins"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
               className="text-3xl sm:text-4xl font-bold text-slate-900 text-left"
             >
               Our Founder
@@ -280,12 +263,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               <AnimatedImage
                 src={siteImages.founder}
                 alt="Oluwaseyi Adelusi - Founder & Executive Director of Inspire STEM Girls Initiative"
-                containerClassName="rounded-3xl shadow-lg border border-stone-300/80 bg-white"
+                containerClassName="rounded-3xl shadow-lg border border-[#E3E3E5] bg-white"
                 className="w-full aspect-[4/5] object-cover object-top"
               >
-                <div className="p-4 bg-white border-t border-stone-200">
+                <div className="p-4 bg-white border-t border-[#E3E3E5]">
                   <p className="font-bold text-slate-900 text-base">Oluwaseyi Adelusi</p>
-                  <p className="text-xs text-emerald-800 font-semibold">Founder & Executive Director</p>
+                  <p className="text-xs text-[#2C0E40] font-bold">Founder & Executive Director</p>
                   <p className="text-[11px] text-slate-500 mt-1">Software Engineer · STEM Education Advocate</p>
                 </div>
               </AnimatedImage>
@@ -299,11 +282,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               transition={{ duration: 0.7 }}
               className="lg:col-span-7 space-y-6"
             >
-              <div className="border-b border-stone-200 pb-4">
+              <div className="border-b border-[#E3E3E5] pb-4">
                 <h3 className="text-2xl font-bold text-slate-900">
                   Oluwaseyi Adelusi
                 </h3>
-                <p className="text-sm font-semibold text-emerald-800">
+                <p className="text-sm font-bold text-[#2C0E40]">
                   Founder & Executive Director
                 </p>
               </div>
@@ -316,7 +299,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 <p>
                   Her experience in technology and passion for education inspired her to create an organization focused on increasing access to STEM opportunities for girls who may otherwise lack the exposure, resources and support needed to pursue STEM pathways.
                 </p>
-                <div className="p-4 rounded-xl bg-white border-l-4 border-amber-500 shadow-xs">
+                <div className="p-4 rounded-xl bg-white border-l-4 border-[#F0C747] shadow-xs">
                   <p className="text-sm sm:text-base font-medium text-slate-900">
                     Her long-term vision is to build a tuition-free science/STEM school in Nigeria where girls from underserved communities can access quality education regardless of their financial circumstances.
                   </p>
@@ -329,16 +312,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                     onNavigate('team');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#0e4b3c] text-white hover:bg-[#155e4b] transition-all shadow-sm active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-[#2C0E40] text-white hover:bg-[#41175E] hover:text-[#F0C747] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                 >
                   <span>Meet Our Leadership Team</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <a
                   href="mailto:contact@inspirestemgirls.org"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-stone-300 text-slate-700 hover:bg-stone-100 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-[#2C0E40]/30 text-[#2C0E40] hover:bg-[#EFEFF0] transition-all hover:-translate-y-0.5 cursor-pointer"
                 >
-                  <Mail className="w-3.5 h-3.5 text-emerald-700" />
+                  <Mail className="w-3.5 h-3.5 text-[#2C0E40]" />
                   <span>Contact Executive Office</span>
                 </a>
               </div>
@@ -354,11 +337,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-[#0e4b3c] rounded-3xl p-8 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md"
+          className="bg-[#2C0E40] rounded-3xl p-8 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl"
         >
           <div>
             <h3 className="text-2xl font-bold">Collaborate With Our Organization</h3>
-            <p className="text-emerald-100 text-sm mt-1 max-w-xl">
+            <p className="text-[#EFEFF0]/85 text-sm mt-1 max-w-xl">
               We welcome partnerships with educational boards, corporate organizations, foundations, and individuals committed to STEM equity.
             </p>
           </div>
@@ -368,7 +351,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 onNavigate('get-involved');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3 rounded-xl text-sm font-bold bg-white text-[#0e4b3c] hover:bg-stone-100 transition-all shadow-sm active:scale-95"
+              className="px-6 py-3 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               Partner With Us
             </button>

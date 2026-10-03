@@ -37,13 +37,13 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectProgram,
 }) => {
   return (
-    <div className="space-y-0 selection:bg-[#0e4b3c] selection:text-white">
+    <div className="space-y-0 selection:bg-[#2C0E40] selection:text-[#F0C747]">
       {/* ============================================================== */}
       {/* 1. HERO SECTION                                                */}
       {/* Mobile: Full background image with text overlay                */}
       {/* Desktop: Big, expansive hero photography with rich layout      */}
       {/* ============================================================== */}
-      <section className="relative overflow-hidden border-b border-stone-200">
+      <section className="relative overflow-hidden border-b border-[#EFEFF0]">
         {/* MOBILE BACKGROUND HERO (Visible on mobile / tablet < lg) */}
         <div className="block lg:hidden relative min-h-[580px] sm:min-h-[640px] flex items-center">
           <motion.img
@@ -55,7 +55,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
           {/* Rich dark gradient overlay for crystal-clear readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-900/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#150520] via-[#150520]/85 to-[#2C0E40]/60" />
 
           {/* Mobile Text Overlay with Animated H1 */}
           <div className="relative z-10 px-5 sm:px-8 py-16 text-white space-y-5">
@@ -63,7 +63,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               as="h1"
               accent
               subtitle="Inspire STEM Girls Initiative · Nigeria"
-              subtitleClassName="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md text-emerald-300 text-xs font-semibold uppercase tracking-wider border border-emerald-400/30"
+              subtitleClassName="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C0E40]/60 backdrop-blur-md text-[#F0C747] text-xs font-semibold uppercase tracking-wider border border-[#F0C747]/40"
               className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md text-left"
             >
               Building Brighter Futures for Girls Through STEM
@@ -82,9 +82,9 @@ export const HomePage: React.FC<HomePageProps> = ({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="p-4 rounded-xl bg-emerald-950/90 border-l-4 border-amber-400 backdrop-blur-md"
+              className="p-4 rounded-xl bg-[#2C0E40]/90 border-l-4 border-[#F0C747] backdrop-blur-md"
             >
-              <p className="text-xs sm:text-sm font-semibold text-amber-200 leading-snug">
+              <p className="text-xs sm:text-sm font-semibold text-[#F0C747] leading-snug">
                 Our long-term vision is to establish a tuition-free science/STEM school for girls from underserved communities in Nigeria.
               </p>
             </motion.div>
@@ -100,7 +100,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onNavigate('programs');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all shadow-lg active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 <span>Explore Our Programs</span>
                 <ArrowRight className="w-4 h-4" />
@@ -111,9 +111,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onNavigate('donate');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 transition-all active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                <Heart className="w-4 h-4 text-amber-400 fill-current" />
+                <Heart className="w-4 h-4 text-[#F0C747] fill-current" />
                 <span>Support Our Mission</span>
               </button>
             </motion.div>
@@ -121,7 +121,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         {/* DESKTOP HERO (Visible on lg and above: Grand split layout with enlarged photography) */}
-        <div className="hidden lg:block bg-gradient-to-b from-stone-50 via-white to-stone-50/40 pt-16 pb-24">
+        <div className="hidden lg:block bg-gradient-to-b from-[#EFEFF0]/50 via-white to-[#EFEFF0]/30 pt-16 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-12 gap-10 items-center">
               {/* Left Column: Core Message with Animated H1 */}
@@ -130,7 +130,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   as="h1"
                   accent
                   subtitle="Inspire STEM Girls Initiative · Nigeria"
-                  subtitleClassName="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0e4b3c]"
+                  subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C0E40] bg-[#EFEFF0] px-3 py-1 rounded-full border border-[#2C0E40]/15"
                   className="text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.12] text-left"
                 >
                   Building Brighter Futures for Girls Through STEM
@@ -149,9 +149,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.25 }}
-                  className="p-5 rounded-2xl bg-emerald-50/90 border-l-4 border-[#0e4b3c] shadow-xs"
+                  className="p-5 rounded-2xl bg-[#EFEFF0] border-l-4 border-[#2C0E40] shadow-xs"
                 >
-                  <p className="text-base font-semibold text-[#0e4b3c] leading-snug">
+                  <p className="text-base font-semibold text-[#2C0E40] leading-snug">
                     Our long-term vision is to establish a tuition-free science/STEM school for girls from underserved communities in Nigeria.
                   </p>
                 </motion.div>
@@ -167,7 +167,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       onNavigate('programs');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#0e4b3c] text-white hover:bg-[#155e4b] shadow-lg shadow-emerald-950/15 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#2C0E40] text-white hover:bg-[#41175E] hover:text-[#F0C747] shadow-lg shadow-purple-950/20 hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
                   >
                     <span>Explore Our Programs</span>
                     <ArrowRight className="w-4 h-4" />
@@ -178,14 +178,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                       onNavigate('donate');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold border-2 border-stone-300 hover:border-[#0e4b3c] text-slate-800 hover:text-[#0e4b3c] bg-white transition-all duration-200 hover:-translate-y-0.5 shadow-xs"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold border-2 border-[#2C0E40] text-[#2C0E40] hover:bg-[#EFEFF0] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md active:scale-95 cursor-pointer"
                   >
-                    <Heart className="w-4 h-4 text-amber-500 fill-current" />
+                    <Heart className="w-4 h-4 text-[#F0C747] fill-current" />
                     <span>Support Our Mission</span>
                   </button>
                 </motion.div>
 
-                <div className="pt-4 flex items-center gap-4 text-xs text-slate-500 border-t border-stone-200">
+                <div className="pt-4 flex items-center gap-4 text-xs text-slate-500 border-t border-[#EFEFF0]">
                   <span>Serving public schools & grassroots communities</span>
                   <span aria-hidden="true">·</span>
                   <span>Active across Nigeria</span>
@@ -201,41 +201,46 @@ export const HomePage: React.FC<HomePageProps> = ({
                 transition={{ duration: 0.85, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="col-span-6 relative"
               >
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-stone-900 h-[520px] group">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#150520] h-[520px] group">
                   <img
                     src={siteImages.hero}
                     alt="Young Nigerian school girls enthusiastically participating in hands-on STEM workshop"
+                    loading="eager"
+                    decoding="async"
                     className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/90 via-transparent to-transparent pointer-events-none" />
 
                   {/* Caption tag */}
-                  <div className="absolute bottom-5 left-5 right-5 text-white backdrop-blur-md bg-black/50 p-4 rounded-2xl border border-white/15 flex items-center justify-between">
+                  <div className="absolute bottom-5 left-5 right-5 text-white backdrop-blur-md bg-black/60 p-4 rounded-2xl border border-white/15 flex items-center justify-between">
                     <div>
                       <p className="font-bold text-sm">Hands-On STEM Discovery Workshop</p>
                       <p className="text-stone-300 text-xs mt-0.5">
                         Students assembling electronic circuits & programmable logic in Nigeria.
                       </p>
                     </div>
-                    <span className="text-xs font-bold text-amber-300 bg-amber-950/80 px-2.5 py-1 rounded-md border border-amber-500/30">
+                    <span className="text-xs font-bold text-[#2C0E40] bg-[#F0C747] px-2.5 py-1 rounded-md shadow-xs">
                       Lagos Cohort
                     </span>
                   </div>
                 </div>
 
-                {/* Subtle Floating Stat Badge with SmartCounter */}
+                {/* Floating Stat Badge with SmartCounter */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-stone-100 flex items-center gap-3 animate-bounce-subtle"
+                  className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-[#EFEFF0] hidden sm:flex items-center gap-3.5"
                 >
-                  <div className="w-16 h-14 rounded-xl bg-emerald-100 text-[#0e4b3c] flex items-center justify-center font-extrabold text-xl">
-                    <SmartCounter value="1250+" />
+                  <div className="w-12 h-12 rounded-xl bg-[#2C0E40] flex items-center justify-center text-[#F0C747]">
+                    <Sparkles className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-900 block">Girls Reached</span>
-                    <span className="text-[11px] text-slate-500">Across 28 Communities</span>
+                    <span className="block text-2xl font-bold text-[#2C0E40] leading-none">
+                      <SmartCounter value="1,250+" />
+                    </span>
+                    <span className="text-xs font-bold text-slate-800">Girls Reached</span>
+                    <span className="text-[11px] text-slate-500 block">Across 28 Communities</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -247,14 +252,14 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       {/* 2. IMPACT SECTION (Numbers reading till total)                */}
       {/* ============================================================== */}
-      <section className="py-16 sm:py-20 bg-stone-900 text-white relative">
+      <section className="py-16 sm:py-20 bg-[#150520] text-white relative border-y border-[#2C0E40]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <AnimatedHeading
               as="h2"
               accent
               subtitle="Measurable Progress"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-emerald-400 block mb-1"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#F0C747] block mb-1"
               className="text-3xl sm:text-4xl font-bold tracking-tight text-white text-left"
             >
               Our Impact
@@ -264,7 +269,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-sm text-stone-300 max-w-md"
+              className="text-sm text-[#EFEFF0]/80 max-w-md"
             >
               Every metric represents an underserved girl given practical tools, a caring mentor, or an uninterrupted academic pathway in STEM.
             </motion.p>
@@ -279,30 +284,30 @@ export const HomePage: React.FC<HomePageProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="bg-stone-800/80 border border-stone-700/80 rounded-2xl p-5 sm:p-6 hover:border-emerald-500/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="bg-[#2C0E40]/70 border border-[#41175E] rounded-2xl p-5 sm:p-6 hover:border-[#F0C747] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* Number reading up till total */}
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-amber-400 tracking-tight mb-2 min-h-[44px]">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F0C747] tracking-tight mb-2 min-h-[44px]">
                   <SmartCounter value={metric.value} />
                 </div>
-                <div className="text-sm sm:text-base font-semibold text-stone-100 mb-1 leading-snug">
+                <div className="text-sm sm:text-base font-semibold text-white mb-1 leading-snug">
                   {metric.label}
                 </div>
-                <div className="text-xs text-stone-400 leading-relaxed">
+                <div className="text-xs text-[#EFEFF0]/70 leading-relaxed">
                   {metric.description}
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+          <div className="mt-8 pt-6 border-t border-[#2C0E40] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
             <span>* Figures actively updated as community cohorts and school cycles conclude.</span>
             <button
               onClick={() => {
                 onNavigate('impact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="text-emerald-400 hover:text-emerald-300 font-medium inline-flex items-center gap-1.5 transition-colors"
+              className="text-[#F0C747] hover:text-[#DCB132] font-semibold inline-flex items-center gap-1.5 transition-all hover:translate-x-1 cursor-pointer"
             >
               <span>View full impact data & stories</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -321,7 +326,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               as="h2"
               accent
               subtitle="Our Core Pillars"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-2"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-2"
               className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight text-left"
             >
               Creating Pathways Into STEM
@@ -338,10 +343,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="p-8 rounded-3xl bg-stone-50 border border-stone-200/90 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-[#0e4b3c] flex items-center justify-center mb-6 shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
                   <Compass className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -351,16 +356,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                   We introduce girls to science, technology, engineering and mathematics through practical learning experiences, workshops and career exposure.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs text-slate-500">
+              <div className="mt-6 pt-4 border-t border-[#E3E3E5] flex items-center justify-between text-xs text-slate-500">
                 <span>Hands-on kits · Electronics · Coding</span>
                 <button
                   onClick={() => {
                     onNavigate('programs');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="font-medium text-[#0e4b3c] hover:underline"
+                  className="font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
                 >
-                  View workshops →
+                  <span>View workshops</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </motion.div>
@@ -371,10 +377,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="p-8 rounded-3xl bg-stone-50 border border-stone-200/90 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-[#0e4b3c] flex items-center justify-center mb-6 shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
                   <Users className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -384,16 +390,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                   We connect girls with professionals and role models who can guide, encourage and expand their understanding of what is possible in STEM.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs text-slate-500">
+              <div className="mt-6 pt-4 border-t border-[#E3E3E5] flex items-center justify-between text-xs text-slate-500">
                 <span>1-on-1 Mentorship · Circle Sessions · Guidance</span>
                 <button
                   onClick={() => {
                     onNavigate('get-involved');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="font-medium text-[#0e4b3c] hover:underline"
+                  className="font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
                 >
-                  Become a mentor →
+                  <span>Become a mentor</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </motion.div>
@@ -404,10 +411,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="p-8 rounded-3xl bg-stone-50 border border-stone-200/90 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-900 flex items-center justify-center mb-6 shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#F0C747] text-[#2C0E40] flex items-center justify-center mb-6 shadow-sm font-bold">
                   <KeyRound className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -417,16 +424,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                   We help remove financial and social barriers that may prevent girls from accessing educational opportunities and progressing in their academic journey.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs text-slate-500">
+              <div className="mt-6 pt-4 border-t border-[#E3E3E5] flex items-center justify-between text-xs text-slate-500">
                 <span>Exam sponsorships · Learning kits · Resources</span>
                 <button
                   onClick={() => {
                     onNavigate('programs');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="font-medium text-[#0e4b3c] hover:underline"
+                  className="font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
                 >
-                  Access details →
+                  <span>Access details</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </motion.div>
@@ -437,10 +445,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="p-8 rounded-3xl bg-stone-50 border border-stone-200/90 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+              className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-teal-100 text-[#0e4b3c] flex items-center justify-center mb-6 shadow-xs">
+                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
                   <School className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -450,16 +458,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                   We work directly with schools and underserved communities to bring STEM education and opportunities closer to the girls who need them most.
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs text-slate-500">
+              <div className="mt-6 pt-4 border-t border-[#E3E3E5] flex items-center justify-between text-xs text-slate-500">
                 <span>Public schools · Grassroots hubs · Science clubs</span>
                 <button
                   onClick={() => {
                     onNavigate('partners');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="font-medium text-[#0e4b3c] hover:underline"
+                  className="font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
                 >
-                  Partner with us →
+                  <span>Partner with us</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </motion.div>
@@ -468,23 +477,30 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* ============================================================== */}
-      {/* 4. PHOTO SHOWCASE: OUR GIRLS IN ACTION (Animated with images) */}
+      {/* 4. PHOTO SHOWCASE: OUR GIRLS IN ACTION                         */}
       {/* ============================================================== */}
-      <section className="py-16 sm:py-20 bg-stone-100/70 border-y border-stone-200">
+      <section className="py-16 sm:py-20 bg-[#EFEFF0]/60 border-y border-[#E3E3E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
             <AnimatedHeading
               as="h2"
               accent
               subtitle="Field Visuals"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1"
-              className="text-2xl sm:text-3xl font-bold text-slate-900 text-left"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 text-left"
             >
               Our Girls in Action Across Nigeria
             </AnimatedHeading>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-sm">
-              Documenting tangible breakthroughs in confidence, collaborative engineering, and scientific curiosity.
-            </p>
+            <button
+              onClick={() => {
+                onNavigate('programs');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
+            >
+              <span>Explore all program photos</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -516,16 +532,18 @@ export const HomePage: React.FC<HomePageProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group rounded-2xl overflow-hidden shadow-md bg-white border border-stone-200 relative aspect-[4/3]"
+                className="group rounded-2xl overflow-hidden shadow-md bg-white border border-[#E3E3E5] relative aspect-[4/3]"
               >
                 <img
                   src={item.img}
                   alt={item.caption}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/85 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold text-[#F0C747] uppercase tracking-wider block">
                     {item.label}
                   </span>
                   <p className="text-xs font-semibold mt-0.5">{item.caption}</p>
@@ -539,7 +557,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       {/* 5. OUR VISION SECTION (Animated heading with image)            */}
       {/* ============================================================== */}
-      <section className="py-20 sm:py-24 bg-[#0a3328] text-white relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-[#2C0E40] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -549,21 +567,21 @@ export const HomePage: React.FC<HomePageProps> = ({
                 as="h2"
                 accent
                 subtitle="Our Strategic Roadmap"
-                subtitleClassName="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-300"
+                subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#F0C747]"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight text-left"
               >
                 The Future We Are Building
               </AnimatedHeading>
 
-              <div className="space-y-4 text-base sm:text-lg text-emerald-100/90 leading-relaxed font-normal">
+              <div className="space-y-4 text-base sm:text-lg text-[#EFEFF0]/90 leading-relaxed font-normal">
                 <p>
                   Our vision extends beyond individual programs.
                 </p>
                 <p>
                   We are working toward a future where a girl&rsquo;s socioeconomic background does not determine the quality of education or opportunities available to her.
                 </p>
-                <p className="text-white font-medium bg-emerald-900/60 p-4 rounded-xl border border-emerald-700/60">
-                  Our long-term goal is to establish a <strong className="text-amber-300 font-bold">tuition-free science/STEM school in Nigeria for girls from underserved communities</strong>, providing access to quality education, laboratories, technology, mentorship, innovation and pathways into STEM careers.
+                <p className="text-white font-medium bg-[#1E082C] p-4 rounded-xl border border-[#41175E]">
+                  Our long-term goal is to establish a <strong className="text-[#F0C747] font-bold">tuition-free science/STEM school in Nigeria for girls from underserved communities</strong>, providing access to quality education, laboratories, technology, mentorship, innovation and pathways into STEM careers.
                 </p>
               </div>
 
@@ -573,7 +591,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     onNavigate('vision');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all shadow-lg hover:-translate-y-0.5 active:scale-95"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/30 hover:-translate-y-1 active:scale-95 cursor-pointer"
                 >
                   <span>Learn About Our Vision</span>
                   <ArrowRight className="w-4 h-4" />
@@ -586,12 +604,12 @@ export const HomePage: React.FC<HomePageProps> = ({
               <AnimatedImage
                 src={siteImages.schoolVision}
                 alt="Architectural concept of the future tuition-free ISG Science School for Girls in Nigeria"
-                containerClassName="rounded-3xl border border-emerald-700/60 shadow-2xl bg-emerald-950 h-80"
+                containerClassName="rounded-3xl border border-[#41175E] shadow-2xl bg-[#150520] h-80"
                 className="w-full h-80 object-cover object-center"
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/95 via-[#150520]/30 to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="flex items-center gap-2 text-[11px] text-amber-300 uppercase tracking-wider font-semibold">
+                  <div className="flex items-center gap-2 text-[11px] text-[#F0C747] uppercase tracking-wider font-semibold">
                     <span>Future Campus Concept</span>
                     <span aria-hidden="true">·</span>
                     <span>Long-Term Goal</span>
@@ -612,14 +630,14 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       {/* 6. FEATURED PROGRAMS PREVIEW                                   */}
       {/* ============================================================== */}
-      <section className="py-20 sm:py-24 bg-stone-50 border-b border-stone-200">
+      <section className="py-20 sm:py-24 bg-[#EFEFF0]/40 border-b border-[#E3E3E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <AnimatedHeading
               as="h2"
               accent
               subtitle="Real Action on the Ground"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
               className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 text-left"
             >
               Featured Programs in Action
@@ -629,7 +647,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onNavigate('programs');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="text-sm font-semibold text-[#0e4b3c] hover:underline inline-flex items-center gap-1 self-start md:self-auto"
+              className="text-sm font-bold text-[#2C0E40] hover:text-[#41175E] inline-flex items-center gap-1 self-start md:self-auto hover:translate-x-1 transition-all cursor-pointer"
             >
               <span>Explore all programs</span>
               <ArrowRight className="w-4 h-4" />
@@ -644,21 +662,23 @@ export const HomePage: React.FC<HomePageProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-white rounded-3xl overflow-hidden border border-stone-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
+                className="bg-white rounded-3xl overflow-hidden border border-[#E3E3E5] hover:border-[#2C0E40]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
                   <div className="h-52 overflow-hidden relative group">
                     <img
                       src={program.image}
                       alt={program.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md text-[11px] font-bold text-[#0e4b3c]">
+                    <div className="absolute top-3 left-3 bg-[#2C0E40] text-[#F0C747] px-2.5 py-1 rounded-md text-[11px] font-bold shadow-xs">
                       {program.categoryLabel}
                     </div>
                     {program.images && program.images.length > 1 && (
                       <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-xs text-white px-2 py-0.5 rounded text-[10px] font-medium flex items-center gap-1">
-                        <Camera className="w-3 h-3 text-amber-300" />
+                        <Camera className="w-3 h-3 text-[#F0C747]" />
                         <span>{program.images.length} Photos</span>
                       </div>
                     )}
@@ -675,8 +695,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3">
                       {program.shortDescription}
                     </p>
-                    <div className="text-xs font-semibold text-[#0e4b3c] flex items-center gap-1">
-                      <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    <div className="text-xs font-bold text-[#2C0E40] flex items-center gap-1">
+                      <CheckCircle className="w-3.5 h-3.5 text-[#2C0E40]" />
                       <span>
                         <SmartCounter value={`${program.girlsReached}`} /> girls reached in this cohort
                       </span>
@@ -684,10 +704,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-stone-100 flex items-center justify-between">
+                <div className="p-6 pt-0 border-t border-[#EFEFF0] flex items-center justify-between">
                   <button
                     onClick={() => onSelectProgram(program)}
-                    className="text-xs font-bold text-[#0e4b3c] hover:underline inline-flex items-center gap-1"
+                    className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
                   >
                     <span>View Photo Dossier ({program.images?.length || 1} Images)</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -712,7 +732,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               as="h2"
               accent
               subtitle="Global Alignment & Credibility"
-              subtitleClassName="text-xs font-semibold uppercase tracking-wider text-slate-500 block mb-1"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
               className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 text-left"
             >
               Our Work and the Sustainable Development Goals
@@ -801,7 +821,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       {/* 8. IMPACT TESTIMONIAL PREVIEW                                  */}
       {/* ============================================================== */}
-      <section className="py-20 bg-stone-100 border-t border-stone-200">
+      <section className="py-20 bg-[#EFEFF0] border-t border-[#E3E3E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -810,7 +830,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             transition={{ duration: 0.7 }}
             className="max-w-4xl mx-auto text-center space-y-6"
           >
-            <span className="text-xs font-semibold uppercase tracking-wider text-emerald-800">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40]">
               Voices From Our Programs
             </span>
             <blockquote className="text-xl sm:text-2xl lg:text-3xl font-serif-display text-slate-900 leading-snug">
@@ -826,7 +846,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onNavigate('impact');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="text-xs font-semibold text-[#0e4b3c] hover:underline inline-flex items-center gap-1"
+                className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
               >
                 <span>Read more participant impact stories</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -839,18 +859,18 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       {/* 9. CALL TO ACTION                                              */}
       {/* ============================================================== */}
-      <section className="py-20 bg-[#0e4b3c] text-white text-center">
+      <section className="py-20 bg-[#2C0E40] text-white text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-white"
           >
             Join Us in Expanding STEM Opportunities for Girls
           </motion.h2>
-          <p className="text-base sm:text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#EFEFF0]/90 max-w-2xl mx-auto leading-relaxed">
             Whether as a corporate partner, mentor, school collaborator, or philanthropic supporter, your involvement directly impacts a girl’s academic and professional trajectory.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -859,7 +879,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onNavigate('donate');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-amber-400 hover:bg-amber-300 text-slate-950 transition-all shadow-md active:scale-95"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all duration-200 shadow-lg hover:shadow-amber-500/25 hover:-translate-y-1 active:scale-95 cursor-pointer"
             >
               Support Our Mission
             </button>
@@ -868,7 +888,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onNavigate('get-involved');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-emerald-800/80 hover:bg-emerald-800 text-white border border-emerald-600 transition-all active:scale-95"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-[#41175E] hover:bg-[#58247C] text-white border border-[#F0C747]/40 hover:border-[#F0C747] transition-all duration-200 hover:-translate-y-1 hover:shadow-md active:scale-95 cursor-pointer"
             >
               Get Involved as a Partner or Mentor
             </button>

@@ -35,7 +35,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -43,7 +43,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
             as="h1"
             accent
             subtitle="Collaborative Ecosystem"
-            subtitleClassName="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#0e4b3c]"
+            subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C0E40] bg-[#EFEFF0] px-3 py-1 rounded-full border border-[#2C0E40]/15"
             className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
           >
             Partners & Collaborators
@@ -64,11 +64,11 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
         {partnerCategories.map((category) => (
           <div
             key={category.id}
-            className="p-8 rounded-3xl bg-stone-50 border border-stone-200/90 space-y-6 shadow-xs"
+            className="p-8 rounded-3xl bg-[#EFEFF0]/40 border border-[#E3E3E5] space-y-6 shadow-xs"
           >
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-stone-200/80 pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#E3E3E5] pb-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#0e4b3c] block">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block">
                   Category
                 </span>
                 <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
@@ -84,7 +84,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
               {category.partners.map((partner, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl bg-white border border-stone-200 hover:border-emerald-600/50 hover:shadow-md transition-all duration-200 flex items-start gap-4"
+                  className="p-5 rounded-2xl bg-white border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:shadow-md transition-all duration-200 flex items-start gap-4"
                 >
                   {/* Dedicated Logo next to partner */}
                   <PartnerLogo
@@ -99,20 +99,19 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
                       <h4 className="text-sm font-bold text-slate-900 truncate">
                         {partner.name}
                       </h4>
-                      <span className="text-[10px] text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex-shrink-0">
-                        Confirmed
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/20 flex-shrink-0">
+                        {partner.nature || partner.type}
                       </span>
                     </div>
 
-                    <p className="text-xs text-[#0e4b3c] font-semibold">
-                      {partner.type}
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {partner.role || partner.description}
                     </p>
 
-                    {partner.description && (
-                      <p className="text-xs text-slate-600 pt-1 leading-relaxed">
-                        {partner.description}
-                      </p>
-                    )}
+                    <div className="pt-2 text-[11px] text-slate-500 flex items-center gap-1.5 font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40]" />
+                      <span>{partner.location || 'Operations across Nigeria'}</span>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -122,36 +121,34 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* ============================================================== */}
-      {/* PARTNER INQUIRY FORM                                           */}
+      {/* PARTNER WITH US INTAKE FORM                                    */}
       {/* ============================================================== */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border-2 border-stone-200 shadow-xl">
-          <div className="max-w-xl mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0e4b3c] block mb-1">
-              Join Our Coalition
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#EFEFF0]/50 rounded-3xl p-8 sm:p-12 border border-[#E3E3E5] max-w-4xl mx-auto">
+          <div className="text-center max-w-xl mx-auto mb-8 space-y-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40]">
+              Strategic Alliances
             </span>
             <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
               Partner With Inspire STEM Girls
             </h3>
-            <p className="text-slate-600 text-sm mt-2">
-              Whether you represent a secondary school, a corporation seeking CSR alignment with SDG 4 & 5, or a foundation, we would love to discuss collaborative possibilities.
+            <p className="text-xs sm:text-sm text-slate-600">
+              Whether you are a public school principal, corporate social responsibility lead, or philanthropic foundation, we welcome co-created programs.
             </p>
           </div>
 
           {formSubmitted ? (
-            <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-md">
+            <div className="p-8 rounded-2xl bg-white border border-[#2C0E40]/30 text-center space-y-3 animate-in fade-in duration-300">
+              <div className="w-12 h-12 rounded-full bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
-              <h4 className="text-lg font-bold text-slate-900">
-                Partnership Inquiry Received
-              </h4>
-              <p className="text-sm text-slate-600 max-w-md mx-auto">
+              <h4 className="text-lg font-bold text-slate-900">Partnership Proposal Received</h4>
+              <p className="text-xs text-slate-600 max-w-md mx-auto">
                 Thank you for your commitment to expanding STEM opportunities. Our Executive & Programs team will review your details and reach out within 48 business hours.
               </p>
               <button
                 onClick={() => setFormSubmitted(false)}
-                className="text-xs font-bold text-[#0e4b3c] hover:underline pt-2 block mx-auto"
+                className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] pt-2 block mx-auto transition-colors cursor-pointer"
               >
                 Submit another inquiry
               </button>
@@ -169,7 +166,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
                     value={formData.orgName}
                     onChange={(e) => setFormData({ ...formData, orgName: e.target.value })}
                     placeholder="e.g. Lagos Secondary District / Enterprise Tech"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#0e4b3c] focus:ring-1 focus:ring-[#0e4b3c] outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none"
                   />
                 </div>
                 <div>
@@ -182,7 +179,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
                     value={formData.contactPerson}
                     onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
                     placeholder="e.g. Dr. Ngozi Okafor, Principal"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#0e4b3c] focus:ring-1 focus:ring-[#0e4b3c] outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none"
                   />
                 </div>
               </div>
@@ -198,7 +195,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="partner@organization.org"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#0e4b3c] focus:ring-1 focus:ring-[#0e4b3c] outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none"
                   />
                 </div>
                 <div>
@@ -208,7 +205,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
                   <select
                     value={formData.partnerCategory}
                     onChange={(e) => setFormData({ ...formData, partnerCategory: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#0e4b3c] focus:ring-1 focus:ring-[#0e4b3c] outline-none bg-white font-medium"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none bg-white font-medium cursor-pointer"
                   >
                     <option value="School Partners">School Partners (Public or Community School)</option>
                     <option value="Community Partners">Community Partners (Civic / Youth Org)</option>
@@ -228,13 +225,13 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell us about your school/organization, target location in Nigeria, and preferred engagement (workshops, mentorship, equipment donation, etc.)"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#0e4b3c] focus:ring-1 focus:ring-[#0e4b3c] outline-none resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-bold bg-[#0e4b3c] hover:bg-[#155e4b] text-white transition-all flex items-center justify-center gap-2 shadow-md"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/20 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit Partnership Proposal</span>
