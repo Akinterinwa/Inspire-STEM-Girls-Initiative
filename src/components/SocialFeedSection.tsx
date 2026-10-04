@@ -21,13 +21,29 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
   onNavigate,
   className = '',
 }) => {
-  const [posts, setPosts] = useState<InstagramEmbedItem[]>(() => InstagramEmbedStore.getPosts());
+  const [posts, setPosts] = useState<InstagramEmbedItem[]>([]);
 
   useEffect(() => {
+    let cancelled = false;
+    const loadPosts = async () => {
+      const nextPosts = await InstagramEmbedStore.getPosts();
+      if (!cancelled) {
+        setPosts(nextPosts);
+      }
+    };
+
+    void loadPosts();
+
     const unsubscribe = InstagramEmbedStore.subscribe((updatedPosts) => {
-      setPosts(updatedPosts);
+      if (!cancelled) {
+        setPosts(updatedPosts);
+      }
     });
-    return unsubscribe;
+
+    return () => {
+      cancelled = true;
+      unsubscribe();
+    };
   }, []);
 
   return (
@@ -50,19 +66,7 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
             </p>
           </div>
 
-          {/* Action Links */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            {onNavigate && (
-              <button
-                onClick={() => onNavigate('admin')}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/20 text-xs font-bold transition-all hover:-translate-y-0.5 active:scale-95 shadow-xs cursor-pointer"
-                title="Manage Instagram Embed Links on Admin Page"
-              >
-                <Settings className="w-3.5 h-3.5 text-[#2C0E40]" />
-                <span>Admin Page</span>
-              </button>
-            )}
-
             <a
               href="https://instagram.com/inspirestem_girls"
               target="_blank"
@@ -89,15 +93,6 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
             <p className="text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
               Paste any Instagram post link (like <code>https://www.instagram.com/p/Dd8oKlKDODg/</code>) on the Admin Page to immediately populate it here.
             </p>
-            {onNavigate && (
-              <button
-                onClick={() => onNavigate('admin')}
-                className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] hover:text-white text-xs font-bold transition-all cursor-pointer shadow-sm"
-              >
-                <PlusCircle className="w-4 h-4" />
-                <span>Add Instagram Post in Admin</span>
-              </button>
-            )}
           </div>
         ) : (
           /* Populated Instagram Post Embeds */
@@ -154,17 +149,6 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
           <span>Synced directly with Instagram (@inspirestem_girls)</span>
           <span aria-hidden="true" className="hidden sm:inline">·</span>
           <span>Updated in real time</span>
-          {onNavigate && (
-            <>
-              <span aria-hidden="true" className="hidden sm:inline">·</span>
-              <button
-                onClick={() => onNavigate('admin')}
-                className="text-[#2C0E40] hover:underline font-bold cursor-pointer"
-              >
-                Open Admin Page to Change Post Link
-              </button>
-            </>
-          )}
         </div>
       </div>
     </section>

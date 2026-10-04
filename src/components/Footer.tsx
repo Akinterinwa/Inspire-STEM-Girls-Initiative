@@ -284,15 +284,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <button
-                  onClick={() => { onNavigate('admin'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-400 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer flex items-center gap-1.5"
-                >
-                  <span>Admin / Feed Manager</span>
-                  <span className="text-[10px] bg-[#2C0E40] text-[#F0C747] px-1.5 py-0.5 rounded border border-[#41175E]">Admin</span>
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={() => { onNavigate('get-involved'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
                 >

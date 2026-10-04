@@ -23,7 +23,13 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     { id: 'get-involved', label: 'Get Involved' },
   ];
 
-  const handleNavClick = (page: PageId) => {
+  const pageToHref = (page: PageId) => (page === 'home' ? '/' : `/${page}`);
+
+  const handleNavClick = (page: PageId, event?: React.MouseEvent<HTMLElement>) => {
+    if (event) {
+      event.preventDefault();
+    }
+
     onNavigate(page);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -47,8 +53,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo / Brand Name with tactile hover */}
-          <button
-            onClick={() => handleNavClick('home')}
+          <a
+            href={pageToHref('home')}
+            onClick={(event) => handleNavClick('home', event)}
             className="flex items-center gap-3 text-left group focus:outline-none transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer"
           >
             <Logo size="md" />
@@ -60,16 +67,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 Initiative · Nigeria
               </span>
             </div>
-          </button>
+          </a>
 
           {/* Desktop Navigation with high-engagement hover states */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
               return (
-                <button
+                <a
                   key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                  href={pageToHref(link.id)}
+                  onClick={(event) => handleNavClick(link.id, event)}
                   className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 relative group/nav cursor-pointer ${
                     isActive
                       ? 'text-[#2C0E40] font-bold bg-[#EFEFF0] shadow-xs'
@@ -85,15 +93,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                         : 'bg-[#F0C747] opacity-0 scale-x-0 group-hover/nav:opacity-100 group-hover/nav:scale-x-100'
                     }`}
                   />
-                </button>
+                </a>
               );
             })}
           </nav>
 
           {/* Action Button: Prominent Donate with tactile hover */}
           <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={() => handleNavClick('donate')}
+            <a
+              href={pageToHref('donate')}
+              onClick={(event) => handleNavClick('donate', event)}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-md cursor-pointer ${
                 currentPage === 'donate'
                   ? 'bg-[#F0C747] text-[#2C0E40] font-bold shadow-amber-500/25 ring-2 ring-[#2C0E40]'
@@ -102,18 +111,19 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             >
               <Heart className="w-4 h-4 fill-current text-[#F0C747] group-hover:scale-110 transition-transform" />
               <span>Donate</span>
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button with hover state */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => handleNavClick('donate')}
+            <a
+              href={pageToHref('donate')}
+              onClick={(event) => handleNavClick('donate', event)}
               className="inline-flex sm:hidden items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] transition-all cursor-pointer"
             >
               <Heart className="w-3 h-3 fill-current text-[#F0C747]" />
               <span>Donate</span>
-            </button>
+            </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -133,9 +143,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             {navLinks.map((link) => {
               const isActive = currentPage === link.id;
               return (
-                <button
+                <a
                   key={link.id}
-                  onClick={() => handleNavClick(link.id)}
+                  href={pageToHref(link.id)}
+                  onClick={(event) => handleNavClick(link.id, event)}
                   className={`w-full text-left px-3.5 py-2.5 rounded-xl text-base font-medium flex items-center justify-between transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-[#EFEFF0] text-[#2C0E40] font-bold border-l-4 border-[#F0C747]'
@@ -144,26 +155,28 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 >
                   <span>{link.label}</span>
                   {isActive && <span className="w-2 h-2 rounded-full bg-[#F0C747]"></span>}
-                </button>
+                </a>
               );
             })}
           </div>
 
           <div className="mt-4 pt-4 border-t border-[#EFEFF0] flex flex-col gap-2">
-            <button
-              onClick={() => handleNavClick('donate')}
+            <a
+              href={pageToHref('donate')}
+              onClick={(event) => handleNavClick('donate', event)}
               className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] hover:shadow-md transition-all active:scale-95 cursor-pointer"
             >
               <Heart className="w-4 h-4 fill-current text-[#F0C747]" />
               <span>Donate to Inspire STEM Girls</span>
-            </button>
-            <button
-              onClick={() => handleNavClick('vision')}
+            </a>
+            <a
+              href={pageToHref('vision')}
+              onClick={(event) => handleNavClick('vision', event)}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border border-[#2C0E40]/25 text-[#2C0E40] hover:bg-[#EFEFF0] transition-all cursor-pointer"
             >
               <span>Explore Future Science School Vision</span>
               <ArrowRight className="w-4 h-4 text-[#2C0E40]" />
-            </button>
+            </a>
           </div>
         </div>
       )}

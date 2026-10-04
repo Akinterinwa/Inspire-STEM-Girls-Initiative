@@ -32,6 +32,8 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
 
   useEffect(() => {
     const unsubscribe = InstagramEmbedStore.subscribe((updatedPosts) => {
@@ -40,7 +42,38 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
     return unsubscribe;
   }, []);
 
-  const handleAddPost = (e: React.FormEvent) => {
+  const handleUnlock = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: passwordInput }),
+      });
+
+      if (response.ok) {
+        setIsUnlocked(true);
+        setErrorMessage(null);
+        setPasswordInput('');
+        return;
+      }
+
+      const result = await response.json().catch(() => null);
+      setErrorMessage(result?.message || 'Incorrect admin password.');
+    } catch {
+      setErrorMessage('Could not connect to the admin service.');
+    }
+  };
+
+  const handleLockAdmin = async () => {
+    try {
+      await fetch('/api/admin/logout', { method: 'POST' });
+    } finally {
+      setIsUnlocked(false);
+    }
+  };
+
+  const handleAddPost = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
     setSuccessMessage(null);
@@ -59,7 +92,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
       return;
     }
 
-    const res = InstagramEmbedStore.addPost(input);
+    const res = await InstagramEmbedStore.addPost(input);
     if (!res.success) {
       setErrorMessage(res.message || 'Could not add this post.');
       return;
@@ -70,36 +103,99 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
     setTimeout(() => setSuccessMessage(null), 4000);
   };
 
-  const handleRemovePost = (id: string, shortcode: string) => {
-    InstagramEmbedStore.removePost(id);
+  const handleRemovePost = async (id: string, shortcode: string) => {
+    await InstagramEmbedStore.removePost(id);
     setSuccessMessage(`Post [${shortcode}] removed from the main website.`);
     setTimeout(() => setSuccessMessage(null), 3000);
   };
 
-  const handleResetDefault = () => {
-    InstagramEmbedStore.resetToDefault();
+  const handleResetDefault = async () => {
+    await InstagramEmbedStore.resetToDefault();
     setSuccessMessage('Reset to the official default Instagram post (Dd8oKlKDODg).');
     setTimeout(() => setSuccessMessage(null), 3000);
   };
 
-  const handleCopyLink = (url: string, idx: number) => {
-    navigator.clipboard?.writeText?.(url);
+  const handleCopyLink = async (url: string, idx: number) => {
+    await navigator.clipboard?.writeText?.(url);
     setCopiedIndex(idx);
     setTimeout(() => setCopiedIndex(null), 2000);
   };
+
+  if (!isUnlocked) {
+    return (
+      <div className="py-16 bg-[#EFEFF0]/30 min-h-[85vh] flex items-center justify-center px-4">
+        <div className="w-full max-w-md bg-white rounded-3xl border border-[#E3E3E5] shadow-lg p-8">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center">
+              <Instagram className="w-6 h-6" />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Restricted area</p>
+              <h1 className="text-2xl font-bold text-slate-900">Admin Access</h1>
+            </div>
+          </div>
+
+          <p className="text-sm text-slate-600 mb-6">
+            This area is password protected. Only authorized staff can update the live Instagram feed.
+          </p>
+
+          <form onSubmit={handleUnlock} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                value={passwordInput}
+                onChange={(e) => {
+                  setPasswordInput(e.target.value);
+                  setErrorMessage(null);
+                }}
+                placeholder="Enter admin password"
+                className="w-full px-4 py-3 rounded-2xl border border-stone-300 text-sm focus:border-[#2C0E40] focus:ring-2 focus:ring-[#2C0E40]/20 outline-none bg-stone-50/50 font-medium transition-all"
+              />
+            </div>
+
+            {errorMessage && (
+              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-semibold">
+                {errorMessage}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="w-full px-4 py-3 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white text-sm font-bold transition-all shadow-md cursor-pointer"
+            >
+              Unlock Admin Panel
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-12 sm:py-16 bg-[#EFEFF0]/30 min-h-[85vh] selection:bg-[#2C0E40] selection:text-[#F0C747]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Navigation & Header */}
         <div>
-          <button
-            onClick={() => onNavigate('home')}
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#2C0E40] hover:text-[#41175E] mb-6 transition-all hover:-translate-x-1 cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Main Website</span>
-          </button>
+          <div className="flex items-center justify-between gap-3 mb-6">
+            <button
+              onClick={() => onNavigate('home')}
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#2C0E40] hover:text-[#41175E] transition-all hover:-translate-x-1 cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Main Website</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleLockAdmin}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-stone-200 text-slate-600 hover:text-[#2C0E40] text-xs font-semibold transition-colors cursor-pointer"
+            >
+              Lock Admin
+            </button>
+          </div>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
