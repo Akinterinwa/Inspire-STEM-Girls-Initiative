@@ -20,6 +20,7 @@ import { PartnersPage } from './components/pages/PartnersPage';
 import { ReportsPage } from './components/pages/ReportsPage';
 import { GetInvolvedPage } from './components/pages/GetInvolvedPage';
 import { DonatePage } from './components/pages/DonatePage';
+import { AdminPage } from './components/pages/AdminPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -46,6 +47,7 @@ export default function App() {
         'reports',
         'get-involved',
         'donate',
+        'admin',
       ];
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
@@ -120,6 +122,8 @@ export default function App() {
             )}
 
             {currentPage === 'donate' && <DonatePage onNavigate={handleNavigate} />}
+
+            {currentPage === 'admin' && <AdminPage onNavigate={handleNavigate} />}
           </motion.div>
         </AnimatePresence>
       </main>

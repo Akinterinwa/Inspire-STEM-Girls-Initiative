@@ -8,7 +8,8 @@ export type PageId =
   | 'partners'
   | 'reports'
   | 'get-involved'
-  | 'donate';
+  | 'donate'
+  | 'admin';
 
 export interface ImpactMetric {
   id: string;
@@ -103,4 +104,25 @@ export interface ImpactStory {
   quote: string;
   story: string;
   outcome: string;
+}
+
+export interface SocialUpdate {
+  id: string;
+  platform: 'instagram' | 'linkedin';
+  author: string;
+  authorHandle: string;
+  date: string;
+  timeAgo: string;
+  category: 'workshop' | 'mentorship' | 'student-spotlight' | 'milestone';
+  categoryLabel: string;
+  image: string;
+  content: string;
+  tags: string[];
+  likes: number;
+  commentsCount: number;
+  sharesCount?: number;
+  url: string;
+  shortcode?: string;
+  isOfficialEmbed?: boolean;
+  verified?: boolean;
 }
