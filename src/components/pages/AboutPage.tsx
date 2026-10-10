@@ -41,7 +41,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-4 text-lg text-slate-600 leading-relaxed font-normal"
           >
-            Founded on the conviction that socioeconomic background should never dictate a girl’s educational future, we are systematically bridging the divide in STEM education across Nigeria.
+            Founded on the conviction that socioeconomic background should never dictate a girl’s educational future, we are systematically bridging the divide in STEM education across Nigeria..
           </motion.p>
         </div>
       </div>
