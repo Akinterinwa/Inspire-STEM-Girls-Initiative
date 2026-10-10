@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/programs", "destination": "/index.html" },
+    { "source": "/impact", "destination": "/index.html" },
+    { "source": "/vision", "destination": "/index.html" },
+    { "source": "/team", "destination": "/index.html" },
+    { "source": "/partners", "destination": "/index.html" },
+    { "source": "/reports", "destination": "/index.html" },
+    { "source": "/get-involved", "destination": "/index.html" },
+    { "source": "/donate", "destination": "/index.html" },
+    { "source": "/admin", "destination": "/index.html" }
+  ]
+}
