@@ -27,12 +27,14 @@ interface AdminPageProps {
 }
 
 export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
-  const [posts, setPosts] = useState<InstagramEmbedItem[]>(() => InstagramEmbedStore.getPosts());
+  const [posts, setPosts] = useState<InstagramEmbedItem[]>([]);
   const [postUrlInput, setPostUrlInput] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(() => {
+    return typeof window !== 'undefined' && Boolean(window.sessionStorage?.getItem('isg_admin_token'));
+  });
   const [passwordInput, setPasswordInput] = useState('');
 
   useEffect(() => {
@@ -44,24 +46,43 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
 
   const handleUnlock = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage(null);
+    setSuccessMessage(null);
+
+    const cleanPassword = passwordInput.trim();
+    if (!cleanPassword) {
+      setErrorMessage('Please enter the admin password.');
+      return;
+    }
+
     try {
       const response = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: passwordInput }),
+        body: JSON.stringify({ password: cleanPassword }),
       });
 
-      if (response.ok) {
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.success) {
+        if (result.token) {
+          window.sessionStorage?.setItem('isg_admin_token', result.token);
+        }
         setIsUnlocked(true);
         setErrorMessage(null);
         setPasswordInput('');
         return;
       }
 
-      const result = await response.json().catch(() => null);
-      setErrorMessage(result?.message || 'Incorrect admin password.');
+      if (response.status === 404) {
+        setErrorMessage('API route not found (404). Please ensure Vercel has deployed the /api functions.');
+      } else if (response.status === 503) {
+        setErrorMessage(result?.message || 'Admin password is not set on server. Please configure APP_ADMIN_PASSWORD in Vercel environment variables.');
+      } else {
+        setErrorMessage(result?.message || 'Incorrect admin password. Please check the APP_ADMIN_PASSWORD set in Vercel.');
+      }
     } catch {
-      setErrorMessage('Could not connect to the admin service.');
+      setErrorMessage('Could not connect to the admin service. Please verify your connection or check Vercel deployment logs.');
     }
   };
 
@@ -69,6 +90,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
     try {
       await fetch('/api/admin/logout', { method: 'POST' });
     } finally {
+      window.sessionStorage?.removeItem('isg_admin_token');
       setIsUnlocked(false);
     }
   };
@@ -151,9 +173,12 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
                   setPasswordInput(e.target.value);
                   setErrorMessage(null);
                 }}
-                placeholder="Enter admin password"
+                placeholder="Enter admin password (default: admin123)"
                 className="w-full px-4 py-3 rounded-2xl border border-stone-300 text-sm focus:border-[#2C0E40] focus:ring-2 focus:ring-[#2C0E40]/20 outline-none bg-stone-50/50 font-medium transition-all"
               />
+              <p className="mt-2 text-[11px] text-slate-500">
+                Default password is <span className="font-semibold text-slate-800">admin123</span> (or the custom <code className="bg-slate-100 px-1 py-0.5 rounded text-slate-700 font-mono">APP_ADMIN_PASSWORD</code> set in your Vercel settings).
+              </p>
             </div>
 
             {errorMessage && (
@@ -435,7 +460,6 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
                 className="w-full max-w-[540px] min-h-[580px] rounded-2xl border border-stone-200 shadow-md bg-white"
                 loading="lazy"
                 scrolling="no"
-                allowTransparency={true}
               />
             </div>
           </div>

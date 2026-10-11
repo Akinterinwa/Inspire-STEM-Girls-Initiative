@@ -34,19 +34,19 @@ export const Logo: React.FC<LogoProps> = ({
       >
         <defs>
           <linearGradient id="compLogoBg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#1E082C" />
-            <stop offset="50%" stop-color="#2C0E40" />
-            <stop offset="100%" stop-color="#41175E" />
+            <stop offset="0%" stopColor="#1E082C" />
+            <stop offset="50%" stopColor="#2C0E40" />
+            <stop offset="100%" stopColor="#41175E" />
           </linearGradient>
 
           <linearGradient id="compLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FDE68A" />
-            <stop offset="50%" stop-color="#F0C747" />
-            <stop offset="100%" stop-color="#C6981E" />
+            <stop offset="0%" stopColor="#FDE68A" />
+            <stop offset="50%" stopColor="#F0C747" />
+            <stop offset="100%" stopColor="#C6981E" />
           </linearGradient>
 
           <filter id="compLogoShadow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#150520" flood-opacity="0.4" />
+            <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#150520" floodOpacity="0.4" />
           </filter>
         </defs>
 
@@ -68,8 +68,8 @@ export const Logo: React.FC<LogoProps> = ({
           rx="112"
           fill="none"
           stroke="#F0C747"
-          stroke-width="7"
-          stroke-opacity="0.35"
+          strokeWidth="7"
+          strokeOpacity="0.35"
         />
 
         {/* STEM Orbital Rings */}
@@ -80,7 +80,7 @@ export const Logo: React.FC<LogoProps> = ({
           ry="65"
           fill="none"
           stroke={monochrome ? '#ffffff' : 'url(#compLogoGold)'}
-          stroke-width="16"
+          strokeWidth="16"
           transform="rotate(-35 256 256)"
           opacity="0.95"
         />
@@ -91,16 +91,16 @@ export const Logo: React.FC<LogoProps> = ({
           ry="65"
           fill="none"
           stroke="#EFEFF0"
-          stroke-width="13"
-          stroke-opacity="0.85"
+          strokeWidth="13"
+          strokeOpacity="0.85"
           transform="rotate(35 256 256)"
         />
 
         {/* Orbital Node Particles */}
-        <circle cx="125" cy="165" r="14" fill="#F0C747" stroke="#ffffff" stroke-width="3" />
-        <circle cx="387" cy="347" r="14" fill="#F0C747" stroke="#ffffff" stroke-width="3" />
-        <circle cx="387" cy="165" r="12" fill="#EFEFF0" stroke="#2C0E40" stroke-width="3" />
-        <circle cx="125" cy="347" r="12" fill="#EFEFF0" stroke="#2C0E40" stroke-width="3" />
+        <circle cx="125" cy="165" r="14" fill="#F0C747" stroke="#ffffff" strokeWidth="3" />
+        <circle cx="387" cy="347" r="14" fill="#F0C747" stroke="#ffffff" strokeWidth="3" />
+        <circle cx="387" cy="165" r="12" fill="#EFEFF0" stroke="#2C0E40" strokeWidth="3" />
+        <circle cx="125" cy="347" r="12" fill="#EFEFF0" stroke="#2C0E40" strokeWidth="3" />
 
         {/* Center STEM Flame & Core */}
         <g transform="translate(256 256)">

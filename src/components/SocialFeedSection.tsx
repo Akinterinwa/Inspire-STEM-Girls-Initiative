@@ -118,7 +118,6 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
                     className="w-full min-h-[580px] border-0"
                     loading="lazy"
                     scrolling="no"
-                    allowTransparency={true}
                   />
                 </div>
 

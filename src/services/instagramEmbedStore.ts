@@ -35,7 +35,12 @@ function getDefaultPosts(): InstagramEmbedItem[] {
 
 const requestJson = async <T>(input: RequestInfo | URL, init?: RequestInit): Promise<T | null> => {
   try {
-    const res = await fetch(input, init);
+    const token = typeof window !== 'undefined' ? window.sessionStorage?.getItem('isg_admin_token') : null;
+    const headers = new Headers(init?.headers);
+    if (token && !headers.has('Authorization')) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+    const res = await fetch(input, { ...init, headers });
     if (!res.ok) {
       return null;
     }
@@ -124,7 +129,7 @@ export const InstagramEmbedStore = {
     if ('BroadcastChannel' in window) {
       const channel = new BroadcastChannel('isg-instagram-feed');
       channel.addEventListener('message', onChannelMessage);
-      window.__ISG_BROADCAST_CHANNEL__ = channel;
+      (window as Window & { __ISG_BROADCAST_CHANNEL__?: BroadcastChannel }).__ISG_BROADCAST_CHANNEL__ = channel;
     }
 
     void sync();
