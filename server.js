@@ -276,7 +276,7 @@ function adminCookieOptions(maxAge) {
   return `${ADMIN_SESSION_COOKIE}=; HttpOnly; SameSite=Strict; Path=/; Max-Age=${maxAge}${secure}`;
 }
 
-app.post('/api/admin/login', (req, res) => {
+app.post(['/api/admin/login', '/admin/login'], (req, res) => {
   if (!adminPassword) {
     return res.status(503).json({ success: false, message: 'Admin password is not configured on the server.' });
   }
@@ -291,7 +291,7 @@ app.post('/api/admin/login', (req, res) => {
   return res.json({ success: true });
 });
 
-app.post('/api/admin/logout', (req, res) => {
+app.post(['/api/admin/logout', '/admin/logout'], (req, res) => {
   const cookiePrefix = `${ADMIN_SESSION_COOKIE}=`;
   const sessionToken = (req.headers.cookie || '')
     .split(';')
@@ -307,7 +307,7 @@ app.get(['/health', '/api/health'], (req, res) => {
   res.json({ ok: true, service: 'instagram-feed-api', mode });
 });
 
-app.get('/api/instagram-feed', async (req, res) => {
+app.get(['/api/instagram-feed', '/instagram-feed'], async (req, res) => {
   try {
     const items = await readFeed();
     res.json(items);
@@ -317,7 +317,7 @@ app.get('/api/instagram-feed', async (req, res) => {
   }
 });
 
-app.post('/api/instagram-feed', requireAdminSession, async (req, res) => {
+app.post(['/api/instagram-feed', '/instagram-feed'], requireAdminSession, async (req, res) => {
   try {
     const { action, url, id } = req.body || {};
 
