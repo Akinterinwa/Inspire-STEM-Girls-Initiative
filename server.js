@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHmac, timingSafeEqual } from 'node:crypto';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -14,7 +14,6 @@ const ADMIN_SESSION_COOKIE = 'isg_admin_session';
 const ADMIN_SESSION_TTL_MS = 8 * 60 * 60 * 1000;
 const ADMIN_SESSION_TTL_SECONDS = ADMIN_SESSION_TTL_MS / 1000;
 const adminPassword = process.env.APP_ADMIN_PASSWORD;
-const adminSessions = new Map();
 const DATA_DIR = path.join(__dirname, 'data');
 const FEED_FILE = path.join(DATA_DIR, 'instagram-feed.json');
 const DEFAULT_FEED = [
@@ -239,6 +238,13 @@ function isAdminPasswordValid(password) {
   return candidate.length === expected.length && timingSafeEqual(candidate, expected);
 }
 
+function createAdminSessionToken() {
+  const expiresAt = Date.now() + ADMIN_SESSION_TTL_MS;
+  const payload = String(expiresAt);
+  const signature = createHmac('sha256', adminPassword).update(payload).digest('hex');
+  return `${payload}.${signature}`;
+}
+
 function requireAdminSession(req, res, next) {
   const cookiePrefix = `${ADMIN_SESSION_COOKIE}=`;
   const sessionToken = (req.headers.cookie || '')
@@ -246,10 +252,19 @@ function requireAdminSession(req, res, next) {
     .map((cookie) => cookie.trim())
     .find((cookie) => cookie.startsWith(cookiePrefix))
     ?.slice(cookiePrefix.length);
-  const expiresAt = sessionToken ? adminSessions.get(sessionToken) : null;
+  const [payload, signature] = sessionToken?.split('.') || [];
+  const expiresAt = Number(payload);
+  const expectedSignature = adminPassword && payload
+    ? createHmac('sha256', adminPassword).update(payload).digest()
+    : Buffer.alloc(0);
+  const providedSignature = /^[a-f0-9]{64}$/i.test(signature || '')
+    ? Buffer.from(signature, 'hex')
+    : Buffer.alloc(0);
+  const validSignature = providedSignature.length === expectedSignature.length
+    && expectedSignature.length > 0
+    && timingSafeEqual(providedSignature, expectedSignature);
 
-  if (!expiresAt || expiresAt <= Date.now()) {
-    if (sessionToken) adminSessions.delete(sessionToken);
+  if (!Number.isSafeInteger(expiresAt) || expiresAt <= Date.now() || !validSignature) {
     return res.status(401).json({ success: false, message: 'Admin sign-in required.' });
   }
 
@@ -270,10 +285,9 @@ app.post('/api/admin/login', (req, res) => {
     return res.status(401).json({ success: false, message: 'Incorrect admin password.' });
   }
 
-  const sessionToken = randomBytes(32).toString('hex');
-  adminSessions.set(sessionToken, Date.now() + ADMIN_SESSION_TTL_MS);
+  const signedSessionToken = createAdminSessionToken();
   const secure = process.env.NODE_ENV === 'production' ? '; Secure' : '';
-  res.setHeader('Set-Cookie', `${ADMIN_SESSION_COOKIE}=${sessionToken}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${ADMIN_SESSION_TTL_SECONDS}${secure}`);
+  res.setHeader('Set-Cookie', `${ADMIN_SESSION_COOKIE}=${signedSessionToken}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${ADMIN_SESSION_TTL_SECONDS}${secure}`);
   return res.json({ success: true });
 });
 
@@ -284,12 +298,11 @@ app.post('/api/admin/logout', (req, res) => {
     .map((cookie) => cookie.trim())
     .find((cookie) => cookie.startsWith(cookiePrefix))
     ?.slice(cookiePrefix.length);
-  if (sessionToken) adminSessions.delete(sessionToken);
   res.setHeader('Set-Cookie', adminCookieOptions(0));
   return res.json({ success: true });
 });
 
-app.get('/health', (req, res) => {
+app.get(['/health', '/api/health'], (req, res) => {
   const mode = realtimeDb ? 'realtime-database' : firestoreDb ? 'firestore' : 'file';
   res.json({ ok: true, service: 'instagram-feed-api', mode });
 });
@@ -351,7 +364,11 @@ if (fs.existsSync(distPath)) {
   });
 }
 
-await ensureDefaultEntry();
-app.listen(PORT, () => {
-  console.log(`Instagram sync API running at http://localhost:${PORT}`);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  await ensureDefaultEntry();
+  app.listen(PORT, () => {
+    console.log(`Instagram sync API running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
