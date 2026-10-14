@@ -126,15 +126,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Column 1: Organization Overview */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <Logo size="md" />
-              <div>
-                <span className="block text-base font-bold text-white tracking-tight">
-                  Inspire STEM Girls Initiative
-                </span>
-                <span className="block text-xs text-[#F0C747]">
-                  Nonprofit Organization · Nigeria
-                </span>
-              </div>
+              <Logo size="lg" />
             </div>
 
             <p className="text-sm text-stone-300 leading-relaxed max-w-md font-normal">

@@ -46,7 +46,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         <div className="hidden md:flex items-center gap-3 text-[11px] text-[#EFEFF0]/80">
           <span className="text-[#F0C747] font-semibold">Vision: Future Tuition-Free Science School</span>
           <span aria-hidden="true" className="opacity-40">·</span>
-          <span>Aligned with UN SDG 4 & 5</span>
         </div>
       </div>
 
@@ -59,14 +58,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             className="flex items-center gap-3 text-left group focus:outline-none transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer"
           >
             <Logo size="md" />
-            <div>
-              <span className="block text-lg font-bold tracking-tight text-slate-900 group-hover:text-[#2C0E40] transition-colors leading-tight">
-                Inspire STEM Girls
-              </span>
-              <span className="block text-[11px] font-semibold tracking-wider uppercase text-[#2C0E40]">
-                Initiative · Nigeria
-              </span>
-            </div>
           </a>
 
           {/* Desktop Navigation with high-engagement hover states */}

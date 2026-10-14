@@ -239,7 +239,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
                   className="w-full py-3.5 px-4 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white transition-all text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                 >
                   <Camera className="w-4 h-4 text-[#F0C747]" />
-                  <span>View Project Dossier & Photo Slideshow ({program.images?.length || 1} Photos)</span>
+                  <span>View Project ({program.images?.length || 1} Photos)</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

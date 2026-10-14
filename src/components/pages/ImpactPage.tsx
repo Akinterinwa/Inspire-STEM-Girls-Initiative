@@ -193,7 +193,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                     className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <Camera className="w-3.5 h-3.5" />
-                    <span>View Project Dossier & Slider ({program.images?.length || 1} Images)</span>
+                    <span>View Project ({program.images?.length || 1} Images)</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

@@ -51,9 +51,6 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
           <p className="mt-4 text-lg text-slate-600 leading-relaxed">
             Sustainable impact is achieved through deep, trust-based collaboration with educators, grassroots leaders, technology companies, and professional networks across Nigeria.
           </p>
-          <div className="mt-4 text-xs text-slate-500 italic">
-            * Note: Only officially confirmed partners and operational partner alliances are displayed.
-          </div>
         </div>
       </div>
 

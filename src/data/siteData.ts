@@ -9,11 +9,11 @@ import {
   SocialUpdate,
 } from '../types';
 
-import heroImg from '../assets/images/hero_stem_girls_1790849403136.jpg';
-import founderImg from '../assets/images/founder_oluwaseyi_1790849415821.jpg';
+import heroImg from '../stem img/DSC_0230.webp';
+import founderImg from '../stem img/Adelusi.jpg';
 import pmImg from '../assets/images/program_manager_1790849429029.jpg';
 import schoolVisionImg from '../assets/images/science_school_vision_1790849441146.jpg';
-import mentorshipImg from '../assets/images/mentorship_stem_1790849453327.jpg';
+import mentorshipImg from '../stem img/DSC_0226.webp';
 
 // New gallery & board assets
 import boardProfImg from '../assets/images/board_prof_science_1790853903310.jpg';
@@ -419,7 +419,7 @@ export const reportsData: ReportItem[] = [
     publishedDate: 'March 2026',
     description:
       'A comprehensive review of Inspire STEM Girls Initiative programs across Nigeria, detailing student reach, educational outcomes, mentorship metrics, and financial stewardship.',
-    fileSize: '3.4 MB PDF',
+    fileSize: '',
     highlights: [
       'Over 1,250 girls engaged across 28 underserved communities and public schools',
       'Launch of the 2026 Girls in STEM Mentorship Cohort with 65 volunteer mentors',
@@ -435,7 +435,7 @@ export const reportsData: ReportItem[] = [
     publishedDate: 'December 2025',
     description:
       'Summary of inaugural school visits, teacher surveys on practical laboratory deficiencies, and foundational student baseline evaluations.',
-    fileSize: '2.1 MB PDF',
+    fileSize: '',
     highlights: [
       'Assessed practical STEM equipment gaps in 30 public secondary schools',
       'Piloted hands-on electronics kits with 500+ female students',

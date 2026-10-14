@@ -142,13 +142,6 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
             ))}
           </div>
         )}
-
-        {/* Bottom Banner */}
-        <div className="mt-12 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
-          <span>Synced directly with Instagram (@inspirestem_girls)</span>
-          <span aria-hidden="true" className="hidden sm:inline">·</span>
-          <span>Updated in real time</span>
-        </div>
       </div>
     </section>
   );

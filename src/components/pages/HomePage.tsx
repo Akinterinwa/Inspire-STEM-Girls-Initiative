@@ -272,7 +272,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               transition={{ duration: 0.6, delay: 0.15 }}
               className="text-sm text-[#EFEFF0]/80 max-w-md"
             >
-              Every metric represents an underserved girl given practical tools, a caring mentor, or an uninterrupted academic pathway in STEM.
+              Every metric represents a girl given practical tools, a caring mentor, or an uninterrupted academic pathway in STEM.
             </motion.p>
           </div>
 
@@ -302,7 +302,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div className="mt-8 pt-6 border-t border-[#2C0E40] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
-            <span>* Figures actively updated as community cohorts and school cycles conclude.</span>
             <button
               onClick={() => {
                 onNavigate('impact');
@@ -567,7 +566,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <AnimatedHeading
                 as="h2"
                 accent
-                subtitle="Our Strategic Roadmap"
+                subtitle="Our Vision"
                 subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#F0C747]"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight text-left"
               >
