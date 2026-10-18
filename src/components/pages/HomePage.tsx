@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { PageId, ProgramItem } from '../../types';
 import {
@@ -25,6 +25,7 @@ import {
   School,
   ExternalLink,
   ChevronRight,
+  ChevronLeft,
   Camera,
 } from 'lucide-react';
 
@@ -37,6 +38,34 @@ export const HomePage: React.FC<HomePageProps> = ({
   onNavigate,
   onSelectProgram,
 }) => {
+  // Mobile Carousel States
+  const [pathwaysIndex, setPathwaysIndex] = useState(0);
+  const pathwaysScrollRef = useRef<HTMLDivElement>(null);
+
+  const [girlsActionIndex, setGirlsActionIndex] = useState(0);
+  const girlsActionScrollRef = useRef<HTMLDivElement>(null);
+
+  const [impactNumbersIndex, setImpactNumbersIndex] = useState(0);
+  const impactNumbersScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollContainerTo = (container: HTMLDivElement | null, targetIndex: number, totalItems: number) => {
+    if (!container) return;
+    const clamped = Math.max(0, Math.min(totalItems - 1, targetIndex));
+    const firstChild = container.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    container.scrollTo({
+      left: clamped * (cardWidth + 16),
+      behavior: 'smooth',
+    });
+  };
+
+  const handleContainerScroll = (container: HTMLDivElement | null, setIndex: (idx: number) => void) => {
+    if (!container) return;
+    const firstChild = container.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    const newIdx = Math.round(container.scrollLeft / (cardWidth + 16));
+    setIndex(newIdx);
+  };
   return (
     <div className="space-y-0 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* ============================================================== */}
@@ -45,65 +74,53 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Desktop: Big, expansive hero photography with rich layout      */}
       {/* ============================================================== */}
       <section className="relative overflow-hidden border-b border-[#EFEFF0]">
-        {/* MOBILE BACKGROUND HERO (Visible on mobile / tablet < lg) */}
-        <div className="block lg:hidden relative min-h-[580px] sm:min-h-[640px] flex items-center">
-          <motion.img
-            initial={{ scale: 1.08, opacity: 0.8 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            src={siteImages.hero}
-            alt="Young Nigerian school girls enthusiastically participating in hands-on STEM workshop"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-          {/* Rich dark gradient overlay for crystal-clear readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#150520] via-[#150520]/85 to-[#2C0E40]/60" />
+        {/* MOBILE HERO (Visible on mobile / tablet < lg) */}
+        <div className="block lg:hidden bg-gradient-to-b from-[#F6EFF9]/60 via-white to-white px-5 sm:px-8 pt-8 pb-10">
+          <div className="space-y-5 text-left">
+            {/* Eyebrow Label */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F6EFF9] border border-[#2C0E40]/15 text-[#2C0E40] text-xs font-semibold uppercase tracking-wider"
+            >
+              <span>Inspire STEM Girls · Nigeria</span>
+            </motion.div>
 
-          {/* Mobile Text Overlay with Animated H1 */}
-          <div className="relative z-10 px-5 sm:px-8 py-16 text-white space-y-5">
+            {/* Headline */}
             <AnimatedHeading
               as="h1"
               accent
-              subtitle="Inspire STEM Girls Initiative · Nigeria"
-              subtitleClassName="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C0E40]/60 backdrop-blur-md text-[#FFBD59] text-xs font-semibold uppercase tracking-wider border border-[#FFBD59]/40"
-              className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md text-left"
+              className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-tight text-left"
             >
               Building Brighter Futures for Girls Through STEM
             </AnimatedHeading>
 
+            {/* Concise Value Proposition (Reduced, no bulky text) */}
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-sm sm:text-base text-stone-200 leading-relaxed font-normal"
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal"
             >
-              Inspire STEM Girls Initiative expands access to science, technology, engineering and mathematics education for girls from underserved communities in Nigeria through mentorship, STEM exposure, educational support and hands-on learning.
+              Empowering girls from underserved Nigerian communities through hands-on STEM education, mentorship, and opportunities.
             </motion.p>
 
+            {/* Clean Action Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="p-4 rounded-xl bg-[#2C0E40]/90 border-l-4 border-[#FFBD59] backdrop-blur-md"
-            >
-              <p className="text-xs sm:text-sm font-semibold text-[#FFBD59] leading-snug">
-                Our long-term vision is to establish a tuition-free science/STEM school for girls from underserved communities in Nigeria.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="pt-2 flex flex-col sm:flex-row gap-3"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-3 pt-1"
             >
               <button
                 onClick={() => {
                   onNavigate('programs');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-md active:scale-95 cursor-pointer"
               >
-                <span>Explore Our Programs</span>
+                <span>Explore Programs</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -112,11 +129,34 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onNavigate('donate');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-white transition-all shadow-md active:scale-95 cursor-pointer"
               >
                 <Heart className="w-4 h-4 text-[#FFBD59] fill-current" />
                 <span>Support Our Mission</span>
               </button>
+            </motion.div>
+
+            {/* Dedicated Hero Image Frame — 100% Unobstructed, No Text Blocking the Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="pt-2"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-200/90 bg-slate-100">
+                <img
+                  src={siteImages.hero}
+                  alt="Young Nigerian school girls enthusiastically participating in hands-on STEM workshop"
+                  className="w-full aspect-[4/3] sm:aspect-[16/10] object-cover object-center"
+                  loading="eager"
+                  decoding="async"
+                />
+                {/* Clean Bottom Meta Badge */}
+                <div className="px-4 py-2.5 bg-[#150520]/90 backdrop-blur-md text-white flex items-center justify-between text-xs">
+                  <span className="font-semibold text-stone-200 truncate">Hands-On STEM Lab · Nigeria</span>
+                  <span className="text-[#FFBD59] font-bold shrink-0 ml-2">1,250+ Girls Reached</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -276,8 +316,33 @@ export const HomePage: React.FC<HomePageProps> = ({
             </motion.p>
           </div>
 
-          {/* Cards for Girls Reached, Girls Mentored, Schools/Communities Reached, STEM Mentors, Programs Delivered */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          {/* Mobile Carousel Controls for Numbers (Mobile only) */}
+          <div className="flex sm:hidden items-center justify-between pb-3 pt-1">
+            <span className="text-xs font-semibold text-[#FFBD59]">
+              Metric ({impactNumbersIndex + 1} of {impactMetrics.slice(0, 5).length})
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollContainerTo(impactNumbersScrollRef.current, impactNumbersIndex - 1, impactMetrics.slice(0, 5).length)}
+                disabled={impactNumbersIndex === 0}
+                aria-label="Previous metric"
+                className="w-8 h-8 rounded-full border border-purple-800 bg-[#2C0E40] flex items-center justify-center text-white disabled:opacity-30 hover:bg-[#41175E] transition-all cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollContainerTo(impactNumbersScrollRef.current, impactNumbersIndex + 1, impactMetrics.slice(0, 5).length)}
+                disabled={impactNumbersIndex >= impactMetrics.slice(0, 5).length - 1}
+                aria-label="Next metric"
+                className="w-8 h-8 rounded-full border border-purple-800 bg-[#2C0E40] flex items-center justify-center text-white disabled:opacity-30 hover:bg-[#41175E] transition-all cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* DESKTOP GRID (sm and above: untouched) */}
+          <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {impactMetrics.slice(0, 5).map((metric, idx) => (
               <motion.div
                 key={metric.id}
@@ -301,6 +366,48 @@ export const HomePage: React.FC<HomePageProps> = ({
             ))}
           </div>
 
+          {/* MOBILE CAROUSEL FOR NUMBERS (Visible ONLY on mobile < sm) */}
+          <div className="block sm:hidden">
+            <div
+              ref={impactNumbersScrollRef}
+              onScroll={() => handleContainerScroll(impactNumbersScrollRef.current, setImpactNumbersIndex)}
+              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-3.5 pb-2 -mx-4 px-4"
+            >
+              {impactMetrics.slice(0, 5).map((metric) => (
+                <div
+                  key={metric.id}
+                  className="w-[74vw] max-w-[260px] flex-shrink-0 snap-center p-5 rounded-2xl bg-[#2C0E40]/90 border border-[#41175E] shadow-md flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="text-3xl font-extrabold text-[#FFBD59] tracking-tight mb-1.5">
+                      <SmartCounter value={metric.value} />
+                    </div>
+                    <div className="text-sm font-semibold text-white mb-1 leading-snug">
+                      {metric.label}
+                    </div>
+                  </div>
+                  <div className="text-xs text-[#EFEFF0]/70 leading-relaxed pt-2 border-t border-[#41175E]/60">
+                    {metric.description}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Dots */}
+            <div className="flex items-center justify-center gap-2 pt-3">
+              {impactMetrics.slice(0, 5).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollContainerTo(impactNumbersScrollRef.current, idx, 5)}
+                  aria-label={`Go to metric ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    impactNumbersIndex === idx ? 'w-6 bg-[#FFBD59]' : 'w-2 bg-purple-900'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
           <div className="mt-8 pt-6 border-t border-[#2C0E40] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
             <button
               onClick={() => {
@@ -319,24 +426,57 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       {/* 3. WHAT WE DO SECTION                                          */}
       {/* ============================================================== */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <AnimatedHeading
-              as="h2"
-              accent
-              subtitle="Our Core Pillars"
-              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-2"
-              className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight text-left"
-            >
-              Creating Pathways Into STEM
-            </AnimatedHeading>
-            <p className="mt-3 text-base sm:text-lg text-slate-600">
-              We design holistic interventions that meet girls where they are—providing the exposure, guidance, resources, and community required to thrive in science and technology.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-14 gap-4">
+            <div className="max-w-3xl">
+              <AnimatedHeading
+                as="h2"
+                accent
+                subtitle="Our Core Pillars"
+                subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-2"
+                className="text-2xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight text-left"
+              >
+                Creating Pathways Into STEM
+              </AnimatedHeading>
+              {/* Desktop text */}
+              <p className="hidden md:block mt-3 text-base sm:text-lg text-slate-600">
+                We design holistic interventions that meet girls where they are—providing the exposure, guidance, resources, and community required to thrive in science and technology.
+              </p>
+              {/* Mobile text: reduced & concise */}
+              <p className="block md:hidden mt-2 text-sm text-slate-600">
+                Holistic interventions providing hands-on exposure, mentorship, and resources for girls across Nigeria.
+              </p>
+            </div>
+
+            {/* Mobile Carousel Controls */}
+            <div className="flex md:hidden items-center justify-between pt-1">
+              <span className="text-xs font-semibold text-slate-500">
+                Swipe to explore ({pathwaysIndex + 1} of 4)
+              </span>
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => scrollContainerTo(pathwaysScrollRef.current, pathwaysIndex - 1, 4)}
+                  disabled={pathwaysIndex === 0}
+                  aria-label="Previous pathway"
+                  className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => scrollContainerTo(pathwaysScrollRef.current, pathwaysIndex + 1, 4)}
+                  disabled={pathwaysIndex === 3}
+                  aria-label="Next pathway"
+                  className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {/* DESKTOP GRID (md and above: untouched 2x2 grid) */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
             {/* Area 1: STEM Education & Exposure */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -473,6 +613,141 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
             </motion.div>
           </div>
+
+          {/* MOBILE CAROUSEL (Visible ONLY on mobile / small devices < md) */}
+          <div className="block md:hidden">
+            <div
+              ref={pathwaysScrollRef}
+              onScroll={() => handleContainerScroll(pathwaysScrollRef.current, setPathwaysIndex)}
+              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-2 -mx-4 px-4"
+            >
+              {/* Card 1 */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#EFEFF0]/70 border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
+                    <Compass className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    STEM Education & Exposure
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    Practical robotics workshops, electronics, coding, and real-world science exposure for schoolgirls.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-[#E3E3E5] flex items-center justify-between text-xs">
+                  <span className="text-slate-500 text-[11px]">Kits · Coding · Labs</span>
+                  <button
+                    onClick={() => {
+                      onNavigate('programs');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="font-bold text-[#2C0E40] inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>View</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#EFEFF0]/70 border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    Mentorship
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    Pairing girls with female scientists, tech leads, and role models who champion their dreams.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-[#E3E3E5] flex items-center justify-between text-xs">
+                  <span className="text-slate-500 text-[11px]">1-on-1 · Circles</span>
+                  <button
+                    onClick={() => {
+                      onNavigate('get-involved');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="font-bold text-[#2C0E40] inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Join</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#EFEFF0]/70 border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center mb-4 shadow-xs font-bold">
+                    <KeyRound className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    Educational Access
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    Removing financial hurdles with exam sponsorships, learning kits, and school supplies.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-[#E3E3E5] flex items-center justify-between text-xs">
+                  <span className="text-slate-500 text-[11px]">Sponsorships · Kits</span>
+                  <button
+                    onClick={() => {
+                      onNavigate('programs');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="font-bold text-[#2C0E40] inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Details</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 4 */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#EFEFF0]/70 border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="w-11 h-11 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
+                    <School className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">
+                    School & Community Outreach
+                  </h3>
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                    Bringing STEM workshops directly to public schools and grassroots community hubs.
+                  </p>
+                </div>
+                <div className="mt-5 pt-3.5 border-t border-[#E3E3E5] flex items-center justify-between text-xs">
+                  <span className="text-slate-500 text-[11px]">Schools · Hubs</span>
+                  <button
+                    onClick={() => {
+                      onNavigate('partners');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="font-bold text-[#2C0E40] inline-flex items-center gap-1 cursor-pointer"
+                  >
+                    <span>Partner</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Dots */}
+            <div className="flex items-center justify-center gap-2 pt-3">
+              {[0, 1, 2, 3].map((idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollContainerTo(pathwaysScrollRef.current, idx, 4)}
+                  aria-label={`Go to pillar ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    pathwaysIndex === idx ? 'w-6 bg-[#2C0E40]' : 'w-2 bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -481,29 +756,59 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* ============================================================== */}
       <section className="py-16 sm:py-20 bg-[#EFEFF0]/60 border-y border-[#E3E3E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
-            <AnimatedHeading
-              as="h2"
-              accent
-              subtitle="Field Visuals"
-              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 text-left"
-            >
-              Our Girls in Action Across Nigeria
-            </AnimatedHeading>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
+            <div>
+              <AnimatedHeading
+                as="h2"
+                accent
+                subtitle="Field Visuals"
+                subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 text-left"
+              >
+                Our Girls in Action Across Nigeria
+              </AnimatedHeading>
+            </div>
+
+            {/* Desktop link button */}
             <button
               onClick={() => {
                 onNavigate('programs');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
+              className="hidden sm:inline-flex text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 items-center gap-1 transition-all cursor-pointer"
             >
               <span>Explore all program photos</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
+
+            {/* Mobile Controls */}
+            <div className="flex sm:hidden items-center justify-between pt-1">
+              <span className="text-xs font-semibold text-slate-500">
+                Photo {girlsActionIndex + 1} of 4
+              </span>
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => scrollContainerTo(girlsActionScrollRef.current, girlsActionIndex - 1, 4)}
+                  disabled={girlsActionIndex === 0}
+                  aria-label="Previous photo"
+                  className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => scrollContainerTo(girlsActionScrollRef.current, girlsActionIndex + 1, 4)}
+                  disabled={girlsActionIndex === 3}
+                  aria-label="Next photo"
+                  className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {/* DESKTOP PHOTO GRID (sm and above: untouched 4-column grid) */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
                 img: siteImages.galleryRobotics,
@@ -550,6 +855,72 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* MOBILE PHOTO CAROUSEL (Visible ONLY on mobile screens < sm) */}
+          <div className="block sm:hidden">
+            <div
+              ref={girlsActionScrollRef}
+              onScroll={() => handleContainerScroll(girlsActionScrollRef.current, setGirlsActionIndex)}
+              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-2 -mx-4 px-4"
+            >
+              {[
+                {
+                  img: siteImages.galleryRobotics,
+                  label: 'Robotics Lab',
+                  caption: 'Assembling automated sensor kits',
+                },
+                {
+                  img: siteImages.galleryChemistry,
+                  label: 'Practical Science',
+                  caption: 'Mobile chemistry demonstration',
+                },
+                {
+                  img: siteImages.mentorship,
+                  label: 'Mentorship Circles',
+                  caption: 'Direct guidance from women in tech',
+                },
+                {
+                  img: siteImages.galleryCelebration,
+                  label: 'Cohort Graduation',
+                  caption: 'Celebrating STEM certifications',
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="w-[82vw] max-w-[300px] flex-shrink-0 snap-center rounded-2xl overflow-hidden shadow-md bg-white border border-[#E3E3E5] relative aspect-[4/3]"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.caption}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/85 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <span className="text-[10px] font-bold text-[#FFBD59] uppercase tracking-wider block">
+                      {item.label}
+                    </span>
+                    <p className="text-xs font-semibold mt-0.5">{item.caption}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Dots */}
+            <div className="flex items-center justify-center gap-2 pt-3">
+              {[0, 1, 2, 3].map((idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollContainerTo(girlsActionScrollRef.current, idx, 4)}
+                  aria-label={`Go to photo ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    girlsActionIndex === idx ? 'w-6 bg-[#2C0E40]' : 'w-2 bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

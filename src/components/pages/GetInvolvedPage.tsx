@@ -29,6 +29,25 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
   const [fieldOfWork, setFieldOfWork] = useState('');
   const [details, setDetails] = useState('');
 
+  const scrollToForm = (tabKey: 'partner' | 'mentor' | 'volunteer' | 'support') => {
+    setActiveTab(tabKey);
+    setSubmittedForm(null);
+    const scrollTarget = () => {
+      const formElement = document.getElementById('get-involved-form');
+      if (formElement) {
+        const navbarOffset = 95;
+        const elementPosition = formElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
+    };
+    scrollTarget();
+    setTimeout(scrollTarget, 40);
+  };
+
   const handleSubmit = (e: React.FormEvent, formType: string) => {
     e.preventDefault();
     setSubmittedForm(formType);
@@ -57,10 +76,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
           {/* 1. Partner With Us */}
           <button
-            onClick={() => {
-              setActiveTab('partner');
-              setSubmittedForm(null);
-            }}
+            onClick={() => scrollToForm('partner')}
             className={`p-6 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer ${
               activeTab === 'partner'
                 ? 'border-[#2C0E40] bg-[#EFEFF0] shadow-md ring-1 ring-[#2C0E40]'
@@ -79,16 +95,13 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               </p>
             </div>
             <span className="text-xs font-bold text-[#2C0E40] mt-4 flex items-center gap-1">
-              Select option <ArrowRight className="w-3.5 h-3.5" />
+              Select & Fill Form <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </button>
 
           {/* 2. Mentor a Girl */}
           <button
-            onClick={() => {
-              setActiveTab('mentor');
-              setSubmittedForm(null);
-            }}
+            onClick={() => scrollToForm('mentor')}
             className={`p-6 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer ${
               activeTab === 'mentor'
                 ? 'border-[#2C0E40] bg-[#EFEFF0] shadow-md ring-1 ring-[#2C0E40]'
@@ -107,16 +120,13 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               </p>
             </div>
             <span className="text-xs font-bold text-[#2C0E40] mt-4 flex items-center gap-1">
-              Select option <ArrowRight className="w-3.5 h-3.5" />
+              Select & Fill Form <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </button>
 
           {/* 3. Volunteer */}
           <button
-            onClick={() => {
-              setActiveTab('volunteer');
-              setSubmittedForm(null);
-            }}
+            onClick={() => scrollToForm('volunteer')}
             className={`p-6 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer ${
               activeTab === 'volunteer'
                 ? 'border-[#2C0E40] bg-[#EFEFF0] shadow-md ring-1 ring-[#2C0E40]'
@@ -135,17 +145,18 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               </p>
             </div>
             <span className="text-xs font-bold text-[#2C0E40] mt-4 flex items-center gap-1">
-              Select option <ArrowRight className="w-3.5 h-3.5" />
+              Select & Fill Form <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </button>
 
           {/* 4. Support Our Mission */}
           <button
-            onClick={() => {
-              onNavigate('donate');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="p-6 rounded-2xl text-left border border-[#FFBD59] bg-[#FEFAF0] hover:bg-[#FBF2D5] transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer shadow-xs"
+            onClick={() => scrollToForm('support')}
+            className={`p-6 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer shadow-xs ${
+              activeTab === 'support'
+                ? 'border-[#FFBD59] bg-[#FEFAF0] shadow-md ring-1 ring-[#FFBD59]'
+                : 'border-[#FFBD59]/60 bg-[#FEFAF0]/50 hover:bg-[#FEFAF0]'
+            }`}
           >
             <div>
               <div className="w-10 h-10 rounded-xl bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center mb-4 shadow-xs">
@@ -159,7 +170,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               </p>
             </div>
             <span className="text-xs font-bold text-[#2C0E40] mt-4 flex items-center gap-1">
-              Go to Donation Page <ArrowRight className="w-3.5 h-3.5" />
+              Select & Fill Form <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </button>
         </div>
@@ -168,7 +179,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
       {/* ============================================================== */}
       {/* DETAILED ACTIVE SECTION / FORM                                 */}
       {/* ============================================================== */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="get-involved-form" className="scroll-mt-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#EFEFF0]/40 rounded-3xl p-8 sm:p-12 border border-[#E3E3E5]">
           {submittedForm ? (
             <div className="text-center py-8 space-y-4">
@@ -424,6 +435,89 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
                       <Send className="w-4 h-4" />
                       <span>Join Volunteer Network</span>
                     </button>
+                  </form>
+                </div>
+              )}
+
+              {/* Tab 4: Support Our Mission */}
+              {activeTab === 'support' && (
+                <div className="space-y-6">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1">
+                      Philanthropic & Educational Sponsorship
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                      Support Our Mission
+                    </h2>
+                    <p className="text-sm text-slate-600 mt-1">
+                      Support our hands-on workshops, student exam registrations, mobile science kits, or our future tuition-free science school fund.
+                    </p>
+                  </div>
+
+                  <form onSubmit={(e) => handleSubmit(e, 'support')} className="space-y-4 pt-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          Full Name / Organization *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your Name or Organization"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none bg-white"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@email.com"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none bg-white"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        Sponsorship / Contribution Intent
+                      </label>
+                      <textarea
+                        rows={3}
+                        required
+                        value={details}
+                        onChange={(e) => setDetails(e.target.value)}
+                        placeholder="e.g. Sponsoring 10 girls' science exam fees, providing 5 robotics starter kits, or discussing campus fund endowment."
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:border-[#2C0E40] focus:ring-1 focus:ring-[#2C0E40] outline-none bg-white resize-none"
+                      />
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
+                      <button
+                        type="submit"
+                        className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white flex items-center justify-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
+                      >
+                        <Send className="w-4 h-4" />
+                        <span>Send Sponsorship Inquiry</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onNavigate('donate');
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
+                      >
+                        <Heart className="w-4 h-4 fill-current text-[#2C0E40]" />
+                        <span>Proceed to Online Donation Portal</span>
+                      </button>
+                    </div>
                   </form>
                 </div>
               )}

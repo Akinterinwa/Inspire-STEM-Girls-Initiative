@@ -32,8 +32,31 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
       ? programsData
       : programsData.filter((p) => p.category === selectedCategory);
 
+  const scrollToCards = () => {
+    const cardsGrid = document.getElementById('programs-cards-grid');
+    if (cardsGrid) {
+      const navbarOffset = 95;
+      const elementPosition = cardsGrid.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const handleFilterClick = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    // Scroll immediately
+    scrollToCards();
+    // Also re-trigger on next animation frame in case DOM layout updates
+    requestAnimationFrame(() => {
+      scrollToCards();
+    });
+  };
+
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
+    <div className="py-8 sm:py-16 bg-white space-y-10 sm:space-y-16 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -42,23 +65,40 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
             accent
             subtitle="Our Interventions & Delivery"
             subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C0E40] bg-[#EFEFF0] px-3 py-1 rounded-full border border-[#2C0E40]/15"
-            className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
+            className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
           >
             Programs & Projects
           </AnimatedHeading>
-          <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+          {/* Desktop description */}
+          <p className="hidden sm:block mt-4 text-lg text-slate-600 leading-relaxed">
             Every program has a distinct purpose: to demystify science, dismantle financial barriers, pair girls with role models, and establish enduring academic pathways.
+          </p>
+          {/* Mobile description: concise */}
+          <p className="block sm:hidden mt-2 text-sm text-slate-600 leading-relaxed">
+            Practical STEM programs, mentorship, and educational sponsorships across Nigeria.
           </p>
         </div>
 
-        {/* The 4 Category Cards Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {/* Mobile View: Hide Category Cards, show {Showing 5 Projects} button alone which scrolls to the cards */}
+        <div className="block md:hidden mt-6">
+          <button
+            onClick={scrollToCards}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#EFEFF0] hover:bg-[#E3E3E5] border border-[#2C0E40]/20 text-[#2C0E40] text-sm font-bold shadow-xs active:scale-95 transition-all cursor-pointer"
+          >
+            <Filter className="w-4 h-4 text-[#2C0E40]" />
+            <span>Showing {filteredPrograms.length} Projects</span>
+            <ArrowRight className="w-3.5 h-3.5 rotate-90 ml-0.5" />
+          </button>
+        </div>
+
+        {/* Desktop View: The 4 Category Cards Overview (Hidden on mobile) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {programCategories.slice(1).map((cat) => {
             const isCurrent = selectedCategory === cat.id;
             return (
               <button
                 key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => handleFilterClick(cat.id)}
                 className={`p-6 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer ${
                   isCurrent
                     ? 'border-[#2C0E40] bg-[#EFEFF0] shadow-md ring-1 ring-[#2C0E40]'
@@ -87,7 +127,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
       </div>
 
       {/* Filter Bar & Program Projects Listing */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="programs-listing" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E3E3E5] mb-8">
           <div className="flex items-center gap-2">
             <Filter className="w-4 h-4 text-[#2C0E40]" />
@@ -101,7 +141,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
             {programCategories.map((cat) => (
               <button
                 key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => handleFilterClick(cat.id)}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'bg-[#2C0E40] text-[#FFBD59] shadow-xs'
@@ -115,7 +155,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div id="programs-cards-grid" className="scroll-mt-28 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {filteredPrograms.map((program) => (
             <div
               key={program.id}

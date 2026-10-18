@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { PageId } from '../../types';
 import { siteImages } from '../../data/siteData';
@@ -18,6 +18,8 @@ import {
   Microscope,
   BookOpen,
   Heart,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 interface VisionPageProps {
@@ -25,6 +27,27 @@ interface VisionPageProps {
 }
 
 export const VisionPage: React.FC<VisionPageProps> = ({ onNavigate }) => {
+  const [horizonIndex, setHorizonIndex] = useState(0);
+  const horizonScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToHorizon = (index: number) => {
+    if (!horizonScrollRef.current) return;
+    const clamped = Math.max(0, Math.min(2, index));
+    const firstChild = horizonScrollRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    horizonScrollRef.current.scrollTo({
+      left: clamped * (cardWidth + 16),
+      behavior: 'smooth',
+    });
+  };
+
+  const handleHorizonScroll = () => {
+    if (!horizonScrollRef.current) return;
+    const firstChild = horizonScrollRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    const newIdx = Math.round(horizonScrollRef.current.scrollLeft / (cardWidth + 16));
+    setHorizonIndex(newIdx);
+  };
   return (
     <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Header Banner with Animated H1 */}
@@ -167,7 +190,33 @@ export const VisionPage: React.FC<VisionPageProps> = ({ onNavigate }) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Mobile Header / Controls */}
+          <div className="flex md:hidden items-center justify-between mb-4">
+            <span className="text-xs font-semibold text-slate-500">
+              Horizon ({horizonIndex + 1} of 3)
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollToHorizon(horizonIndex - 1)}
+                disabled={horizonIndex === 0}
+                aria-label="Previous horizon"
+                className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollToHorizon(horizonIndex + 1)}
+                disabled={horizonIndex === 2}
+                aria-label="Next horizon"
+                className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* DESKTOP 3-COLUMN GRID (md and above: untouched) */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Step 1: Active Now */}
             <motion.div
               initial={{ opacity: 0, y: 25 }}
@@ -281,6 +330,125 @@ export const VisionPage: React.FC<VisionPageProps> = ({ onNavigate }) => {
                 Pioneering tuition-free excellence in West Africa
               </div>
             </motion.div>
+          </div>
+
+          {/* MOBILE CAROUSEL FOR THREE HORIZONS (Visible ONLY on mobile < md) */}
+          <div className="block md:hidden">
+            <div
+              ref={horizonScrollRef}
+              onScroll={handleHorizonScroll}
+              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-2 -mx-4 px-4"
+            >
+              {/* Step 1 Mobile */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-white border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#2C0E40] text-[#FFBD59] text-xs font-bold mb-3 shadow-xs">
+                    Active Now
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Phase 1: Foundation
+                  </h3>
+                  <p className="text-slate-600 text-xs leading-relaxed mb-3">
+                    Delivering hands-on workshops, school mobile labs, and mentorship across underserved communities.
+                  </p>
+                  <ul className="space-y-1.5 text-xs text-slate-600">
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40] mt-1.5 flex-shrink-0" />
+                      <span>1,250+ girls across 28 communities</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40] mt-1.5 flex-shrink-0" />
+                      <span>65+ active female STEM mentors</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40] mt-1.5 flex-shrink-0" />
+                      <span>Full exam sponsorships & kits</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-5 pt-3 border-t border-[#E3E3E5] text-xs font-semibold text-[#2C0E40]">
+                  Status: Operational & Scaling
+                </div>
+              </div>
+
+              {/* Step 2 Mobile */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-white border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EFEFF0] text-[#2C0E40] text-xs font-bold mb-3 border border-[#2C0E40]/20">
+                    Phase 2: Scale
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    Expansion & Feasibility
+                  </h3>
+                  <p className="text-slate-600 text-xs leading-relaxed mb-3">
+                    Formalizing university pathway alliances, regional STEM centers, and securing campus endowment reserves.
+                  </p>
+                  <ul className="space-y-1.5 text-xs text-slate-600">
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFBD59] mt-1.5 flex-shrink-0" />
+                      <span>5 regional mobile lab clusters</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFBD59] mt-1.5 flex-shrink-0" />
+                      <span>Corporate & donor alliances</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FFBD59] mt-1.5 flex-shrink-0" />
+                      <span>Campus land acquisition studies</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-5 pt-3 border-t border-[#E3E3E5] text-xs text-slate-500">
+                  Target: 10,000+ girls reached
+                </div>
+              </div>
+
+              {/* Step 3 Mobile */}
+              <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#2C0E40] text-white border border-[#41175E] shadow-xl flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFBD59] text-[#2C0E40] text-xs font-bold mb-3 shadow-sm">
+                    Ultimate Milestone
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Future
+                  </h3>
+                  <p className="text-[#FFBD59] font-semibold text-sm mb-3 leading-snug">
+                    Establish a tuition-free science/STEM school for girls in Nigeria.
+                  </p>
+                  <ul className="space-y-1.5 text-xs text-stone-200">
+                    <li className="flex items-start gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FFBD59] flex-shrink-0 mt-0.5" />
+                      <span>Full-tuition scholarships for all</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FFBD59] flex-shrink-0 mt-0.5" />
+                      <span>Advanced physics, biology & robotics labs</span>
+                    </li>
+                    <li className="flex items-start gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#FFBD59] flex-shrink-0 mt-0.5" />
+                      <span>Direct university scholarship paths</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-5 pt-3 border-t border-[#41175E] text-xs text-[#FFBD59] font-semibold">
+                  Tuition-free excellence in West Africa
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Indicator Dots */}
+            <div className="flex items-center justify-center gap-2 pt-4">
+              {[0, 1, 2].map((idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollToHorizon(idx)}
+                  aria-label={`Go to horizon ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    horizonIndex === idx ? 'w-6 bg-[#2C0E40]' : 'w-2 bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

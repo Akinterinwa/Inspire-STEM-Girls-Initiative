@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { PageId } from '../../types';
 import { siteImages } from '../../data/siteData';
@@ -14,6 +14,8 @@ import {
   Linkedin,
   Mail,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 
 interface AboutPageProps {
@@ -21,8 +23,30 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+  const [cardIndex, setCardIndex] = useState(0);
+  const cardsScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToCard = (index: number) => {
+    if (!cardsScrollRef.current) return;
+    const clamped = Math.max(0, Math.min(2, index));
+    const firstChild = cardsScrollRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    cardsScrollRef.current.scrollTo({
+      left: clamped * (cardWidth + 16),
+      behavior: 'smooth',
+    });
+  };
+
+  const handleCardScroll = () => {
+    if (!cardsScrollRef.current) return;
+    const firstChild = cardsScrollRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    const newIdx = Math.round(cardsScrollRef.current.scrollLeft / (cardWidth + 16));
+    setCardIndex(newIdx);
+  };
+
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
+    <div className="py-8 sm:py-16 bg-white space-y-12 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Top Banner / Breadcrumb with Animated H1 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -31,17 +55,27 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             accent
             subtitle="About Inspire STEM Girls Initiative"
             subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2C0E40] bg-[#EFEFF0] px-3 py-1 rounded-full border border-[#2C0E40]/15"
-            className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
+            className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-tight text-left"
           >
             Expanding STEM Access & Unlocking Potential in Nigeria
           </AnimatedHeading>
+          {/* Desktop text */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-4 text-lg text-slate-600 leading-relaxed font-normal"
+            className="hidden sm:block mt-4 text-lg text-slate-600 leading-relaxed font-normal"
           >
-            Founded on the conviction that socioeconomic background should never dictate a girl’s educational future, we are systematically bridging the divide in STEM education across Nigeria..
+            Founded on the conviction that socioeconomic background should never dictate a girl’s educational future, we are systematically bridging the divide in STEM education across Nigeria.
+          </motion.p>
+          {/* Mobile text: reduced */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="block sm:hidden mt-2 text-sm text-slate-600 leading-relaxed font-normal"
+          >
+            Bridging the divide in STEM education and mentorship for girls across Nigeria.
           </motion.p>
         </div>
       </div>
@@ -50,13 +84,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* 1. WHO WE ARE (Animated heading and photography)               */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 space-y-6"
+            className="lg:col-span-7 space-y-4 sm:space-y-6"
           >
             <AnimatedHeading
               as="h2"
@@ -68,22 +102,32 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               Who We Are
             </AnimatedHeading>
 
-            <div className="p-5 rounded-2xl bg-[#EFEFF0] border-l-4 border-[#2C0E40] text-slate-800 font-medium text-base sm:text-lg leading-relaxed shadow-xs">
+            {/* Desktop callout */}
+            <div className="hidden sm:block p-5 rounded-2xl bg-[#EFEFF0] border-l-4 border-[#2C0E40] text-slate-800 font-medium text-base sm:text-lg leading-relaxed shadow-xs">
               Inspire STEM Girls Initiative is a nonprofit organization committed to expanding access to STEM education and opportunities for girls from underserved communities in Nigeria.
             </div>
+            {/* Mobile callout: concise */}
+            <div className="block sm:hidden p-4 rounded-xl bg-[#EFEFF0] border-l-4 border-[#2C0E40] text-slate-800 font-semibold text-sm leading-snug">
+              A nonprofit committed to expanding STEM education and mentorship for Nigerian girls.
+            </div>
 
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+            {/* Desktop description */}
+            <p className="hidden sm:block text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
               Through mentorship, educational support, STEM programs and community outreach, we help girls develop the skills, confidence, exposure and support they need to pursue futures in science and technology.
             </p>
+            {/* Mobile description: concise */}
+            <p className="block sm:hidden text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+              Through practical labs, mentorship, and educational sponsorships, we equip girls with the confidence and tools to excel in STEM fields.
+            </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl border border-[#E3E3E5] bg-white">
-                <span className="text-xs font-bold text-slate-900 block mb-1">Hands-On & Practical</span>
-                <span className="text-xs text-slate-600">Bringing real scientific equipment and coding out of theory into concrete physical creation.</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-1 sm:pt-2">
+              <div className="p-3.5 sm:p-4 rounded-xl border border-[#E3E3E5] bg-white">
+                <span className="text-xs font-bold text-slate-900 block mb-0.5">Hands-On & Practical</span>
+                <span className="text-xs text-slate-600">Bringing scientific kits, robotics, and coding into physical creation.</span>
               </div>
-              <div className="p-4 rounded-xl border border-[#E3E3E5] bg-white">
-                <span className="text-xs font-bold text-slate-900 block mb-1">Rooted in Underserved Communities</span>
-                <span className="text-xs text-slate-600">Reaching girls in public secondary schools and grassroots neighborhoods where resources are scarcest.</span>
+              <div className="p-3.5 sm:p-4 rounded-xl border border-[#E3E3E5] bg-white">
+                <span className="text-xs font-bold text-slate-900 block mb-0.5">Community Centered</span>
+                <span className="text-xs text-slate-600">Reaching girls in public secondary schools and grassroots neighborhoods.</span>
               </div>
             </div>
           </motion.div>
@@ -147,7 +191,33 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       {/* 2. MISSION, VISION, LONG-TERM VISION CARDS                    */}
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Mobile Header / Controls */}
+        <div className="flex md:hidden items-center justify-between mb-4">
+          <span className="text-xs font-semibold text-slate-500">
+            Swipe Core Directives ({cardIndex + 1} of 3)
+          </span>
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => scrollToCard(cardIndex - 1)}
+              disabled={cardIndex === 0}
+              aria-label="Previous card"
+              className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scrollToCard(cardIndex + 1)}
+              disabled={cardIndex === 2}
+              aria-label="Next card"
+              className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* DESKTOP 3-COLUMN GRID (md and above: untouched) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Mission Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -238,6 +308,101 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             </div>
           </motion.div>
         </div>
+
+        {/* MOBILE CAROUSEL (Visible ONLY on mobile / small devices < md) */}
+        <div className="block md:hidden">
+          <div
+            ref={cardsScrollRef}
+            onScroll={handleCardScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-2 -mx-4 px-4"
+          >
+            {/* Card 1: Our Mission */}
+            <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#EFEFF0]/70 border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
+                  <Target className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#2C0E40] block mb-1">
+                  Our Purpose
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                  Our Mission
+                </h3>
+                <p className="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
+                  To expand access to STEM education, mentorship, and opportunities for girls from underserved communities across Nigeria.
+                </p>
+              </div>
+              <div className="mt-5 pt-3 border-t border-[#E3E3E5] text-[11px] text-slate-500 font-medium">
+                Grassroots Delivery · Real Outcomes
+              </div>
+            </div>
+
+            {/* Card 2: Our Vision */}
+            <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#EFEFF0]/70 border border-[#E3E3E5] shadow-xs flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center mb-4 shadow-xs font-bold">
+                  <Compass className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#2C0E40] block mb-1">
+                  Our Horizon
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                  Our Vision
+                </h3>
+                <p className="text-slate-700 text-xs sm:text-sm leading-relaxed font-medium">
+                  A future where every girl has access to quality STEM education and the community to reach her highest potential.
+                </p>
+              </div>
+              <div className="mt-5 pt-3 border-t border-[#E3E3E5] text-[11px] text-slate-500 font-medium">
+                Inclusivity · Equal Opportunity
+              </div>
+            </div>
+
+            {/* Card 3: Our Long-Term Vision */}
+            <div className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center p-6 rounded-2xl bg-[#2C0E40] text-white border border-[#41175E] shadow-md flex flex-col justify-between">
+              <div>
+                <div className="w-11 h-11 rounded-xl bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center mb-4 shadow-xs font-bold">
+                  <School className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#FFBD59] block mb-1">
+                  Institutional Horizon
+                </span>
+                <h3 className="text-lg font-bold text-white mb-2">
+                  Our Long-Term Vision
+                </h3>
+                <p className="text-[#EFEFF0] text-xs sm:text-sm leading-relaxed font-medium">
+                  To establish a tuition-free science/STEM school for girls from underserved communities in Nigeria.
+                </p>
+              </div>
+              <div className="mt-5 pt-3 border-t border-[#41175E] text-[11px] text-[#EFEFF0]/80 flex items-center justify-between">
+                <span>Future School</span>
+                <button
+                  onClick={() => {
+                    onNavigate('vision');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="text-[#FFBD59] hover:text-white font-bold inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Roadmap →</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Dots */}
+          <div className="flex items-center justify-center gap-2 pt-3">
+            {[0, 1, 2].map((idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollToCard(idx)}
+                aria-label={`Go to card ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  cardIndex === idx ? 'w-6 bg-[#2C0E40]' : 'w-2 bg-slate-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ============================================================== */}
@@ -291,8 +456,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 </p>
               </div>
 
-              {/* Exact Copy Requested */}
-              <div className="space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
+              {/* Desktop Copy (Unchanged) */}
+              <div className="hidden sm:block space-y-4 text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
                 <p>
                   Oluwaseyi Adelusi is a software engineer and the Founder and Executive Director of Inspire STEM Girls Initiative.
                 </p>
@@ -302,6 +467,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
                 <div className="p-4 rounded-xl bg-white border-l-4 border-[#FFBD59] shadow-xs">
                   <p className="text-sm sm:text-base font-medium text-slate-900">
                     Her long-term vision is to build a tuition-free science/STEM school in Nigeria where girls from underserved communities can access quality education regardless of their financial circumstances.
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile Copy (Concise & Clean) */}
+              <div className="block sm:hidden space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                <p>
+                  Oluwaseyi Adelusi is a software engineer and the Founder of Inspire STEM Girls Initiative, passionate about bridging the STEM gender divide in Nigeria.
+                </p>
+                <div className="p-3.5 rounded-xl bg-white border-l-4 border-[#FFBD59] shadow-xs">
+                  <p className="text-xs font-medium text-slate-900 leading-snug">
+                    Her long-term vision is to build a tuition-free science/STEM school in Nigeria for girls from underserved communities.
                   </p>
                 </div>
               </div>

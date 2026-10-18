@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { PageId } from '../../types';
 import { staffMembers, boardMembers } from '../../data/siteData';
 import { AnimatedHeading } from '../AnimatedHeading';
 import { AnimatedImage } from '../AnimatedImage';
-import { Mail, Linkedin, ShieldCheck, UserCheck, PlusCircle, ArrowRight, Award } from 'lucide-react';
+import { Mail, Linkedin, ShieldCheck, UserCheck, PlusCircle, ArrowRight, Award, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface TeamPageProps {
   onNavigate: (page: PageId) => void;
 }
 
 export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
+  const [teamIndex, setTeamIndex] = useState(0);
+  const teamScrollRef = useRef<HTMLDivElement>(null);
+
+  const [boardIndex, setBoardIndex] = useState(0);
+  const boardScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollContainerTo = (container: HTMLDivElement | null, targetIndex: number, totalItems: number) => {
+    if (!container) return;
+    const clamped = Math.max(0, Math.min(totalItems - 1, targetIndex));
+    const firstChild = container.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    container.scrollTo({
+      left: clamped * (cardWidth + 16),
+      behavior: 'smooth',
+    });
+  };
+
+  const handleContainerScroll = (container: HTMLDivElement | null, setIndex: (idx: number) => void) => {
+    if (!container) return;
+    const firstChild = container.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    const newIdx = Math.round(container.scrollLeft / (cardWidth + 16));
+    setIndex(newIdx);
+  };
   return (
     <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Top Header */}
@@ -44,12 +68,37 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           >
             Our Team
           </AnimatedHeading>
-          <p className="text-xs text-slate-500 max-w-sm">
-            Core operational staff directing ground programs, school partnerships, and institutional growth.
-          </p>
+          <div className="flex items-center justify-between sm:justify-end gap-3">
+            <p className="text-xs text-slate-500 max-w-sm">
+              Core operational staff directing ground programs, school partnerships, and institutional growth.
+            </p>
+            {/* Mobile Carousel Controls for Team */}
+            <div className="flex md:hidden items-center gap-1.5 flex-shrink-0">
+              <span className="text-xs font-semibold text-slate-500 mr-1">
+                {teamIndex + 1}/{staffMembers.length}
+              </span>
+              <button
+                onClick={() => scrollContainerTo(teamScrollRef.current, teamIndex - 1, staffMembers.length)}
+                disabled={teamIndex === 0}
+                aria-label="Previous team member"
+                className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollContainerTo(teamScrollRef.current, teamIndex + 1, staffMembers.length)}
+                disabled={teamIndex >= staffMembers.length - 1}
+                aria-label="Next team member"
+                className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* DESKTOP GRID (md and above: untouched) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {staffMembers.map((member) => (
             <div
               key={member.id}
@@ -98,6 +147,77 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
             </div>
           ))}
         </div>
+
+        {/* MOBILE CAROUSEL FOR TEAM (Visible ONLY on mobile < md) */}
+        <div className="block md:hidden">
+          <div
+            ref={teamScrollRef}
+            onScroll={() => handleContainerScroll(teamScrollRef.current, setTeamIndex)}
+            className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-2 -mx-4 px-4"
+          >
+            {staffMembers.map((member) => (
+              <div
+                key={member.id}
+                className="w-[84vw] max-w-[310px] flex-shrink-0 snap-center bg-[#EFEFF0]/50 rounded-2xl overflow-hidden border border-[#E3E3E5] shadow-xs flex flex-col justify-between"
+              >
+                <div>
+                  <div className="aspect-[16/11] overflow-hidden bg-[#150520] relative">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-[#2C0E40] text-[#FFBD59] px-2 py-0.5 rounded-md text-[10px] font-bold shadow-xs">
+                      Leadership
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-slate-900 mb-0.5">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs font-bold text-[#2C0E40] uppercase tracking-wider mb-2.5">
+                      {member.role}
+                    </p>
+
+                    <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">
+                      {member.bio}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-5 pt-0 border-t border-[#E3E3E5] mt-3 flex items-center justify-between text-xs text-slate-500">
+                  <span className="text-[11px]">{member.location}</span>
+                  {member.email && (
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="text-[#2C0E40] hover:text-[#41175E] font-bold inline-flex items-center gap-1 text-xs"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      <span>Contact</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile Dots */}
+          <div className="flex items-center justify-center gap-2 pt-4">
+            {staffMembers.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollContainerTo(teamScrollRef.current, idx, staffMembers.length)}
+                aria-label={`Go to team member ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  teamIndex === idx ? 'w-6 bg-[#2C0E40]' : 'w-2 bg-slate-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ============================================================== */}
@@ -105,7 +225,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
       {/* ============================================================== */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <div className="bg-[#2C0E40] text-white rounded-3xl p-8 sm:p-12 border border-[#41175E] shadow-xl">
-          <div className="max-w-3xl mb-12">
+          <div className="max-w-3xl mb-8">
             <AnimatedHeading
               as="h2"
               accent
@@ -115,13 +235,38 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
             >
               Board / Governance
             </AnimatedHeading>
-            <p className="mt-3 text-[#EFEFF0]/85 text-sm sm:text-base leading-relaxed">
-              In accordance with international non-profit best practices, our Board of Directors and Advisory Council operates independently from staff. The Board provides strategic governance, fiduciary stewardship, legal compliance, and long-term capital oversight for the future ISG Science School.
+            <p className="mt-3 text-[#EFEFF0]/85 text-xs sm:text-base leading-relaxed">
+              In accordance with international non-profit best practices, our Board of Directors and Advisory Council operates independently from staff, providing strategic governance and fiduciary stewardship.
             </p>
           </div>
 
-          {/* Board Members with Images Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Mobile Carousel Controls for Board */}
+          <div className="flex md:hidden items-center justify-between gap-2 pb-4 pt-1 border-b border-[#41175E]/60 mb-6">
+            <span className="text-xs font-semibold text-[#FFBD59]">
+              Board ({boardIndex + 1} of {boardMembers.length})
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollContainerTo(boardScrollRef.current, boardIndex - 1, boardMembers.length)}
+                disabled={boardIndex === 0}
+                aria-label="Previous board member"
+                className="w-8 h-8 rounded-full border border-purple-800 bg-[#1E082C] flex items-center justify-center text-white disabled:opacity-30 hover:bg-[#41175E] transition-all cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollContainerTo(boardScrollRef.current, boardIndex + 1, boardMembers.length)}
+                disabled={boardIndex >= boardMembers.length - 1}
+                aria-label="Next board member"
+                className="w-8 h-8 rounded-full border border-purple-800 bg-[#1E082C] flex items-center justify-center text-white disabled:opacity-30 hover:bg-[#41175E] transition-all cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* DESKTOP GRID (md and above: untouched) */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-8">
             {boardMembers.map((seat) => (
               <div
                 key={seat.id}
@@ -175,6 +320,68 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* MOBILE CAROUSEL FOR BOARD (Visible ONLY on mobile < md) */}
+          <div className="block md:hidden">
+            <div
+              ref={boardScrollRef}
+              onScroll={() => handleContainerScroll(boardScrollRef.current, setBoardIndex)}
+              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-2 -mx-4 px-4"
+            >
+              {boardMembers.map((seat) => (
+                <div
+                  key={seat.id}
+                  className="w-[84vw] max-w-[320px] flex-shrink-0 snap-center bg-[#1E082C]/95 border border-[#41175E] rounded-2xl overflow-hidden shadow-lg flex flex-col justify-between"
+                >
+                  <div className="h-48 overflow-hidden bg-[#150520] relative">
+                    <img
+                      src={seat.image}
+                      alt={seat.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-[#FFBD59] text-[#2C0E40] px-2 py-0.5 rounded-md text-[10px] font-bold uppercase shadow-xs">
+                      {seat.role}
+                    </div>
+                  </div>
+
+                  <div className="p-5 flex flex-col justify-between flex-1">
+                    <div>
+                      <h3 className="text-base font-bold text-white mb-0.5">
+                        {seat.name}
+                      </h3>
+                      <p className="text-xs text-[#FFBD59] mb-2 font-medium">
+                        {seat.affiliation}
+                      </p>
+                      <p className="text-xs text-[#EFEFF0]/80 leading-relaxed line-clamp-3">
+                        {seat.bio}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 mt-3 border-t border-[#41175E]/70 flex items-center justify-between text-[10px] text-[#EFEFF0]/60">
+                      <span>Governance Board</span>
+                      <span className="text-[#FFBD59] font-semibold">Fiduciary</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile Dots */}
+            <div className="flex items-center justify-center gap-2 pt-4">
+              {boardMembers.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => scrollContainerTo(boardScrollRef.current, idx, boardMembers.length)}
+                  aria-label={`Go to board member ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    boardIndex === idx ? 'w-6 bg-[#FFBD59]' : 'w-2 bg-purple-900'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="mt-10 pt-6 border-t border-[#41175E] flex flex-col sm:flex-row items-center justify-between text-xs text-[#EFEFF0]/70 gap-4">

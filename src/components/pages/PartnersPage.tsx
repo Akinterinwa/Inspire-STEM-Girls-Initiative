@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { PageId } from '../../types';
+import React, { useState, useRef } from 'react';
+import { PageId, PartnerCategory, PartnerItem } from '../../types';
 import { partnerCategories } from '../../data/siteData';
 import { PartnerLogo } from '../PartnerLogo';
 import { AnimatedHeading } from '../AnimatedHeading';
@@ -13,7 +13,172 @@ import {
   CheckCircle2,
   Mail,
   Send,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
+
+interface CategorySectionProps {
+  category: PartnerCategory;
+}
+
+const CategorySection: React.FC<CategorySectionProps> = ({ category }) => {
+  const [partnerIndex, setPartnerIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToIndex = (idx: number) => {
+    if (!scrollRef.current) return;
+    const clamped = Math.max(0, Math.min(category.partners.length - 1, idx));
+    const firstChild = scrollRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    scrollRef.current.scrollTo({
+      left: clamped * (cardWidth + 14),
+      behavior: 'smooth',
+    });
+  };
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const firstChild = scrollRef.current.firstElementChild as HTMLElement | null;
+    const cardWidth = firstChild ? firstChild.offsetWidth : 280;
+    const newIdx = Math.round(scrollRef.current.scrollLeft / (cardWidth + 14));
+    setPartnerIndex(newIdx);
+  };
+
+  return (
+    <div className="p-5 sm:p-8 rounded-3xl bg-[#EFEFF0]/40 border border-[#E3E3E5] space-y-5 sm:space-y-6 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#E3E3E5] pb-4">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block">
+            Category
+          </span>
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+            {category.title}
+          </h2>
+        </div>
+        <div className="flex items-center justify-between sm:justify-end gap-3">
+          <p className="text-xs text-slate-500 max-w-md sm:text-right">
+            {category.description}
+          </p>
+          {/* Mobile Carousel Controls for this Category */}
+          <div className="flex md:hidden items-center gap-1.5 flex-shrink-0">
+            <span className="text-xs font-semibold text-slate-500 mr-1">
+              {partnerIndex + 1}/{category.partners.length}
+            </span>
+            <button
+              onClick={() => scrollToIndex(partnerIndex - 1)}
+              disabled={partnerIndex === 0}
+              aria-label="Previous partner"
+              className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scrollToIndex(partnerIndex + 1)}
+              disabled={partnerIndex >= category.partners.length - 1}
+              aria-label="Next partner"
+              className="w-8 h-8 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-700 disabled:opacity-35 hover:bg-slate-50 transition-all cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* DESKTOP GRID (md and above: untouched) */}
+      <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-5">
+        {category.partners.map((partner, idx) => (
+          <div
+            key={idx}
+            className="p-5 rounded-2xl bg-white border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:shadow-md transition-all duration-200 flex items-start gap-4"
+          >
+            {/* Dedicated Logo next to partner */}
+            <PartnerLogo
+              type={partner.logoType}
+              name={partner.name}
+              badgeText={partner.badgeText}
+            />
+
+            {/* Partner Info */}
+            <div className="space-y-1 flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <h4 className="text-sm font-bold text-slate-900 truncate">
+                  {partner.name}
+                </h4>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/20 flex-shrink-0">
+                  {partner.nature || partner.type}
+                </span>
+              </div>
+
+              <p className="text-xs text-slate-600 leading-relaxed">
+                {partner.role || partner.description}
+              </p>
+
+              <div className="pt-2 text-[11px] text-slate-500 flex items-center gap-1.5 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40]" />
+                <span>{partner.location || 'Operations across Nigeria'}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* MOBILE CAROUSEL FOR PARTNERS (Visible ONLY on mobile < md) */}
+      <div className="block md:hidden">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-3.5 pb-2 -mx-2 px-2"
+        >
+          {category.partners.map((partner, idx) => (
+            <div
+              key={idx}
+              className="w-[84vw] max-w-[310px] flex-shrink-0 snap-center p-4 rounded-2xl bg-white border border-[#E3E3E5] shadow-xs flex items-start gap-3.5"
+            >
+              <PartnerLogo
+                type={partner.logoType}
+                name={partner.name}
+                badgeText={partner.badgeText}
+              />
+              <div className="space-y-1 flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-1.5">
+                  <h4 className="text-xs font-bold text-slate-900 truncate">
+                    {partner.name}
+                  </h4>
+                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/15 flex-shrink-0">
+                    {partner.nature || partner.type}
+                  </span>
+                </div>
+
+                <p className="text-[11px] text-slate-600 leading-relaxed line-clamp-2">
+                  {partner.role || partner.description}
+                </p>
+
+                <div className="pt-1.5 text-[10px] text-slate-500 flex items-center gap-1 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40]" />
+                  <span className="truncate">{partner.location || 'Across Nigeria'}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile Indicator Dots */}
+        <div className="flex items-center justify-center gap-1.5 pt-3">
+          {category.partners.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => scrollToIndex(idx)}
+              aria-label={`Go to partner ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                partnerIndex === idx ? 'w-5 bg-[#2C0E40]' : 'w-1.5 bg-slate-300'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 interface PartnersPageProps {
   onNavigate: (page: PageId) => void;
@@ -57,63 +222,9 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
       {/* ============================================================== */}
       {/* PARTNERS CATEGORIES LISTING WITH DISTINCT LOGOS                */}
       {/* ============================================================== */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         {partnerCategories.map((category) => (
-          <div
-            key={category.id}
-            className="p-8 rounded-3xl bg-[#EFEFF0]/40 border border-[#E3E3E5] space-y-6 shadow-xs"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-[#E3E3E5] pb-4">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block">
-                  Category
-                </span>
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
-                  {category.title}
-                </h2>
-              </div>
-              <p className="text-xs text-slate-500 max-w-md sm:text-right">
-                {category.description}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {category.partners.map((partner, idx) => (
-                <div
-                  key={idx}
-                  className="p-5 rounded-2xl bg-white border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:shadow-md transition-all duration-200 flex items-start gap-4"
-                >
-                  {/* Dedicated Logo next to partner */}
-                  <PartnerLogo
-                    type={partner.logoType}
-                    name={partner.name}
-                    badgeText={partner.badgeText}
-                  />
-
-                  {/* Partner Info */}
-                  <div className="space-y-1 flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2">
-                      <h4 className="text-sm font-bold text-slate-900 truncate">
-                        {partner.name}
-                      </h4>
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/20 flex-shrink-0">
-                        {partner.nature || partner.type}
-                      </span>
-                    </div>
-
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {partner.role || partner.description}
-                    </p>
-
-                    <div className="pt-2 text-[11px] text-slate-500 flex items-center gap-1.5 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2C0E40]" />
-                      <span>{partner.location || 'Operations across Nigeria'}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <CategorySection key={category.id} category={category} />
         ))}
       </section>
 
