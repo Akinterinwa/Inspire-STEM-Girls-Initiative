@@ -35,7 +35,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -136,7 +136,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
 
           {formSubmitted ? (
             <div className="p-8 rounded-2xl bg-white border border-[#2C0E40]/30 text-center space-y-3 animate-in fade-in duration-300">
-              <div className="w-12 h-12 rounded-full bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-full bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h4 className="text-lg font-bold text-slate-900">Partnership Proposal Received</h4>
@@ -228,7 +228,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate }) => {
 
               <button
                 type="submit"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/20 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/20 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit Partnership Proposal</span>

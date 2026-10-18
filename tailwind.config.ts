@@ -15,7 +15,7 @@ export default {
           'purple-light': '#41175E',
           'purple-muted': '#58247C',
           'purple-subtle': '#F6EFF9',
-          gold: '#F0C747',
+          gold: '#FFBD59',
           'gold-hover': '#DCB132',
           'gold-dark': '#C6981E',
           'gold-light': '#FBF2D5',

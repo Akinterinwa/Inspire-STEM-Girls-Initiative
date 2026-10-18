@@ -93,7 +93,7 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Top Banner */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -126,7 +126,7 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-7 bg-[#EFEFF0]/40 rounded-3xl p-6 sm:p-10 border border-[#E3E3E5] shadow-sm">
             {donationSuccess ? (
               <div className="text-center py-10 space-y-5">
-                <div className="w-16 h-16 rounded-full bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mx-auto shadow-lg">
+                <div className="w-16 h-16 rounded-full bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mx-auto shadow-lg">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
@@ -148,7 +148,7 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                 </div>
                 <button
                   onClick={() => setDonationSuccess(false)}
-                  className="px-6 py-3 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                 >
                   Make another contribution
                 </button>
@@ -181,11 +181,11 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                       onClick={() => setDesignation('school-fund')}
                       className={`p-4 rounded-2xl text-left border transition-all duration-200 cursor-pointer hover:-translate-y-0.5 ${
                         designation === 'school-fund'
-                          ? 'bg-[#2C0E40] text-white border-[#F0C747] ring-2 ring-[#F0C747]/40 shadow-md'
+                          ? 'bg-[#2C0E40] text-white border-[#FFBD59] ring-2 ring-[#FFBD59]/40 shadow-md'
                           : 'bg-[#EFEFF0]/70 border-[#E3E3E5] text-slate-600 hover:bg-white'
                       }`}
                     >
-                      <div className={`font-bold text-sm ${designation === 'school-fund' ? 'text-[#F0C747]' : 'text-slate-900'}`}>
+                      <div className={`font-bold text-sm ${designation === 'school-fund' ? 'text-[#FFBD59]' : 'text-slate-900'}`}>
                         ISG Science School Fund
                       </div>
                       <div className={`text-xs mt-1 ${designation === 'school-fund' ? 'text-[#EFEFF0]/85' : 'text-slate-500'}`}>
@@ -215,11 +215,11 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                       onClick={() => setFrequency('monthly')}
                       className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                         frequency === 'monthly'
-                          ? 'bg-[#2C0E40] text-[#F0C747] shadow-xs'
+                          ? 'bg-[#2C0E40] text-[#FFBD59] shadow-xs'
                           : 'text-slate-600 hover:text-[#2C0E40] hover:bg-white/60'
                       }`}
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-[#F0C747]" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#FFBD59]" />
                       <span>Monthly Champion</span>
                     </button>
                   </div>
@@ -234,7 +234,7 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                         setCustomAmount('');
                       }}
                       className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        currency === 'USD' ? 'bg-[#2C0E40] text-[#F0C747] shadow-xs' : 'text-slate-500 hover:text-slate-800'
+                        currency === 'USD' ? 'bg-[#2C0E40] text-[#FFBD59] shadow-xs' : 'text-slate-500 hover:text-slate-800'
                       }`}
                     >
                       USD ($)
@@ -247,7 +247,7 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                         setCustomAmount('');
                       }}
                       className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        currency === 'NGN' ? 'bg-[#2C0E40] text-[#F0C747] shadow-xs' : 'text-slate-500 hover:text-slate-800'
+                        currency === 'NGN' ? 'bg-[#2C0E40] text-[#FFBD59] shadow-xs' : 'text-slate-500 hover:text-slate-800'
                       }`}
                     >
                       NGN (₦)
@@ -334,9 +334,9 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl text-base font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white transition-all shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-xl text-base font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white transition-all shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
                   >
-                    <Heart className="w-5 h-5 fill-current text-[#F0C747]" />
+                    <Heart className="w-5 h-5 fill-current text-[#FFBD59]" />
                     <span>
                       Complete Donation of{' '}
                       {currency === 'USD' ? `$${currentAmountValue}` : `₦${currentAmountValue.toLocaleString()}`}
@@ -356,8 +356,8 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5 space-y-6">
             {/* Spotlight: ISG Science School Fund */}
             <div className="p-8 rounded-3xl bg-[#2C0E40] text-white border border-[#41175E] shadow-xl space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#F0C747]">
-                <School className="w-4 h-4 text-[#F0C747]" />
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFBD59]">
+                <School className="w-4 h-4 text-[#FFBD59]" />
                 <span>Flagship Endowment</span>
               </div>
               <h3 className="text-2xl font-bold leading-tight text-white">
@@ -367,17 +367,17 @@ export const DonatePage: React.FC<DonatePageProps> = ({ onNavigate }) => {
                 By contributing to the Science School Fund, you are supporting the long-term establishment of a tuition-free science and STEM academy for girls from underserved communities in Nigeria.
               </p>
               <div className="p-4 rounded-xl bg-[#1E082C]/80 border border-[#41175E] text-xs text-[#EFEFF0] space-y-1.5">
-                <div className="font-semibold text-[#F0C747]">Fund Allocations:</div>
+                <div className="font-semibold text-[#FFBD59]">Fund Allocations:</div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#F0C747]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#FFBD59]" />
                   <span>Laboratories & scientific equipment acquisition</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#F0C747]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#FFBD59]" />
                   <span>Full tuition & residential boarding endowments</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#F0C747]" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#FFBD59]" />
                   <span>Curriculum excellence & STEM faculty chairs</span>
                 </div>
               </div>

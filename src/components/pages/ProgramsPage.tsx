@@ -33,7 +33,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
       : programsData.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-white space-y-16 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -104,7 +104,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-[#2C0E40] text-[#F0C747] shadow-xs'
+                    ? 'bg-[#2C0E40] text-[#FFBD59] shadow-xs'
                     : 'text-slate-600 hover:text-[#2C0E40] hover:bg-white/80'
                 }`}
               >
@@ -137,23 +137,22 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/80 via-transparent to-transparent pointer-events-none" />
                   
                   <div className="absolute top-4 left-4">
-                    <span className="bg-[#2C0E40] text-[#F0C747] text-xs font-bold px-3 py-1 rounded-md shadow-sm">
+                    <span className="bg-[#2C0E40] text-[#FFBD59] text-xs font-bold px-3 py-1 rounded-md shadow-sm">
                       {program.categoryLabel}
                     </span>
                   </div>
 
                   {program.images && program.images.length > 1 && (
-                    <div className="absolute top-4 right-4 bg-[#150520]/85 backdrop-blur-xs text-[#F0C747] px-2.5 py-1 rounded-md text-xs font-medium flex items-center gap-1.5 shadow-sm border border-[#F0C747]/30">
-                      <Camera className="w-3.5 h-3.5 text-[#F0C747]" />
-                      <span>{program.images.length} Photos (Auto-Slider)</span>
+                    <div className="absolute top-4 right-4 bg-[#150520]/85 backdrop-blur-xs text-[#FFBD59] px-2.5 py-1 rounded-md text-xs font-medium flex items-center gap-1.5 shadow-sm border border-[#FFBD59]/30">
+                      <Camera className="w-3.5 h-3.5 text-[#FFBD59]" />
                     </div>
                   )}
 
                   <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <span className="text-xs text-[#F0C747] font-semibold block mb-0.5">
+                    <span className="text-xs text-[#FFBD59] font-semibold block mb-0.5">
                       {program.status}
                     </span>
-                    <h3 className="text-xl font-bold leading-snug drop-shadow-sm group-hover:text-[#F0C747] transition-colors">
+                    <h3 className="text-xl font-bold leading-snug drop-shadow-sm group-hover:text-[#FFBD59] transition-colors">
                       {program.name}
                     </h3>
                   </div>
@@ -236,10 +235,10 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
               <div className="p-6 pt-0 border-t border-[#EFEFF0] mt-2 flex items-center justify-between">
                 <button
                   onClick={() => onSelectProgram(program)}
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white transition-all text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                  className="w-full py-3.5 px-4 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white transition-all text-xs font-bold flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                 >
-                  <Camera className="w-4 h-4 text-[#F0C747]" />
-                  <span>View Project ({program.images?.length || 1} Photos)</span>
+                  <Camera className="w-4 h-4 text-[#FFBD59]" />
+                  <span>View Project</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -262,7 +261,7 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
               onNavigate('get-involved');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all flex-shrink-0 shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+            className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all flex-shrink-0 shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
           >
             Apply for School Partnership
           </button>

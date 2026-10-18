@@ -148,7 +148,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
       <div className="py-16 bg-[#EFEFF0]/30 min-h-[85vh] flex items-center justify-center px-4">
         <div className="w-full max-w-md bg-white rounded-3xl border border-[#E3E3E5] shadow-lg p-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center">
               <Instagram className="w-6 h-6" />
             </div>
             <div>
@@ -189,7 +189,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
 
             <button
               type="submit"
-              className="w-full px-4 py-3 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white text-sm font-bold transition-all shadow-md cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white text-sm font-bold transition-all shadow-md cursor-pointer"
             >
               Unlock Admin Panel
             </button>
@@ -200,7 +200,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#EFEFF0]/30 min-h-[85vh] selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-[#EFEFF0]/30 min-h-[85vh] selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Navigation & Header */}
         <div>
@@ -240,7 +240,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
 
             <button
               onClick={() => onNavigate('home')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white text-xs font-bold transition-all shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer self-start sm:self-auto"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white text-xs font-bold transition-all shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer self-start sm:self-auto"
             >
               <Eye className="w-4 h-4" />
               <span>View On Main Website</span>
@@ -266,7 +266,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
         {/* Main Embed Link Input Card */}
         <div className="p-6 sm:p-8 bg-white rounded-3xl border border-[#E3E3E5] shadow-lg space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center font-bold shadow-sm">
+            <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center font-bold shadow-sm">
               <Instagram className="w-6 h-6" />
             </div>
             <div>
@@ -328,7 +328,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
 
               <button
                 type="submit"
-                className="px-6 py-3.5 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                className="px-6 py-3.5 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
               >
                 <PlusCircle className="w-4 h-4" />
                 <span>Embed & Populate on Website</span>
@@ -370,7 +370,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigate }) => {
                   {/* Left: Info */}
                   <div className="space-y-2 flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-[#2C0E40] text-[#F0C747]">
+                      <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-[#2C0E40] text-[#FFBD59]">
                         Post #{idx + 1}
                       </span>
                       <span className="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">

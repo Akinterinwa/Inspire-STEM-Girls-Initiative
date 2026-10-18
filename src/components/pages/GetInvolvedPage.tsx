@@ -35,7 +35,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -68,7 +68,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
             }`}
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-4 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
                 <Handshake className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-1">
@@ -96,7 +96,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
             }`}
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-4 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
                 <Users className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-1">
@@ -124,7 +124,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
             }`}
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-4 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-4 shadow-xs">
                 <HeartHandshake className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-1">
@@ -145,10 +145,10 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               onNavigate('donate');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="p-6 rounded-2xl text-left border border-[#F0C747] bg-[#FEFAF0] hover:bg-[#FBF2D5] transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer shadow-xs"
+            className="p-6 rounded-2xl text-left border border-[#FFBD59] bg-[#FEFAF0] hover:bg-[#FBF2D5] transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 cursor-pointer shadow-xs"
           >
             <div>
-              <div className="w-10 h-10 rounded-xl bg-[#F0C747] text-[#2C0E40] flex items-center justify-center mb-4 shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center mb-4 shadow-xs">
                 <Heart className="w-5 h-5 fill-current" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-1">
@@ -172,7 +172,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
         <div className="bg-[#EFEFF0]/40 rounded-3xl p-8 sm:p-12 border border-[#E3E3E5]">
           {submittedForm ? (
             <div className="text-center py-8 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mx-auto shadow-md">
+              <div className="w-14 h-14 rounded-full bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mx-auto shadow-md">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900">
@@ -183,7 +183,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               </p>
               <button
                 onClick={() => setSubmittedForm(null)}
-                className="mt-4 px-6 py-2.5 rounded-xl bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="mt-4 px-6 py-2.5 rounded-xl bg-[#2C0E40] text-[#FFBD59] hover:bg-[#41175E] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 Submit another request
               </button>
@@ -251,7 +251,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
 
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
+                      className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
                     >
                       <Send className="w-4 h-4" />
                       <span>Submit Partnership Application</span>
@@ -349,7 +349,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
 
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
+                      className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
                     >
                       <Send className="w-4 h-4" />
                       <span>Submit Mentor Application</span>
@@ -419,7 +419,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
 
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
+                      className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer transition-all"
                     >
                       <Send className="w-4 h-4" />
                       <span>Join Volunteer Network</span>
@@ -436,7 +436,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#2C0E40] rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl border border-[#41175E]">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#F0C747] block mb-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#FFBD59] block mb-1">
               Support Our Mission
             </span>
             <h3 className="text-2xl sm:text-3xl font-bold">
@@ -451,7 +451,7 @@ export const GetInvolvedPage: React.FC<GetInvolvedPageProps> = ({ onNavigate }) 
               onNavigate('donate');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="px-7 py-3.5 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] flex-shrink-0 transition-all shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center gap-2"
+            className="px-7 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] flex-shrink-0 transition-all shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center gap-2"
           >
             <Heart className="w-4 h-4 fill-current text-[#2C0E40]" />
             <span>Make a Contribution</span>

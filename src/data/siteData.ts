@@ -9,7 +9,7 @@ import {
   SocialUpdate,
 } from '../types';
 
-import heroImg from '../stem img/DSC_0230.webp';
+import heroImg from '../stem img/hero page.jpg';
 import founderImg from '../stem img/Adelusi.jpg';
 import pmImg from '../assets/images/program_manager_1790849429029.jpg';
 import schoolVisionImg from '../assets/images/science_school_vision_1790849441146.jpg';
@@ -251,8 +251,8 @@ export const staffMembers: TeamMember[] = [
     location: 'Lagos, Nigeria',
     bio: 'Oluwaseyi Adelusi is a software engineer and the Founder and Executive Director of Inspire STEM Girls Initiative. Her experience in technology and passion for education inspired her to create an organization focused on increasing access to STEM opportunities for girls who may otherwise lack the exposure, resources and support needed to pursue STEM pathways. Her long-term vision is to build a tuition-free science/STEM school in Nigeria where girls from underserved communities can access quality education regardless of their financial circumstances.',
     image: founderImg,
-    linkedin: 'https://linkedin.com/in/',
-    email: 'contact@inspirestemgirls.org',
+    linkedin: 'https://www.linkedin.com/company/inspirestemgirls/home/',
+    email: 'inspirestemgirl@gmail.com',
     isStaff: true,
   },
   {
@@ -277,33 +277,15 @@ export const boardMembers: BoardMember[] = [
     image: boardProfImg,
     isConfirmed: true,
   },
-  {
-    id: 'board-tech-enterprise',
-    name: 'Engr. Kemi Balogun',
-    role: 'Advisory Board Member - Technology & Enterprise',
-    affiliation: 'Vice President of Enterprise Engineering & Infrastructure',
-    bio: 'Advises on industry tech mentorship frameworks, digital skills workforce relevance, and corporate STEM CSR partnerships.',
-    image: boardTechImg,
-    isConfirmed: true,
-  },
-  {
-    id: 'board-legal-counsel',
-    name: 'Barr. Titilayo Adebayo',
-    role: 'Advisory Board Member - Governance & Compliance',
-    affiliation: 'Managing Partner, Non-Profit Governance & International Law Practice',
-    bio: 'Provides institutional oversight, statutory non-profit legal compliance, international grant audit standards, and fiduciary governance.',
-    image: boardLegalImg,
-    isConfirmed: true,
-  },
-  {
-    id: 'board-school-development',
-    name: 'Dr. Jumoke Ogundimu',
-    role: 'Advisory Board Member - Capital Projects & School Development',
-    affiliation: 'Director of Educational Infrastructure Planning & Philanthropy',
-    bio: 'Leads strategic feasibility, architectural planning, and donor capital alliances for the future tuition-free ISG Science School campus.',
-    image: boardPhilanthropyImg,
-    isConfirmed: true,
-  },
+  // {
+  //   id: 'board-tech-enterprise',
+  //   name: 'Engr. Kemi Balogun',
+  //   role: 'Advisory Board Member - Technology & Enterprise',
+  //   affiliation: 'Vice President of Enterprise Engineering & Infrastructure',
+  //   bio: 'Advises on industry tech mentorship frameworks, digital skills workforce relevance, and corporate STEM CSR partnerships.',
+  //   image: boardTechImg,
+  //   isConfirmed: true,
+  // }
 ];
 
 // ==========================================

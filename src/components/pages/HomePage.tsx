@@ -38,7 +38,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectProgram,
 }) => {
   return (
-    <div className="space-y-0 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="space-y-0 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* ============================================================== */}
       {/* 1. HERO SECTION                                                */}
       {/* Mobile: Full background image with text overlay                */}
@@ -64,7 +64,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               as="h1"
               accent
               subtitle="Inspire STEM Girls Initiative · Nigeria"
-              subtitleClassName="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C0E40]/60 backdrop-blur-md text-[#F0C747] text-xs font-semibold uppercase tracking-wider border border-[#F0C747]/40"
+              subtitleClassName="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2C0E40]/60 backdrop-blur-md text-[#FFBD59] text-xs font-semibold uppercase tracking-wider border border-[#FFBD59]/40"
               className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-md text-left"
             >
               Building Brighter Futures for Girls Through STEM
@@ -83,9 +83,9 @@ export const HomePage: React.FC<HomePageProps> = ({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="p-4 rounded-xl bg-[#2C0E40]/90 border-l-4 border-[#F0C747] backdrop-blur-md"
+              className="p-4 rounded-xl bg-[#2C0E40]/90 border-l-4 border-[#FFBD59] backdrop-blur-md"
             >
-              <p className="text-xs sm:text-sm font-semibold text-[#F0C747] leading-snug">
+              <p className="text-xs sm:text-sm font-semibold text-[#FFBD59] leading-snug">
                 Our long-term vision is to establish a tuition-free science/STEM school for girls from underserved communities in Nigeria.
               </p>
             </motion.div>
@@ -101,7 +101,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onNavigate('programs');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 <span>Explore Our Programs</span>
                 <ArrowRight className="w-4 h-4" />
@@ -114,7 +114,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/30 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                <Heart className="w-4 h-4 text-[#F0C747] fill-current" />
+                <Heart className="w-4 h-4 text-[#FFBD59] fill-current" />
                 <span>Support Our Mission</span>
               </button>
             </motion.div>
@@ -168,7 +168,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       onNavigate('programs');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#2C0E40] text-white hover:bg-[#41175E] hover:text-[#F0C747] shadow-lg shadow-purple-950/20 hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#2C0E40] text-white hover:bg-[#41175E] hover:text-[#FFBD59] shadow-lg shadow-purple-950/20 hover:shadow-xl hover:-translate-y-1 active:scale-95 transition-all duration-200 cursor-pointer"
                   >
                     <span>Explore Our Programs</span>
                     <ArrowRight className="w-4 h-4" />
@@ -181,7 +181,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     }}
                     className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-bold border-2 border-[#2C0E40] text-[#2C0E40] hover:bg-[#EFEFF0] bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-md active:scale-95 cursor-pointer"
                   >
-                    <Heart className="w-4 h-4 text-[#F0C747] fill-current" />
+                    <Heart className="w-4 h-4 text-[#FFBD59] fill-current" />
                     <span>Support Our Mission</span>
                   </button>
                 </motion.div>
@@ -220,7 +220,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         Students assembling electronic circuits & programmable logic in Nigeria.
                       </p>
                     </div>
-                    <span className="text-xs font-bold text-[#2C0E40] bg-[#F0C747] px-2.5 py-1 rounded-md shadow-xs">
+                    <span className="text-xs font-bold text-[#2C0E40] bg-[#FFBD59] px-2.5 py-1 rounded-md shadow-xs">
                       Lagos Cohort
                     </span>
                   </div>
@@ -233,7 +233,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-[#EFEFF0] hidden sm:flex items-center gap-3.5"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#2C0E40] flex items-center justify-center text-[#F0C747]">
+                  <div className="w-12 h-12 rounded-xl bg-[#2C0E40] flex items-center justify-center text-[#FFBD59]">
                     <Sparkles className="w-6 h-6" />
                   </div>
                   <div>
@@ -260,7 +260,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               as="h2"
               accent
               subtitle="Measurable Progress"
-              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#F0C747] block mb-1"
+              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#FFBD59] block mb-1"
               className="text-3xl sm:text-4xl font-bold tracking-tight text-white text-left"
             >
               Our Impact
@@ -285,10 +285,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="bg-[#2C0E40]/70 border border-[#41175E] rounded-2xl p-5 sm:p-6 hover:border-[#F0C747] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="bg-[#2C0E40]/70 border border-[#41175E] rounded-2xl p-5 sm:p-6 hover:border-[#FFBD59] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* Number reading up till total */}
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F0C747] tracking-tight mb-2 min-h-[44px]">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#FFBD59] tracking-tight mb-2 min-h-[44px]">
                   <SmartCounter value={metric.value} />
                 </div>
                 <div className="text-sm sm:text-base font-semibold text-white mb-1 leading-snug">
@@ -307,7 +307,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onNavigate('impact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="text-[#F0C747] hover:text-[#DCB132] font-semibold inline-flex items-center gap-1.5 transition-all hover:translate-x-1 cursor-pointer"
+              className="text-[#FFBD59] hover:text-[#DCB132] font-semibold inline-flex items-center gap-1.5 transition-all hover:translate-x-1 cursor-pointer"
             >
               <span>View full impact data & stories</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -346,7 +346,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-6 shadow-sm">
                   <Compass className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -380,7 +380,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-6 shadow-sm">
                   <Users className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -414,7 +414,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#F0C747] text-[#2C0E40] flex items-center justify-center mb-6 shadow-sm font-bold">
+                <div className="w-12 h-12 rounded-2xl bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center mb-6 shadow-sm font-bold">
                   <KeyRound className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -448,7 +448,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="p-8 rounded-3xl bg-[#EFEFF0]/50 border border-[#E3E3E5] hover:border-[#2C0E40]/40 hover:bg-[#EFEFF0] hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
             >
               <div>
-                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mb-6 shadow-sm">
                   <School className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -543,7 +543,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/85 via-transparent to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <span className="text-[10px] font-bold text-[#F0C747] uppercase tracking-wider block">
+                  <span className="text-[10px] font-bold text-[#FFBD59] uppercase tracking-wider block">
                     {item.label}
                   </span>
                   <p className="text-xs font-semibold mt-0.5">{item.caption}</p>
@@ -567,7 +567,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 as="h2"
                 accent
                 subtitle="Our Vision"
-                subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#F0C747]"
+                subtitleClassName="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFBD59]"
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight text-left"
               >
                 The Future We Are Building
@@ -580,9 +580,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <p>
                   We are working toward a future where a girl&rsquo;s socioeconomic background does not determine the quality of education or opportunities available to her.
                 </p>
-                <p className="text-white font-medium bg-[#1E082C] p-4 rounded-xl border border-[#41175E]">
-                  Our long-term goal is to establish a <strong className="text-[#F0C747] font-bold">tuition-free science/STEM school in Nigeria for girls from underserved communities</strong>, providing access to quality education, laboratories, technology, mentorship, innovation and pathways into STEM careers.
-                </p>
               </div>
 
               <div className="pt-2">
@@ -591,7 +588,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     onNavigate('vision');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/30 hover:-translate-y-1 active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all shadow-lg hover:shadow-amber-500/30 hover:-translate-y-1 active:scale-95 cursor-pointer"
                 >
                   <span>Learn About Our Vision</span>
                   <ArrowRight className="w-4 h-4" />
@@ -609,7 +606,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/95 via-[#150520]/30 to-transparent pointer-events-none" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="flex items-center gap-2 text-[11px] text-[#F0C747] uppercase tracking-wider font-semibold">
+                  <div className="flex items-center gap-2 text-[11px] text-[#FFBD59] uppercase tracking-wider font-semibold">
                     <span>Future Campus Concept</span>
                     <span aria-hidden="true">·</span>
                     <span>Long-Term Goal</span>
@@ -673,13 +670,12 @@ export const HomePage: React.FC<HomePageProps> = ({
                       decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-3 left-3 bg-[#2C0E40] text-[#F0C747] px-2.5 py-1 rounded-md text-[11px] font-bold shadow-xs">
+                    <div className="absolute top-3 left-3 bg-[#2C0E40] text-[#FFBD59] px-2.5 py-1 rounded-md text-[11px] font-bold shadow-xs">
                       {program.categoryLabel}
                     </div>
                     {program.images && program.images.length > 1 && (
                       <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-xs text-white px-2 py-0.5 rounded text-[10px] font-medium flex items-center gap-1">
-                        <Camera className="w-3 h-3 text-[#F0C747]" />
-                        <span>{program.images.length} Photos</span>
+                        <Camera className="w-3 h-3 text-[#FFBD59]" />
                       </div>
                     )}
                   </div>
@@ -726,102 +722,6 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* 7. LIVE SOCIAL COMMUNITY FEED (Instagram & LinkedIn Updates)   */}
       {/* ============================================================== */}
       <SocialFeedSection onNavigate={onNavigate} />
-
-      {/* ============================================================== */}
-      {/* 8. SDG SECTION                                                 */}
-      {/* ============================================================== */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-10">
-            <AnimatedHeading
-              as="h2"
-              accent
-              subtitle="Global Alignment & Credibility"
-              subtitleClassName="text-xs font-bold uppercase tracking-wider text-[#2C0E40] block mb-1"
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 text-left"
-            >
-              Our Work and the Sustainable Development Goals
-            </AnimatedHeading>
-            <p className="text-sm text-slate-600 mt-2">
-              Inspire STEM Girls Initiative aligns its programmatic targets with the United Nations 2030 Agenda for Sustainable Development, focusing on systemic educational equity and gender inclusion.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* SDG 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="p-6 sm:p-8 rounded-2xl border-2 border-red-100 bg-red-50/30 flex flex-col justify-between hover:shadow-md transition-shadow"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#c5192d] text-white flex items-center justify-center font-bold text-xl shadow-xs">
-                    4
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">
-                      SDG 4 – Quality Education
-                    </h3>
-                    <span className="text-xs text-slate-500">United Nations Sustainable Development Goal</span>
-                  </div>
-                </div>
-                <p className="text-sm text-slate-700 leading-relaxed font-medium">
-                  We work to increase access to quality education and STEM learning opportunities for underserved girls.
-                </p>
-                <ul className="mt-4 space-y-2 text-xs text-slate-600">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#c5192d] mt-1.5 flex-shrink-0" />
-                    <span>Hands-on practical laboratory science and computing workshops for under-resourced public schools.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#c5192d] mt-1.5 flex-shrink-0" />
-                    <span>Removing financial barriers to examination registration fees and STEM textbooks.</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* SDG 5 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="p-6 sm:p-8 rounded-2xl border-2 border-orange-100 bg-orange-50/30 flex flex-col justify-between hover:shadow-md transition-shadow"
-            >
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#ff3a21] text-white flex items-center justify-center font-bold text-xl shadow-xs">
-                    5
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900">
-                      SDG 5 – Gender Equality
-                    </h3>
-                    <span className="text-xs text-slate-500">United Nations Sustainable Development Goal</span>
-                  </div>
-                </div>
-                <p className="text-sm text-slate-700 leading-relaxed font-medium">
-                  We support girls in accessing opportunities and pathways in fields where women remain underrepresented.
-                </p>
-                <ul className="mt-4 space-y-2 text-xs text-slate-600">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff3a21] mt-1.5 flex-shrink-0" />
-                    <span>Demystifying STEM careers through female professional role models and 1-on-1 mentorship.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#ff3a21] mt-1.5 flex-shrink-0" />
-                    <span>Empowering girls to become technical problem solvers and leaders in their communities.</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* ============================================================== */}
       {/* 8. IMPACT TESTIMONIAL PREVIEW                                  */}
@@ -884,7 +784,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onNavigate('donate');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all duration-200 shadow-lg hover:shadow-amber-500/25 hover:-translate-y-1 active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all duration-200 shadow-lg hover:shadow-amber-500/25 hover:-translate-y-1 active:scale-95 cursor-pointer"
             >
               Support Our Mission
             </button>
@@ -893,7 +793,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onNavigate('get-involved');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-[#41175E] hover:bg-[#58247C] text-white border border-[#F0C747]/40 hover:border-[#F0C747] transition-all duration-200 hover:-translate-y-1 hover:shadow-md active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-[#41175E] hover:bg-[#58247C] text-white border border-[#FFBD59]/40 hover:border-[#FFBD59] transition-all duration-200 hover:-translate-y-1 hover:shadow-md active:scale-95 cursor-pointer"
             >
               Get Involved as a Partner or Mentor
             </button>

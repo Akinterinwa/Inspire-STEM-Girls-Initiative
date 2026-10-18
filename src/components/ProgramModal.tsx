@@ -278,7 +278,7 @@ export const ProgramModal: React.FC<ProgramModalProps> = ({
                 onClose();
                 onGetInvolved();
               }}
-              className="flex-1 sm:flex-initial px-5 py-2.5 text-xs font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              className="flex-1 sm:flex-initial px-5 py-2.5 text-xs font-bold bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg hover:shadow-purple-950/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               <span>Partner On This</span>
               <ArrowRight className="w-3.5 h-3.5" />

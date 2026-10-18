@@ -26,7 +26,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -74,7 +74,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                     <span
                       className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-lg ${
                         report.featured
-                          ? 'bg-[#F0C747] text-[#2C0E40]'
+                          ? 'bg-[#FFBD59] text-[#2C0E40]'
                           : 'bg-[#EFEFF0] text-[#2C0E40] border border-[#2C0E40]/20'
                       }`}
                     >
@@ -82,7 +82,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                     </span>
                     <span
                       className={`text-xs flex items-center gap-1 font-medium ${
-                        report.featured ? 'text-[#F0C747]' : 'text-slate-500'
+                        report.featured ? 'text-[#FFBD59]' : 'text-slate-500'
                       }`}
                     >
                       <Calendar className="w-3.5 h-3.5" />
@@ -117,7 +117,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                   <div className="space-y-2 pt-2">
                     <span
                       className={`text-xs font-bold uppercase tracking-wider block ${
-                        report.featured ? 'text-[#F0C747]' : 'text-[#2C0E40]'
+                        report.featured ? 'text-[#FFBD59]' : 'text-[#2C0E40]'
                       }`}
                     >
                       Report Highlights & Verified Outcomes:
@@ -132,7 +132,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                         >
                           <CheckCircle2
                             className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${
-                              report.featured ? 'text-[#F0C747]' : 'text-[#2C0E40]'
+                              report.featured ? 'text-[#FFBD59]' : 'text-[#2C0E40]'
                             }`}
                           />
                           <span>{h}</span>
@@ -148,8 +148,8 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
                     onClick={() => handleDownload(report.title)}
                     className={`px-6 py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer ${
                       report.featured
-                        ? 'bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] hover:shadow-amber-500/25'
-                        : 'bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white hover:shadow-purple-950/20'
+                        ? 'bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] hover:shadow-amber-500/25'
+                        : 'bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white hover:shadow-purple-950/20'
                     }`}
                   >
                     <Download className="w-4 h-4" />
@@ -201,7 +201,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs"
         >
           <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-[#E3E3E5] text-center space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#2C0E40] text-[#F0C747] flex items-center justify-center mx-auto shadow-md">
+            <div className="w-14 h-14 rounded-2xl bg-[#2C0E40] text-[#FFBD59] flex items-center justify-center mx-auto shadow-md">
               <Download className="w-7 h-7 animate-bounce" />
             </div>
             <h4 className="text-lg font-bold text-slate-900">
@@ -213,7 +213,7 @@ export const ReportsPage: React.FC<ReportsPageProps> = ({ onNavigate }) => {
             <div className="pt-2 flex flex-col sm:flex-row gap-2">
               <button
                 onClick={() => setDownloadModal(null)}
-                className="w-full py-3 rounded-xl bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full py-3 rounded-xl bg-[#2C0E40] text-[#FFBD59] hover:bg-[#41175E] hover:text-white text-xs font-bold transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 Done
               </button>

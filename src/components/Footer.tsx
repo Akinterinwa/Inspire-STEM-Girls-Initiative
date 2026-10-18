@@ -33,38 +33,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-[#150520] text-stone-300 pt-16 pb-12 border-t border-[#2C0E40]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Mission Statement Banner in Footer with Brand Purple and Radiant Gold */}
-        <div className="bg-[#2C0E40] rounded-3xl p-6 sm:p-8 mb-12 border border-[#41175E] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
-          <div className="max-w-2xl">
-            <span className="text-xs font-bold tracking-wider uppercase text-[#F0C747]">
-              Our Guiding Conviction
-            </span>
-            <p className="text-lg sm:text-xl text-white font-serif-display mt-2 leading-relaxed">
-              &ldquo;We believe talent is everywhere, but access and opportunity are not. A girl&rsquo;s potential should never be limited by her gender or socioeconomic background.&rdquo;
-            </p>
-          </div>
-          <div className="flex-shrink-0 flex items-center gap-3">
-            <button
-              onClick={() => {
-                onNavigate('donate');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all duration-200 shadow-md hover:shadow-lg hover:shadow-amber-500/20 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
-            >
-              <Heart className="w-4 h-4 fill-current text-[#2C0E40]" />
-              <span>Invest in Her Future</span>
-            </button>
-          </div>
-        </div>
-
         {/* ============================================================== */}
         {/* NEWSLETTER SUBSCRIPTION FORM                                   */}
         {/* ============================================================== */}
         <div className="bg-gradient-to-r from-[#2C0E40] via-[#1E082C] to-[#150520] rounded-3xl p-6 sm:p-10 mb-14 border border-[#41175E]/70 shadow-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 space-y-2">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#F0C747]">
-                <Sparkles className="w-4 h-4 text-[#F0C747]" />
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#FFBD59]">
+                <Sparkles className="w-4 h-4 text-[#FFBD59]" />
                 <span>Stay Informed</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -77,14 +53,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
             <div className="lg:col-span-6">
               {subscribed ? (
-                <div className="p-5 rounded-2xl bg-[#2C0E40] border border-[#F0C747] flex items-center gap-4 text-white animate-in fade-in duration-300">
-                  <div className="w-10 h-10 rounded-full bg-[#F0C747] text-[#2C0E40] flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="p-5 rounded-2xl bg-[#2C0E40] border border-[#FFBD59] flex items-center gap-4 text-white animate-in fade-in duration-300">
+                  <div className="w-10 h-10 rounded-full bg-[#FFBD59] text-[#2C0E40] flex items-center justify-center flex-shrink-0 font-bold">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white">Thank You for Subscribing!</h4>
                     <p className="text-xs text-[#EFEFF0] mt-0.5">
-                      You are now subscribed with <strong className="text-[#F0C747]">{email}</strong>. We look forward to keeping you updated on our girls&rsquo; journey.
+                      You are now subscribed with <strong className="text-[#FFBD59]">{email}</strong>. We look forward to keeping you updated on our girls&rsquo; journey.
                     </p>
                   </div>
                 </div>
@@ -92,19 +68,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <form onSubmit={handleSubscribe} className="space-y-2.5">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <div className="relative flex-1">
-                      <Mail className="w-4 h-4 text-[#F0C747] absolute left-3.5 top-3.5" />
+                      <Mail className="w-4 h-4 text-[#FFBD59] absolute left-3.5 top-3.5" />
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email address"
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#150520]/90 border border-[#41175E] text-white placeholder-stone-400 text-sm focus:border-[#F0C747] focus:ring-1 focus:ring-[#F0C747] outline-none transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#150520]/90 border border-[#41175E] text-white placeholder-stone-400 text-sm focus:border-[#FFBD59] focus:ring-1 focus:ring-[#FFBD59] outline-none transition-all"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="px-6 py-3 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all flex items-center justify-center gap-2 flex-shrink-0 shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                      className="px-6 py-3 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all flex items-center justify-center gap-2 flex-shrink-0 shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                     >
                       <Send className="w-4 h-4" />
                       <span>Subscribe</span>
@@ -135,13 +111,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
             <div className="pt-2 space-y-2 text-xs text-stone-400">
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#F0C747] flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#FFBD59] flex-shrink-0" />
                 <span>Headquartered in Lagos, Nigeria · Operations across Southwest & beyond</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#F0C747] flex-shrink-0" />
-                <a href="mailto:contact@inspirestemgirls.org" className="hover:text-[#F0C747] transition-colors">
-                  contact@inspirestemgirls.org
+                <Mail className="w-3.5 h-3.5 text-[#FFBD59] flex-shrink-0" />
+                <a href="mailto:inspirestemgirl@gmail.com" className="hover:text-[#FFBD59] transition-colors">
+                  inspirestemgirl@gmail.com
                 </a>
               </div>
             </div>
@@ -157,17 +133,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Inspire STEM Girls on Twitter / X"
-                  className="w-10 h-10 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] border border-[#41175E] hover:border-[#F0C747] text-[#F0C747] flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-950/40 cursor-pointer"
+                  className="w-10 h-10 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] border border-[#41175E] hover:border-[#FFBD59] text-[#FFBD59] flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-950/40 cursor-pointer"
                   title="Follow us on Twitter / X (@inspirestemgirls)"
                 >
                   <Twitter className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://linkedin.com/company/inspire-stem-girls-initiative"
+                  href="https://www.linkedin.com/company/inspirestemgirls/home/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Inspire STEM Girls on LinkedIn"
-                  className="w-10 h-10 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] border border-[#41175E] hover:border-[#F0C747] text-[#F0C747] flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-950/40 cursor-pointer"
+                  className="w-10 h-10 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] border border-[#41175E] hover:border-[#FFBD59] text-[#FFBD59] flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-950/40 cursor-pointer"
                   title="Connect on LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -177,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Inspire STEM Girls on Instagram"
-                  className="w-10 h-10 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] border border-[#41175E] hover:border-[#F0C747] text-[#F0C747] flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-950/40 cursor-pointer"
+                  className="w-10 h-10 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] border border-[#41175E] hover:border-[#FFBD59] text-[#FFBD59] flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-950/40 cursor-pointer"
                   title="Follow us on Instagram (@inspirestem_girls)"
                 >
                   <Instagram className="w-4 h-4" />
@@ -195,7 +171,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Home
                 </button>
@@ -203,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('about'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   About Our Mission
                 </button>
@@ -211,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('programs'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Programs & Projects
                 </button>
@@ -219,7 +195,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('impact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Our Impact
                 </button>
@@ -227,10 +203,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('vision'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all flex items-center gap-1 cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all flex items-center gap-1 cursor-pointer"
                 >
                   <span>Our Vision</span>
-                  <span className="text-[10px] text-[#F0C747] font-semibold bg-[#2C0E40] px-1.5 py-0.5 rounded">Science School</span>
+                  <span className="text-[10px] text-[#FFBD59] font-semibold bg-[#2C0E40] px-1.5 py-0.5 rounded"></span>
                 </button>
               </li>
             </ul>
@@ -245,7 +221,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('team'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Our Team & Founder
                 </button>
@@ -253,7 +229,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('team'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Board & Governance
                 </button>
@@ -261,7 +237,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('partners'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Partners & Collaborators
                 </button>
@@ -269,7 +245,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('reports'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Reports & Publications
                 </button>
@@ -277,7 +253,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <li>
                 <button
                   onClick={() => { onNavigate('get-involved'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="text-stone-300 hover:text-[#F0C747] hover:translate-x-1 transition-all cursor-pointer"
+                  className="text-stone-300 hover:text-[#FFBD59] hover:translate-x-1 transition-all cursor-pointer"
                 >
                   Get Involved (Mentor/Volunteer)
                 </button>
@@ -292,13 +268,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </h4>
             <div className="space-y-3">
               <div className="p-3.5 rounded-xl bg-[#2C0E40] border border-[#41175E]">
-                <span className="text-xs font-bold text-[#F0C747] block">SDG 4: Quality Education</span>
+                <span className="text-xs font-bold text-[#FFBD59] block">SDG 4: Quality Education</span>
                 <span className="text-xs text-[#EFEFF0]/80 block mt-1">
                   Expanding STEM access & practical learning for underserved girls.
                 </span>
               </div>
               <div className="p-3.5 rounded-xl bg-[#2C0E40] border border-[#41175E]">
-                <span className="text-xs font-bold text-[#F0C747] block">SDG 5: Gender Equality</span>
+                <span className="text-xs font-bold text-[#FFBD59] block">SDG 5: Gender Equality</span>
                 <span className="text-xs text-[#EFEFF0]/80 block mt-1">
                   Dismantling barriers and building pathways in underrepresented fields.
                 </span>
@@ -321,7 +297,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter / X"
-                className="text-stone-400 hover:text-[#F0C747] hover:-translate-y-0.5 transition-all p-1"
+                className="text-stone-400 hover:text-[#FFBD59] hover:-translate-y-0.5 transition-all p-1"
                 title="Twitter / X"
               >
                 <Twitter className="w-3.5 h-3.5" />
@@ -331,17 +307,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="text-stone-400 hover:text-[#F0C747] hover:-translate-y-0.5 transition-all p-1"
+                className="text-stone-400 hover:text-[#FFBD59] hover:-translate-y-0.5 transition-all p-1"
                 title="LinkedIn"
               >
                 <Linkedin className="w-3.5 h-3.5" />
               </a>
               <a
-                href="https://instagram.com/inspirestem_girls"
+                href="https://www.linkedin.com/company/inspirestemgirls/home/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-stone-400 hover:text-[#F0C747] hover:-translate-y-0.5 transition-all p-1"
+                className="text-stone-400 hover:text-[#FFBD59] hover:-translate-y-0.5 transition-all p-1"
                 title="Instagram (@inspirestem_girls)"
               >
                 <Instagram className="w-3.5 h-3.5" />
@@ -352,8 +328,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="flex items-center gap-4">
             <span>Built with dedication for girls across Nigeria</span>
             <span aria-hidden="true" className="opacity-40">·</span>
-            <a href="mailto:contact@inspirestemgirls.org" className="hover:text-[#F0C747] transition-colors">
-              contact@inspirestemgirls.org
+            <a href="mailto:inspirestemgirl@gmail.com" className="hover:text-[#FFBD59] transition-colors">
+              inspirestemgirl@gmail.com
             </a>
           </div>
         </div>

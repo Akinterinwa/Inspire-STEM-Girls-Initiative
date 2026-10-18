@@ -71,7 +71,7 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
               href="https://instagram.com/inspirestem_girls"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#F0C747] hover:text-white text-xs font-bold transition-all hover:-translate-y-0.5 active:scale-95 shadow-md hover:shadow-purple-950/25 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#2C0E40] hover:bg-[#41175E] text-[#FFBD59] hover:text-white text-xs font-bold transition-all hover:-translate-y-0.5 active:scale-95 shadow-md hover:shadow-purple-950/25 cursor-pointer"
             >
               <Instagram className="w-4 h-4" />
               <span>Follow @inspirestem_girls</span>

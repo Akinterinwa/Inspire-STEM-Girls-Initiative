@@ -40,11 +40,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
       {/* Top Banner with Brand Purple and Radiant Gold Accent */}
       <div className="bg-[#2C0E40] text-[#EFEFF0] text-xs py-1.5 px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between font-medium">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#F0C747] animate-pulse"></span>
+          <span className="w-2 h-2 rounded-full bg-[#FFBD59] animate-pulse"></span>
           <span>Inspire STEM Girls Initiative · Empowering girls from underserved communities in Nigeria</span>
         </div>
         <div className="hidden md:flex items-center gap-3 text-[11px] text-[#EFEFF0]/80">
-          <span className="text-[#F0C747] font-semibold">Vision: Future Tuition-Free Science School</span>
+          <span className="text-[#FFBD59] font-semibold">Vision: Future Tuition-Free Science School</span>
           <span aria-hidden="true" className="opacity-40">·</span>
         </div>
       </div>
@@ -80,8 +80,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   <span
                     className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full transition-all duration-300 ${
                       isActive
-                        ? 'bg-[#F0C747] opacity-100 scale-x-100'
-                        : 'bg-[#F0C747] opacity-0 scale-x-0 group-hover/nav:opacity-100 group-hover/nav:scale-x-100'
+                        ? 'bg-[#FFBD59] opacity-100 scale-x-100'
+                        : 'bg-[#FFBD59] opacity-0 scale-x-0 group-hover/nav:opacity-100 group-hover/nav:scale-x-100'
                     }`}
                   />
                 </a>
@@ -96,11 +96,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
               onClick={(event) => handleNavClick('donate', event)}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-md cursor-pointer ${
                 currentPage === 'donate'
-                  ? 'bg-[#F0C747] text-[#2C0E40] font-bold shadow-amber-500/25 ring-2 ring-[#2C0E40]'
-                  : 'bg-[#2C0E40] text-white hover:bg-[#41175E] hover:text-[#F0C747] shadow-purple-950/25 hover:shadow-lg hover:shadow-purple-950/30 hover:-translate-y-0.5 active:scale-95'
+                  ? 'bg-[#FFBD59] text-[#2C0E40] font-bold shadow-amber-500/25 ring-2 ring-[#2C0E40]'
+                  : 'bg-[#2C0E40] text-white hover:bg-[#41175E] hover:text-[#FFBD59] shadow-purple-950/25 hover:shadow-lg hover:shadow-purple-950/30 hover:-translate-y-0.5 active:scale-95'
               }`}
             >
-              <Heart className="w-4 h-4 fill-current text-[#F0C747] group-hover:scale-110 transition-transform" />
+              <Heart className="w-4 h-4 fill-current text-[#FFBD59] group-hover:scale-110 transition-transform" />
               <span>Donate</span>
             </a>
           </div>
@@ -110,9 +110,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             <a
               href={pageToHref('donate')}
               onClick={(event) => handleNavClick('donate', event)}
-              className="inline-flex sm:hidden items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] transition-all cursor-pointer"
+              className="inline-flex sm:hidden items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#2C0E40] text-[#FFBD59] hover:bg-[#41175E] transition-all cursor-pointer"
             >
-              <Heart className="w-3 h-3 fill-current text-[#F0C747]" />
+              <Heart className="w-3 h-3 fill-current text-[#FFBD59]" />
               <span>Donate</span>
             </a>
             <button
@@ -140,12 +140,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                   onClick={(event) => handleNavClick(link.id, event)}
                   className={`w-full text-left px-3.5 py-2.5 rounded-xl text-base font-medium flex items-center justify-between transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-[#EFEFF0] text-[#2C0E40] font-bold border-l-4 border-[#F0C747]'
+                      ? 'bg-[#EFEFF0] text-[#2C0E40] font-bold border-l-4 border-[#FFBD59]'
                       : 'text-slate-700 hover:bg-[#EFEFF0]/80 hover:text-[#2C0E40] hover:translate-x-1'
                   }`}
                 >
                   <span>{link.label}</span>
-                  {isActive && <span className="w-2 h-2 rounded-full bg-[#F0C747]"></span>}
+                  {isActive && <span className="w-2 h-2 rounded-full bg-[#FFBD59]"></span>}
                 </a>
               );
             })}
@@ -155,9 +155,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             <a
               href={pageToHref('donate')}
               onClick={(event) => handleNavClick('donate', event)}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#2C0E40] text-[#F0C747] hover:bg-[#41175E] hover:shadow-md transition-all active:scale-95 cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#2C0E40] text-[#FFBD59] hover:bg-[#41175E] hover:shadow-md transition-all active:scale-95 cursor-pointer"
             >
-              <Heart className="w-4 h-4 fill-current text-[#F0C747]" />
+              <Heart className="w-4 h-4 fill-current text-[#FFBD59]" />
               <span>Donate to Inspire STEM Girls</span>
             </a>
             <a

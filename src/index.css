@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
   --color-brand-purple: #2C0E40;
   --color-brand-purple-dark: #1E082C;
   --color-brand-purple-deep: #150520;
@@ -8,7 +10,7 @@
   --color-brand-purple-muted: #58247C;
   --color-brand-purple-subtle: #F6EFF9;
   
-  --color-brand-gold: #F0C747;
+  --color-brand-gold: #FFBD59;
   --color-brand-gold-hover: #DCB132;
   --color-brand-gold-dark: #C6981E;
   --color-brand-gold-light: #FBF2D5;
@@ -20,13 +22,13 @@
 
   /* Aliased brand utilities */
   --color-primary: #2C0E40;
-  --color-accent: #F0C747;
+  --color-accent: #FFBD59;
   --color-surface-light: #EFEFF0;
 }
 
 @layer base {
   html {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     scroll-behavior: smooth;
   }
 

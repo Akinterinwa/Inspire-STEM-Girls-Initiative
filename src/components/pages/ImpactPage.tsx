@@ -29,7 +29,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
   onSelectProgram,
 }) => {
   return (
-    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#F0C747]">
+    <div className="py-12 sm:py-16 bg-white space-y-16 sm:space-y-20 selection:bg-[#2C0E40] selection:text-[#FFBD59]">
       {/* Top Header with Animated H1 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
@@ -126,14 +126,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-3 left-3 bg-[#2C0E40] text-[#F0C747] text-[11px] font-bold px-2.5 py-1 rounded-md shadow-xs">
+                <div className="absolute top-3 left-3 bg-[#2C0E40] text-[#FFBD59] text-[11px] font-bold px-2.5 py-1 rounded-md shadow-xs">
                   {program.categoryLabel}
                 </div>
 
                 {program.images && program.images.length > 1 && (
-                  <div className="absolute top-3 right-3 bg-[#150520]/90 text-[#F0C747] backdrop-blur-xs px-2.5 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 shadow-sm border border-[#F0C747]/30">
-                    <Camera className="w-3.5 h-3.5 text-[#F0C747]" />
-                    <span>{program.images.length} Photos (Auto-Slider)</span>
+                  <div className="absolute top-3 right-3 bg-[#150520]/90 text-[#FFBD59] backdrop-blur-xs px-2.5 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 shadow-sm border border-[#FFBD59]/30">
+                    <Camera className="w-3.5 h-3.5 text-[#FFBD59]" />
                   </div>
                 )}
 
@@ -264,7 +263,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#2C0E40] rounded-3xl p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#F0C747] block mb-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#FFBD59] block mb-2">
               Scale This Change
             </span>
             <h3 className="text-2xl sm:text-3xl font-bold leading-tight text-white">
@@ -280,7 +279,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 onNavigate('donate');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#F0C747] hover:bg-[#DCB132] text-[#2C0E40] transition-all duration-200 text-center shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#FFBD59] hover:bg-[#DCB132] text-[#2C0E40] transition-all duration-200 text-center shadow-md hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               Invest in Her Future
             </button>
@@ -289,7 +288,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 onNavigate('reports');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#41175E] hover:bg-[#58247C] text-white border border-[#F0C747]/40 hover:border-[#F0C747] transition-all duration-200 text-center hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              className="px-6 py-3.5 rounded-xl text-sm font-bold bg-[#41175E] hover:bg-[#58247C] text-white border border-[#FFBD59]/40 hover:border-[#FFBD59] transition-all duration-200 text-center hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               Read 2026 Impact Report
             </button>
