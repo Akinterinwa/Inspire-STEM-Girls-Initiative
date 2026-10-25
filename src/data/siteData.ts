@@ -12,6 +12,7 @@ import {
 import heroImg from '../stem img/hero page.jpg';
 import founderImg from '../stem img/Adelusi.jpg';
 import pmImg from '../assets/images/program_manager_1790849429029.jpg';
+import prmImg from '../stem img/Rachael_Aimola.jpeg';
 import schoolVisionImg from '../assets/images/science_school_vision_1790849441146.jpg';
 import mentorshipImg from '../stem img/DSC_0226.webp';
 
@@ -257,11 +258,11 @@ export const staffMembers: TeamMember[] = [
   },
   {
     id: 'program-manager',
-    name: 'Tolulope Adeleke', // Placeholder name easily editable, shown as [Program Manager's Name]
+    name: 'Rachael Aimola', // Placeholder name easily editable, shown as [Program Manager's Name]
     role: 'Program Manager, Nigeria',
     location: 'Lagos & Southwest Operations, Nigeria',
-    bio: 'Tolulope helps coordinate programs, school and community partnerships, program delivery, and ground operations in Nigeria. With extensive experience in community grassroots education and youth development, she manages program logistics, teacher coordination, student tracking, and volunteer mentor matching across participating schools.',
-    image: pmImg,
+    bio: 'Rachael Aimola is a digital marketing and content strategist passionate about creating meaningful opportunities for young girls to explore STEM, build confidence, and pursue their potential. With a background in digital marketing, brand strategy, content creation, and project coordination, she brings creativity and strategic thinking to her work with Inspire STEM Girls. As Programs Manager & Coordinator, Rachael supports the planning, coordination, and execution of the organisation’s programs and outreach initiatives. Her role spans program development, partnerships, volunteer coordination, communications, and community engagement, helping turn ideas into impactful experiences for the girls and communities Inspire STEM Girls serves.',
+    image: prmImg,
     email: 'programs@inspirestemgirls.org',
     isStaff: true,
   },

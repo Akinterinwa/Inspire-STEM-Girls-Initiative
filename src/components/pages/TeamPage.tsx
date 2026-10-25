@@ -182,7 +182,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
                       {member.role}
                     </p>
 
-                    <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">
+                    <p className="text-slate-600 text-xs leading-relaxed line-clamp">
                       {member.bio}
                     </p>
                   </div>
@@ -243,7 +243,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           {/* Mobile Carousel Controls for Board */}
           <div className="flex md:hidden items-center justify-between gap-2 pb-4 pt-1 border-b border-[#41175E]/60 mb-6">
             <span className="text-xs font-semibold text-[#FFBD59]">
-              Board ({boardIndex + 1} of {boardMembers.length})
             </span>
             <div className="flex items-center gap-1.5">
               <button
@@ -362,7 +361,7 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
 
                     <div className="pt-3 mt-3 border-t border-[#41175E]/70 flex items-center justify-between text-[10px] text-[#EFEFF0]/60">
                       <span>Governance Board</span>
-                      <span className="text-[#FFBD59] font-semibold">Fiduciary</span>
+                      <span className="text-[#FFBD59] font-semibold"></span>
                     </div>
                   </div>
                 </div>
@@ -385,9 +384,6 @@ export const TeamPage: React.FC<TeamPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="mt-10 pt-6 border-t border-[#41175E] flex flex-col sm:flex-row items-center justify-between text-xs text-[#EFEFF0]/70 gap-4">
-            <p>
-              * Board appointments and committee assignments are maintained in full compliance with non-profit statutory regulations.
-            </p>
             <a
               href="mailto:inspirestemgirl@gmail.com?subject=Board%20Governance%20Inquiry"
               className="text-[#FFBD59] hover:text-white font-bold inline-flex items-center gap-1 flex-shrink-0 hover:translate-x-1 transition-all cursor-pointer"

@@ -85,7 +85,7 @@ export const SocialFeedSection: React.FC<SocialFeedSectionProps> = ({
             </p>
             {/* Mobile text: concise */}
             <p className="block sm:hidden mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Live updates directly from <strong className="text-[#2C0E40]">@inspirestem_girls</strong> workshops and school outreach in Nigeria.
+              Live updates directly from our workshops and school outreach in Nigeria.
             </p>
           </div>
 

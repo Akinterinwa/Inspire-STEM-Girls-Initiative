@@ -253,7 +253,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <div className="absolute inset-0 bg-gradient-to-t from-[#150520]/90 via-transparent to-transparent pointer-events-none" />
 
                   {/* Caption tag */}
-                  <div className="absolute bottom-5 left-5 right-5 text-white backdrop-blur-md bg-black/60 p-4 rounded-2xl border border-white/15 flex items-center justify-between">
+                  <div className="absolute bottom-14 left-5 right-5 text-white backdrop-blur-md bg-black/60 p-4 rounded-2xl border border-white/15 flex items-center justify-between">
                     <div>
                       <p className="font-bold text-sm">Hands-On STEM Discovery Workshop</p>
                       <p className="text-stone-300 text-xs mt-0.5">
@@ -319,7 +319,6 @@ export const HomePage: React.FC<HomePageProps> = ({
           {/* Mobile Carousel Controls for Numbers (Mobile only) */}
           <div className="flex sm:hidden items-center justify-between pb-3 pt-1">
             <span className="text-xs font-semibold text-[#FFBD59]">
-              Metric ({impactNumbersIndex + 1} of {impactMetrics.slice(0, 5).length})
             </span>
             <div className="flex items-center gap-1.5">
               <button
@@ -452,7 +451,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Mobile Carousel Controls */}
             <div className="flex md:hidden items-center justify-between pt-1">
               <span className="text-xs font-semibold text-slate-500">
-                Swipe to explore ({pathwaysIndex + 1} of 4)
               </span>
               <div className="flex items-center gap-1.5">
                 <button
@@ -784,7 +782,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Mobile Controls */}
             <div className="flex sm:hidden items-center justify-between pt-1">
               <span className="text-xs font-semibold text-slate-500">
-                Photo {girlsActionIndex + 1} of 4
               </span>
               <div className="flex items-center gap-1.5">
                 <button
@@ -1076,7 +1073,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     onClick={() => onSelectProgram(program)}
                     className="text-xs font-bold text-[#2C0E40] hover:text-[#41175E] hover:translate-x-1 inline-flex items-center gap-1 transition-all cursor-pointer"
                   >
-                    <span>View Photo Dossier ({program.images?.length || 1} Images)</span>
+                    <span>View Photo Dossier</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                   <span className="text-[11px] text-slate-500 font-medium">

@@ -194,7 +194,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         {/* Mobile Header / Controls */}
         <div className="flex md:hidden items-center justify-between mb-4">
           <span className="text-xs font-semibold text-slate-500">
-            Swipe Core Directives ({cardIndex + 1} of 3)
           </span>
           <div className="flex items-center gap-1.5">
             <button
@@ -472,13 +471,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               </div>
 
               {/* Mobile Copy (Concise & Clean) */}
-              <div className="block sm:hidden space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+              <div className="block sm:hidden space-y-3 text-base text-slate-700 leading-relaxed font-normal">
                 <p>
-                  Oluwaseyi Adelusi is a software engineer and the Founder of Inspire STEM Girls Initiative, passionate about bridging the STEM gender divide in Nigeria.
+                  Oluwaseyi Adelusi is a software engineer and the Founder and Executive Director of Inspire STEM Girls Initiative.
                 </p>
-                <div className="p-3.5 rounded-xl bg-white border-l-4 border-[#FFBD59] shadow-xs">
-                  <p className="text-xs font-medium text-slate-900 leading-snug">
-                    Her long-term vision is to build a tuition-free science/STEM school in Nigeria for girls from underserved communities.
+                <p>
+                  Her experience in technology and passion for education inspired her to create an organization focused on increasing access to STEM opportunities for girls who may otherwise lack the exposure, resources and support needed to pursue STEM pathways.
+                </p>
+                <div className="p-4 rounded-xl bg-white border-l-4 border-[#FFBD59] shadow-xs">
+                  <p className="text-base font-medium text-slate-900">
+                    Her long-term vision is to build a tuition-free science/STEM school in Nigeria where girls from underserved communities can access quality education regardless of their financial circumstances.
                   </p>
                 </div>
               </div>

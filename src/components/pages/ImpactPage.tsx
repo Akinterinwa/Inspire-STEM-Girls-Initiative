@@ -102,7 +102,6 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           {/* Mobile Carousel Controls for Numbers */}
           <div className="flex sm:hidden items-center justify-between pt-1">
             <span className="text-xs font-semibold text-slate-500">
-              Metric ({numbersIndex + 1} of {impactMetrics.length})
             </span>
             <div className="flex items-center gap-1.5">
               <button

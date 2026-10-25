@@ -326,7 +326,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="flex items-center gap-4">
-            <span>Built with dedication for girls across Nigeria</span>
             <span aria-hidden="true" className="opacity-40">·</span>
             <a href="mailto:inspirestemgirl@gmail.com" className="hover:text-[#FFBD59] transition-colors">
               inspirestemgirl@gmail.com

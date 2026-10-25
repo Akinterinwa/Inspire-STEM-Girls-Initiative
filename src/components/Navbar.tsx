@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { PageId } from '../types';
 import { Menu, X, Heart, Sparkles, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
@@ -10,6 +10,8 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
 
   const navLinks: { id: PageId; label: string }[] = [
     { id: 'home', label: 'Home' },
@@ -25,6 +27,30 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   const pageToHref = (page: PageId) => (page === 'home' ? '/' : `/${page}`);
 
+  useEffect(() => {
+    let previousScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - previousScrollY;
+
+      if (currentScrollY <= 0 || mobileMenuOpen) {
+        setIsVisible(true);
+      } else if (Math.abs(scrollDelta) > 4) {
+        const focusIsInHeader = headerRef.current?.contains(document.activeElement);
+        if (scrollDelta < 0 || focusIsInHeader) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+        previousScrollY = currentScrollY;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (page: PageId, event?: React.MouseEvent<HTMLElement>) => {
     if (event) {
       event.preventDefault();
@@ -36,7 +62,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#EFEFF0] shadow-xs">
+    <header
+      ref={headerRef}
+      className={`sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#EFEFF0] shadow-xs transition-transform duration-300 ease-in-out ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+    >
       {/* Top Banner with Brand Purple and Radiant Gold Accent */}
       <div className="bg-[#2C0E40] text-[#EFEFF0] text-xs py-1.5 px-4 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between font-medium">
         <div className="flex items-center gap-2">

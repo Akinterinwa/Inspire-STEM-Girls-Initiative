@@ -193,7 +193,6 @@ export const VisionPage: React.FC<VisionPageProps> = ({ onNavigate }) => {
           {/* Mobile Header / Controls */}
           <div className="flex md:hidden items-center justify-between mb-4">
             <span className="text-xs font-semibold text-slate-500">
-              Horizon ({horizonIndex + 1} of 3)
             </span>
             <div className="flex items-center gap-1.5">
               <button

@@ -237,21 +237,6 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({
                     {program.shortDescription}
                   </p>
 
-                  {/* Outcomes List */}
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-700 block mb-2">
-                      Key Outcomes
-                    </span>
-                    <ul className="space-y-1.5">
-                      {program.outcomes.slice(0, 2).map((outcome, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2C0E40] flex-shrink-0 mt-0.5" />
-                          <span>{outcome}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
                   {/* Partners */}
                   <div>
                     <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1.5">
